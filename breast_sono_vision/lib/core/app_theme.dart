@@ -1,0 +1,54 @@
+import 'package:breast_sono_vision/core/color_palette.dart';
+import 'package:flutter/material.dart';
+
+class AppTheme {
+  static final light = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.light,
+    primaryColor: ColorPalette.primary,
+    scaffoldBackgroundColor: ColorPalette.primary,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: ColorPalette.primary,
+      foregroundColor: Colors.white,
+      elevation: 0,
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+      ),
+    ),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: ColorPalette.primary,
+      brightness: Brightness.light,
+    ),
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(fontSize: 16),
+      bodyMedium: TextStyle(fontSize: 14),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        backgroundColor: ColorPalette.secondary,
+        foregroundColor: Colors.white,
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+      filled: true,
+      fillColor: Colors.grey.shade100,
+    ),
+  );
+
+  static final dark = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: ColorPalette.primary,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: ColorPalette.primary,
+      brightness: Brightness.dark,
+    ),
+  );
+}
