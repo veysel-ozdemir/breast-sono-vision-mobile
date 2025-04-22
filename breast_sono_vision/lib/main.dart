@@ -1,4 +1,5 @@
 import 'package:breast_sono_vision/app/app.dart';
+import 'package:breast_sono_vision/page/home_page.dart';
 import 'package:breast_sono_vision/page/landing_page.dart';
 import 'package:breast_sono_vision/util/functions.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,9 @@ void main() async {
   // Load shared preferences data
   final prefs = await SharedPreferences.getInstance();
 
+  // TODO: this line is for testing, delete it later
+  await prefs.clear();
+
   debugPrint('\nShared Prefs Key-Value Pairs:');
   printKeyValueOfSharedPrefs(prefs);
 
@@ -26,7 +30,7 @@ void main() async {
   if (isOnboardingPassed == null || isOnboardingPassed == false) {
     startingPage = const LandingPage();
   } else {
-    // startingPage = const HomePage();
+    startingPage = const HomePage();
   }
 
   // Lock the app orientation to portrait mode
@@ -35,7 +39,8 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]).then((_) {
     // Run the app
-    // TODO: Change the value of startingPage to the actual home page when implemented
-    runApp(BreastSonoVisionApp(startingPage: LandingPage()));
+    runApp(
+      BreastSonoVisionApp(startingPage: startingPage),
+    );
   });
 }

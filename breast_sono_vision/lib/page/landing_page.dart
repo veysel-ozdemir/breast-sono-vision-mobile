@@ -1,5 +1,5 @@
 import 'package:breast_sono_vision/core/color_palette.dart';
-import 'package:breast_sono_vision/page/onboarding_page_one.dart';
+import 'package:breast_sono_vision/page/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -114,7 +114,7 @@ class _LandingPageState extends State<LandingPage> {
                   width: Get.width * 0.5,
                   child: ElevatedButton(
                     onPressed: () async {
-                      await Get.to(() => const OnboardingPageOne());
+                      await Get.to(() => const OnboardingPage());
                     },
                     child: const Text(
                       'Get Started',
