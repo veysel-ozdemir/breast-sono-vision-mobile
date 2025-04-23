@@ -27,12 +27,27 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.all(10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
         backgroundColor: ColorPalette.secondary,
         foregroundColor: Colors.white,
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: const WidgetStatePropertyAll(Colors.white),
+        foregroundColor: const WidgetStatePropertyAll(ColorPalette.secondary),
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+        side: const WidgetStatePropertyAll(
+          BorderSide(color: ColorPalette.secondary, width: 3),
+        ),
+        padding: const WidgetStatePropertyAll(EdgeInsets.all(10)),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
