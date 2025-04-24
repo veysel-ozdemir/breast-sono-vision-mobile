@@ -1,4 +1,5 @@
 import 'package:breast_sono_vision/core/color_palette.dart';
+import 'package:breast_sono_vision/page/comparison_page.dart';
 import 'package:breast_sono_vision/page/home_page.dart';
 import 'package:breast_sono_vision/util/dialogs.dart';
 import 'package:breast_sono_vision/widget/info_card.dart';
@@ -133,7 +134,7 @@ class _ResultPageState extends State<ResultPage> {
                         Expanded(
                           child: OutlinedButton(
                             onPressed: () async {
-                              // TODO: Navigate to the comparison page
+                              await Get.to(() => const ComparisonPage());
                             },
                             child: const Text(
                               'Compare',
