@@ -6,12 +6,14 @@ class InfoCard extends StatelessWidget {
   final String icon;
   final String title;
   final List<InlineSpan>? description;
+  final Widget? bottomWidgets;
 
   const InfoCard({
     super.key,
     required this.icon,
     required this.title,
     required this.description,
+    this.bottomWidgets, // Optional named parameter
   });
 
   @override
@@ -58,6 +60,8 @@ class InfoCard extends StatelessWidget {
               children: description,
             ),
           ),
+          // Additional Widgets
+          bottomWidgets ?? const SizedBox(),
         ],
       ),
     );
