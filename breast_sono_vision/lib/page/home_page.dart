@@ -1,4 +1,5 @@
 import 'package:breast_sono_vision/core/color_palette.dart';
+import 'package:breast_sono_vision/page/result_page.dart';
 import 'package:breast_sono_vision/widget/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -131,7 +132,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-
                 const Spacer(flex: 2),
                 // Conditional Button Layout
                 _isImageSelected
@@ -183,6 +183,7 @@ class _HomePageState extends State<HomePage> {
             child: ElevatedButton(
               onPressed: () async {
                 // TODO: Do the API call and show animated loading screen
+                await Get.offAll(() => const ResultPage());
               },
               child: const Text(
                 'Analyze',

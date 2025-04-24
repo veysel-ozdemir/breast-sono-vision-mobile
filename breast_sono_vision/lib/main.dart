@@ -18,7 +18,7 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
 
   // TODO: This line is for testing, delete it later
-  await prefs.clear();
+  // await prefs.clear();
 
   debugPrint('\nShared Prefs Key-Value Pairs:');
   printKeyValueOfSharedPrefs(prefs);
