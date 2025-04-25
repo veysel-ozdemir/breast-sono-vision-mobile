@@ -105,8 +105,8 @@ class _ResultPageState extends State<ResultPage> {
                         padding: const EdgeInsets.all(10),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          border:
-                              Border.all(color: ColorPalette.border, width: 3),
+                          border: Border.all(
+                              color: ColorPalette.secondary, width: 3),
                           color: Colors.white.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(15),
                         ),

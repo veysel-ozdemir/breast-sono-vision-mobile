@@ -22,7 +22,7 @@ class InfoCard extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       width: Get.width,
       decoration: BoxDecoration(
-        border: Border.all(color: ColorPalette.border, width: 3),
+        border: Border.all(color: ColorPalette.secondary, width: 3),
         color: ColorPalette.background,
         borderRadius: BorderRadius.circular(15),
       ),
@@ -39,16 +39,13 @@ class InfoCard extends StatelessWidget {
                 fontSize: 20,
               ),
               children: [
-                TextSpan(
-                  text: icon,
-                ),
+                TextSpan(text: icon),
                 const WidgetSpan(child: SizedBox(width: 5)),
-                TextSpan(
-                  text: title,
-                )
+                TextSpan(text: title)
               ],
             ),
           ),
+          const Divider(color: ColorPalette.onBackground, thickness: 2),
           // Content
           RichText(
             textAlign: TextAlign.left,

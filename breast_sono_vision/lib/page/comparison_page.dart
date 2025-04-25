@@ -38,7 +38,7 @@ class ComparisonPage extends StatelessWidget {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border:
-                            Border.all(color: ColorPalette.border, width: 3),
+                            Border.all(color: ColorPalette.secondary, width: 3),
                         color: Colors.white.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -57,7 +57,7 @@ class ComparisonPage extends StatelessWidget {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border:
-                            Border.all(color: ColorPalette.border, width: 3),
+                            Border.all(color: ColorPalette.secondary, width: 3),
                         color: Colors.white.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(15),
                       ),
