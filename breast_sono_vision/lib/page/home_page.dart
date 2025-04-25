@@ -1,9 +1,15 @@
+import 'dart:io';
+
+import 'package:breast_sono_vision/controller/permission_controller.dart';
 import 'package:breast_sono_vision/core/color_palette.dart';
 import 'package:breast_sono_vision/page/result_page.dart';
+import 'package:breast_sono_vision/util/dialogs.dart';
 import 'package:breast_sono_vision/widget/info_card.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,7 +19,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final PermissionController permissionController = Get.find();
+  final ImagePicker _imagePicker = ImagePicker();
+  String? _filePath;
   bool _isImageSelected = false;
+
+  // Pick file path from the files
+  Future<String?> pickFromFiles() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['png'],
+    );
+
+    if (result != null && result.files.single.path != null) {
+      final filePath = result.files.single.path!;
+      debugPrint('Selected file path: $filePath');
+      // You can now use this path to display the image or send it to your model
+      return filePath;
+    } else {
+      debugPrint('File selection canceled.');
+      return null;
+    }
+  }
+
+  // Pick image from the gallery
+  Future<XFile?> pickFromGallery() async {
+    final XFile? image =
+        await _imagePicker.pickImage(source: ImageSource.gallery);
+    return image;
+  }
 
   @override
   void initState() {
@@ -105,9 +139,8 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: _isImageSelected
-                              ?
-                              // TODO: Replace this text widget later
-                              const Text('SELECTED IMAGE')
+                              ? Image.file(File(_filePath!),
+                                  fit: BoxFit.contain)
                               : const Icon(
                                   Icons.image,
                                   color: Colors.black45,
@@ -139,11 +172,8 @@ class _HomePageState extends State<HomePage> {
                     : SizedBox(
                         width: Get.width * 0.5,
                         child: ElevatedButton(
-                          onPressed: () async {
-                            setState(() {
-                              _isImageSelected = true;
-                            });
-                          },
+                          onPressed: () async =>
+                              await _showUploadSourceSelection(),
                           child: const Text(
                             'Upload Image',
                             style: TextStyle(
@@ -169,9 +199,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             child: OutlinedButton(
-              onPressed: () async {
-                // TODO: Let user image selection
-              },
+              onPressed: () async => await _showUploadSourceSelection(),
               child: const Text(
                 'Upload Again',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -192,6 +220,112 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Future<void> _showUploadSourceSelection() async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) => Padding(
+        padding: const EdgeInsets.all(10),
+        child: _uploadSourceOptions(context: context),
+      ),
+      shape: const RoundedRectangleBorder(
+        side: BorderSide(
+          color: ColorPalette.border,
+          width: 3,
+        ),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
+      backgroundColor: ColorPalette.background,
+      isDismissible: true,
+    );
+  }
+
+  Widget _uploadSourceOptions({required BuildContext context}) {
+    return SafeArea(
+      child: Container(
+        width: Get.width,
+        padding: const EdgeInsets.all(10),
+        child: IntrinsicWidth(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: ColorPalette.secondary,
+                  side: const BorderSide(
+                    color: ColorPalette.secondary,
+                    width: 2,
+                  ),
+                ),
+                onPressed: () async {
+                  final fileSelection = await pickFromFiles();
+                  if (fileSelection != null) {
+                    setState(() {
+                      _filePath = fileSelection;
+                      _isImageSelected = true;
+                    });
+                  }
+                  // Dismiss the modal bottom sheet
+                  Get.back();
+                },
+                child: const Text(
+                  'Select From Files',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: ColorPalette.secondary,
+                  side: const BorderSide(
+                    color: ColorPalette.secondary,
+                    width: 2,
+                  ),
+                ),
+                onPressed: () async {
+                  bool permissionsGranted =
+                      await permissionController.checkPhotoLibraryPermission();
+                  if (permissionsGranted) {
+                    final imageSelection = await pickFromGallery();
+                    if (imageSelection != null) {
+                      setState(() {
+                        _filePath = imageSelection.path;
+                        _isImageSelected = true;
+                      });
+                    }
+                  } else {
+                    if (context.mounted) {
+                      await showPermissionDialog(
+                        context: context,
+                        onPressed: () async =>
+                            await permissionController.openSettings(),
+                      );
+                    }
+                  }
+                  // Dismiss the modal bottom sheet
+                  Get.back();
+                },
+                child: const Text(
+                  'Select From Gallery',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

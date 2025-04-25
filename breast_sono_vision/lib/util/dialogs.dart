@@ -86,3 +86,82 @@ Future<void> showDisclaimerDialog({
     ),
   );
 }
+
+Future<void> showPermissionDialog({
+  required BuildContext context,
+  required void Function()? onPressed,
+}) async {
+  final alertDialog = AlertDialog(
+    backgroundColor: Colors.transparent,
+    contentPadding: EdgeInsets.zero,
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        InfoCard(
+          icon: '⚙️',
+          title: 'Permissions Required',
+          description: const [
+            TextSpan(
+                text:
+                    'The permissions are not granted. Please visit the settings.'),
+          ],
+          bottomWidgets: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerRight,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: ColorPalette.secondary,
+                    side: const BorderSide(
+                      color: ColorPalette.secondary,
+                      width: 2,
+                    ),
+                  ),
+                  onPressed: onPressed,
+                  child: const Text(
+                    'Open Settings',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+
+  await showGeneralDialog(
+    context: context,
+    barrierDismissible: true,
+    barrierLabel: '',
+    barrierColor: Colors.black.withOpacity(0.35),
+    transitionDuration: const Duration(milliseconds: 350),
+    pageBuilder: (context, animation, secondaryAnimation) => Container(),
+    transitionBuilder: (context, animation, secondaryAnimation, child) =>
+        ScaleTransition(
+      scale: Tween<double>(
+        begin: 0.5,
+        end: 1.0,
+      ).animate(CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutBack,
+      )),
+      child: FadeTransition(
+        opacity: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).animate(CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeIn,
+        )),
+        child: alertDialog,
+      ),
+    ),
+  );
+}

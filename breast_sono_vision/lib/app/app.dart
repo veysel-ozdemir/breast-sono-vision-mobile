@@ -1,3 +1,4 @@
+import 'package:breast_sono_vision/config/global_bindings.dart';
 import 'package:breast_sono_vision/core/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class _BreastSonoVisionAppState extends State<BreastSonoVisionApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      initialBinding: GlobalBindings(),
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
