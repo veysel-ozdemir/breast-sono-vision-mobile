@@ -4,6 +4,7 @@ import 'package:breast_sono_vision/controller/permission_controller.dart';
 import 'package:breast_sono_vision/core/color_palette.dart';
 import 'package:breast_sono_vision/page/result_page.dart';
 import 'package:breast_sono_vision/util/dialogs.dart';
+import 'package:breast_sono_vision/util/functions.dart';
 import 'package:breast_sono_vision/widget/info_card.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -28,14 +29,32 @@ class _HomePageState extends State<HomePage> {
   Future<String?> pickFromFiles() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['png'],
+      allowedExtensions: ['png', 'jpg', 'jpeg'],
     );
 
     if (result != null && result.files.single.path != null) {
       final filePath = result.files.single.path!;
       debugPrint('Selected file path: $filePath');
-      // You can now use this path to display the image or send it to your model
-      return filePath;
+      if (filePath.toLowerCase().endsWith('.png')) {
+        // You can now use this path to display the image or send it to your model
+        return filePath;
+      } else if (filePath.toLowerCase().endsWith('.jpg') ||
+          filePath.toLowerCase().endsWith('.jpeg')) {
+        debugPrint('Image file is being formatted to PNG...');
+        // Convert JPG image file to PNG
+        final convertedImagePath = await convertJpgToPng(filePath);
+        if (convertedImagePath != null) {
+          return convertedImagePath;
+        } else {
+          await showSnackbar(
+            title: 'Image Conversion Failed',
+            description: 'Error occurred while converting your JPG file',
+          );
+          return null;
+        }
+      } else {
+        return null;
+      }
     } else {
       debugPrint('File selection canceled.');
       return null;
@@ -43,13 +62,27 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Pick image from the gallery
-  Future<XFile?> pickFromGallery() async {
+  Future<String?> pickFromGallery() async {
     final XFile? image =
         await _imagePicker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       debugPrint('Selected image path: ${image.path}');
       if (image.path.toLowerCase().endsWith('.png')) {
-        return image;
+        return image.path;
+      } else if (image.path.toLowerCase().endsWith('.jpg') ||
+          image.path.toLowerCase().endsWith('.jpeg')) {
+        debugPrint('Image is being formatted to PNG...');
+        // Convert JPG image file to PNG
+        final convertedImagePath = await convertJpgToPng(image.path);
+        if (convertedImagePath != null) {
+          return convertedImagePath;
+        } else {
+          await showSnackbar(
+            title: 'Image Conversion Failed',
+            description: 'Error occurred while converting your JPG file',
+          );
+          return null;
+        }
       } else {
         debugPrint('Unsupported image format selected.');
         // Show format error
@@ -315,7 +348,7 @@ class _HomePageState extends State<HomePage> {
                     final imageSelection = await pickFromGallery();
                     if (imageSelection != null) {
                       setState(() {
-                        _filePath = imageSelection.path;
+                        _filePath = imageSelection;
                         _isImageSelected = true;
                       });
                       // Dismiss the modal bottom sheet
