@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                   description: [
                     TextSpan(
                         text:
-                            'For the most accurate results, please upload your ultrasound as a '),
+                            'For the most accurate results, upload your ultrasound as a '),
                     TextSpan(
                       text: 'PNG',
                       style: TextStyle(
@@ -165,54 +165,72 @@ class _HomePageState extends State<HomePage> {
                       text: '600×600',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
+                    TextSpan(text: ' pixels. \n\n'),
+                    TextSpan(
+                      text: 'JPG',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: ' and '),
+                    TextSpan(
+                      text: 'JPEG',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     TextSpan(
                         text:
-                            ' pixels.\nThis ensures the image is processed clearly by our AI segmentation system.'),
+                            ' files are also accepted but will be converted to PNG to maintain quality for AI analysis.'),
                   ],
                 ),
                 const Spacer(flex: 1),
                 // Conditional Image View
-                Column(
-                  children: [
-                    SizedBox(
-                      width: Get.width * 0.8,
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: ColorPalette.secondary, width: 3),
-                            color: Colors.white.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: _isImageSelected
-                              ? Image.file(File(_filePath!),
-                                  fit: BoxFit.contain)
-                              : const Icon(
-                                  Icons.image,
-                                  color: Colors.black45,
-                                  size: 75,
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: Get.width * 0.8,
+                    maxHeight: Get.width * 0.8,
+                  ),
+                  child: IntrinsicWidth(
+                    child: IntrinsicHeight(
+                      child: Container(
+                        width: _isImageSelected ? null : Get.width,
+                        height: _isImageSelected ? null : Get.width,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: ColorPalette.secondary, width: 3),
+                          color: _isImageSelected
+                              ? ColorPalette.secondary
+                              : Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: _isImageSelected
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.file(
+                                  File(_filePath!),
+                                  scale: 0.8,
                                 ),
-                        ),
+                              )
+                            : const Icon(
+                                Icons.image,
+                                color: Colors.black45,
+                                size: 75,
+                              ),
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      width: Get.width * 0.75,
-                      child: Text(
-                        _isImageSelected
-                            ? 'Ready to see the result? Let AI analyze your image — or tap below to choose a different one.'
-                            : "Let's select your breast ultrasound.\nEnsure that all permissions are granted for the app to work properly.",
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
+                  ),
+                ),
+                const Spacer(flex: 1),
+                SizedBox(
+                  width: Get.width * 0.75,
+                  child: Text(
+                    _isImageSelected
+                        ? 'Ready to see the result? Let AI analyze your image — or tap below to choose a different one.'
+                        : "Let's select your breast ultrasound.\nEnsure that all permissions are granted for the app to work properly.",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
                     ),
-                  ],
+                  ),
                 ),
                 const Spacer(flex: 2),
                 // Conditional Button Layout

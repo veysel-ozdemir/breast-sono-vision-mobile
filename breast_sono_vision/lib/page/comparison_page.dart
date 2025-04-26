@@ -29,39 +29,59 @@ class ComparisonPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 // Selected Image View
-                SizedBox(
-                  width: Get.width * 0.7,
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border:
-                            Border.all(color: ColorPalette.secondary, width: 3),
-                        color: Colors.white.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(15),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: Get.width * 0.7,
+                    maxHeight: Get.width * 0.7,
+                  ),
+                  child: IntrinsicWidth(
+                    child: IntrinsicHeight(
+                      child: Container(
+                        // TODO: Delete the width and height later
+                        width: Get.width,
+                        height: Get.width,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: ColorPalette.secondary, width: 3),
+                          color: ColorPalette.secondary,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: const Text(
+                              'SELECTED IMAGE'), // TODO: Replace the text widget with the image later
+                        ),
                       ),
-                      child: const Text('SELECTED IMAGE'),
                     ),
                   ),
                 ),
                 const SizedBox(height: 10),
                 // Segmented Image View
-                SizedBox(
-                  width: Get.width * 0.7,
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border:
-                            Border.all(color: ColorPalette.secondary, width: 3),
-                        color: Colors.white.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(15),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: Get.width * 0.7,
+                    maxHeight: Get.width * 0.7,
+                  ),
+                  child: IntrinsicWidth(
+                    child: IntrinsicHeight(
+                      child: Container(
+                        // TODO: Delete the width and height later
+                        width: Get.width,
+                        height: Get.width,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: ColorPalette.secondary, width: 3),
+                          color: ColorPalette.secondary,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: const Text(
+                              'SEGMENTED IMAGE'), // TODO: Replace the text widget with the image later
+                        ),
                       ),
-                      child: const Text('SEGMENTED IMAGE'),
                     ),
                   ),
                 ),
