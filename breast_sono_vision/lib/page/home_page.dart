@@ -46,7 +46,23 @@ class _HomePageState extends State<HomePage> {
   Future<XFile?> pickFromGallery() async {
     final XFile? image =
         await _imagePicker.pickImage(source: ImageSource.gallery);
-    return image;
+    if (image != null) {
+      debugPrint('Selected image path: ${image.path}');
+      if (image.path.toLowerCase().endsWith('.png')) {
+        return image;
+      } else {
+        debugPrint('Unsupported image format selected.');
+        // Show format error
+        await showSnackbar(
+          title: 'Unsupported Format',
+          description: 'Please select a PNG image',
+        );
+        return null;
+      }
+    } else {
+      debugPrint('Image selection canceled.');
+      return null;
+    }
   }
 
   @override
@@ -271,9 +287,9 @@ class _HomePageState extends State<HomePage> {
                       _filePath = fileSelection;
                       _isImageSelected = true;
                     });
+                    // Dismiss the modal bottom sheet
+                    if (context.mounted) Navigator.pop(context);
                   }
-                  // Dismiss the modal bottom sheet
-                  Get.back();
                 },
                 child: const Text(
                   'Select From Files',
@@ -302,6 +318,8 @@ class _HomePageState extends State<HomePage> {
                         _filePath = imageSelection.path;
                         _isImageSelected = true;
                       });
+                      // Dismiss the modal bottom sheet
+                      if (context.mounted) Navigator.pop(context);
                     }
                   } else {
                     if (context.mounted) {
@@ -309,11 +327,12 @@ class _HomePageState extends State<HomePage> {
                         context: context,
                         onPressed: () async =>
                             await permissionController.openSettings(),
-                      );
+                      ).then((_) {
+                        // Dismiss the modal bottom sheet
+                        if (context.mounted) Navigator.pop(context);
+                      });
                     }
                   }
-                  // Dismiss the modal bottom sheet
-                  Get.back();
                 },
                 child: const Text(
                   'Select From Gallery',

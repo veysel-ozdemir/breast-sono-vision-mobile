@@ -1,6 +1,7 @@
 import 'package:breast_sono_vision/core/color_palette.dart';
 import 'package:breast_sono_vision/widget/info_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Future<void> showDisclaimerDialog({
   required BuildContext context,
@@ -164,4 +165,41 @@ Future<void> showPermissionDialog({
       ),
     ),
   );
+}
+
+Future<void> showSnackbar({
+  required String title,
+  required String description,
+  int durationSeconds = 3,
+}) async {
+  final duration = Duration(seconds: durationSeconds);
+  // Show the snackbar
+  Get.snackbar(
+    '',
+    '',
+    titleText: Text(
+      title,
+      style: const TextStyle(
+        color: ColorPalette.onBackground,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    messageText: Text(
+      description,
+      style: const TextStyle(color: ColorPalette.onBackground, fontSize: 16),
+    ),
+    backgroundColor: ColorPalette.background.withOpacity(0.75),
+    borderColor: ColorPalette.border.withOpacity(0.75),
+    borderRadius: 15,
+    borderWidth: 3,
+    icon: const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Text('❗️', style: TextStyle(fontSize: 24)),
+    ),
+    snackPosition: SnackPosition.BOTTOM,
+    duration: duration,
+  );
+  // Wait for the snackbar to finish showing
+  await Future.delayed(duration);
 }
