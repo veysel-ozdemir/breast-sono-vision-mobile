@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Required permissions for Android 13+ (SDK 33+) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    
     <application
+        android:enableOnBackInvokedCallback="true"
         android:label="BreastSonoVision"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
