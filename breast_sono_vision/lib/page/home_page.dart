@@ -196,14 +196,12 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                           border: Border.all(
                               color: ColorPalette.secondary, width: 3),
-                          color: _isImageSelected
-                              ? ColorPalette.secondary
-                              : Colors.white.withOpacity(0.5),
+                          color: Colors.white.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: _isImageSelected
                             ? ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(12.5),
                                 child: Image.file(
                                   File(_filePath!),
                                   scale: 0.8,

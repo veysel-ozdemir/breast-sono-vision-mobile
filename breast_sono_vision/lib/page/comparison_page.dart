@@ -48,7 +48,7 @@ class ComparisonPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(12.5),
                           child: const Text(
                               'SELECTED IMAGE'), // TODO: Replace the text widget with the image later
                         ),
@@ -77,7 +77,7 @@ class ComparisonPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(12.5),
                           child: const Text(
                               'SEGMENTED IMAGE'), // TODO: Replace the text widget with the image later
                         ),

@@ -18,7 +18,7 @@ class _BreastSonoVisionAppState extends State<BreastSonoVisionApp> {
       debugShowCheckedModeBanner: false,
       initialBinding: GlobalBindings(),
       theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+      // darkTheme: AppTheme.dark, // TODO: Uncomment it after customizing dark theme
       themeMode: ThemeMode.system,
       home: widget.startingPage,
     );
