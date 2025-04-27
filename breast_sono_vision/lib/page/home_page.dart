@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:breast_sono_vision/controller/permission_controller.dart';
+import 'package:breast_sono_vision/core/app_theme.dart';
 import 'package:breast_sono_vision/core/color_palette.dart';
 import 'package:breast_sono_vision/page/result_page.dart';
 import 'package:breast_sono_vision/util/dialogs.dart';
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                     children: [
                       TextSpan(
                         text: 'Breast',
@@ -124,6 +125,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
+                          fontFamily: AppTheme.manropeFontFamily,
                         ),
                       ),
                       TextSpan(
@@ -132,6 +134,7 @@ class _HomePageState extends State<HomePage> {
                           color: ColorPalette.secondary,
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
+                          fontFamily: AppTheme.manropeFontFamily,
                         ),
                       ),
                       TextSpan(
@@ -140,12 +143,13 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
+                          fontFamily: AppTheme.manropeFontFamily,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 40),
+                const Spacer(flex: 1),
                 // Information Card
                 const InfoCard(
                   icon: 'ℹ️',

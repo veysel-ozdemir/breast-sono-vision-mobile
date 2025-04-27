@@ -1,3 +1,4 @@
+import 'package:breast_sono_vision/core/app_theme.dart';
 import 'package:breast_sono_vision/core/color_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,10 +34,11 @@ class InfoCard extends StatelessWidget {
           // Title
           RichText(
             text: TextSpan(
-              style: const TextStyle(
+              style: TextStyle(
                 color: ColorPalette.onBackground,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
+                fontFamily: AppTheme.manropeFontFamily,
               ),
               children: [
                 TextSpan(text: icon),
@@ -50,9 +52,10 @@ class InfoCard extends StatelessWidget {
           RichText(
             textAlign: TextAlign.left,
             text: TextSpan(
-              style: const TextStyle(
+              style: TextStyle(
                 color: ColorPalette.onBackground,
                 fontSize: 14,
+                fontFamily: AppTheme.manropeFontFamily,
               ),
               children: description,
             ),

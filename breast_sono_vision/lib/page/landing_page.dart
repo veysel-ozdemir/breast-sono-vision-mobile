@@ -1,3 +1,4 @@
+import 'package:breast_sono_vision/core/app_theme.dart';
 import 'package:breast_sono_vision/core/color_palette.dart';
 import 'package:breast_sono_vision/page/onboarding_page.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _LandingPageState extends State<LandingPage> {
             child: Column(
               children: [
                 RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                     children: [
                       TextSpan(
                         text: 'Breast',
@@ -38,6 +39,7 @@ class _LandingPageState extends State<LandingPage> {
                           color: Colors.white,
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
+                          fontFamily: AppTheme.manropeFontFamily,
                         ),
                       ),
                       TextSpan(
@@ -46,6 +48,7 @@ class _LandingPageState extends State<LandingPage> {
                           color: ColorPalette.secondary,
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
+                          fontFamily: AppTheme.manropeFontFamily,
                         ),
                       ),
                       TextSpan(
@@ -54,6 +57,7 @@ class _LandingPageState extends State<LandingPage> {
                           color: Colors.white,
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
+                          fontFamily: AppTheme.manropeFontFamily,
                         ),
                       ),
                     ],

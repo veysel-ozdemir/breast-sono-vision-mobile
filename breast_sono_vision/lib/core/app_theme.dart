@@ -1,7 +1,11 @@
 import 'package:breast_sono_vision/core/color_palette.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
+  // Font Family
+  static String manropeFontFamily = GoogleFonts.manrope().fontFamily!;
+
   static final light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
@@ -21,10 +25,7 @@ class AppTheme {
       seedColor: ColorPalette.primary,
       brightness: Brightness.light,
     ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(fontSize: 16),
-      bodyMedium: TextStyle(fontSize: 14),
-    ),
+    textTheme: GoogleFonts.manropeTextTheme(),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.all(10),
