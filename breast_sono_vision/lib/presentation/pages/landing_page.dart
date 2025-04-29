@@ -1,6 +1,6 @@
-import 'package:breast_sono_vision/core/app_theme.dart';
-import 'package:breast_sono_vision/core/color_palette.dart';
-import 'package:breast_sono_vision/page/onboarding_page.dart';
+import 'package:breast_sono_vision/core/theme/app_theme.dart';
+import 'package:breast_sono_vision/core/theme/color_palette.dart';
+import 'package:breast_sono_vision/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';

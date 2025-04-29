@@ -1,7 +1,7 @@
 import 'package:breast_sono_vision/app/app.dart';
-import 'package:breast_sono_vision/page/home_page.dart';
-import 'package:breast_sono_vision/page/landing_page.dart';
-import 'package:breast_sono_vision/util/functions.dart';
+import 'package:breast_sono_vision/presentation/pages/home_page.dart';
+import 'package:breast_sono_vision/presentation/pages/landing_page.dart';
+import 'package:breast_sono_vision/core/util/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';

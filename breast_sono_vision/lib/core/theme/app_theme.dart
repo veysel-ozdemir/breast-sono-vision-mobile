@@ -1,4 +1,4 @@
-import 'package:breast_sono_vision/core/color_palette.dart';
+import 'package:breast_sono_vision/core/theme/color_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

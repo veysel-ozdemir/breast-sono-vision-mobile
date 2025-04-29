@@ -1,5 +1,5 @@
 import 'package:breast_sono_vision/config/global_bindings.dart';
-import 'package:breast_sono_vision/core/app_theme.dart';
+import 'package:breast_sono_vision/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

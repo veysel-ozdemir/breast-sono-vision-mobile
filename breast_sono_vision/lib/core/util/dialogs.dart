@@ -1,5 +1,5 @@
-import 'package:breast_sono_vision/core/color_palette.dart';
-import 'package:breast_sono_vision/widget/info_card.dart';
+import 'package:breast_sono_vision/core/theme/color_palette.dart';
+import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

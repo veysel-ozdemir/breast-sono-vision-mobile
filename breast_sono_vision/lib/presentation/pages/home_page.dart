@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:breast_sono_vision/controller/permission_controller.dart';
-import 'package:breast_sono_vision/core/app_theme.dart';
-import 'package:breast_sono_vision/core/color_palette.dart';
-import 'package:breast_sono_vision/page/result_page.dart';
-import 'package:breast_sono_vision/util/dialogs.dart';
-import 'package:breast_sono_vision/util/functions.dart';
-import 'package:breast_sono_vision/widget/info_card.dart';
+import 'package:breast_sono_vision/presentation/controllers/permission_controller.dart';
+import 'package:breast_sono_vision/core/theme/app_theme.dart';
+import 'package:breast_sono_vision/core/theme/color_palette.dart';
+import 'package:breast_sono_vision/presentation/pages/result_page.dart';
+import 'package:breast_sono_vision/core/util/dialogs.dart';
+import 'package:breast_sono_vision/core/util/functions.dart';
+import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
