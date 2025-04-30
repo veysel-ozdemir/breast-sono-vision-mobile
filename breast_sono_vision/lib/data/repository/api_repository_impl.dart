@@ -8,7 +8,7 @@ class ApiRepositoryImpl implements ApiRepository {
   ApiRepositoryImpl(this._apiService);
 
   @override
-  Future<File> uploadImage(File image) {
-    return _apiService.uploadImage(image);
+  Future<File> uploadImage(File image) async {
+    return await _apiService.uploadImage(image);
   }
 }

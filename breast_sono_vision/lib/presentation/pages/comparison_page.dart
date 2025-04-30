@@ -1,10 +1,18 @@
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
+import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ComparisonPage extends StatelessWidget {
+class ComparisonPage extends StatefulWidget {
   const ComparisonPage({super.key});
+
+  @override
+  State<ComparisonPage> createState() => _ComparisonPageState();
+}
+
+class _ComparisonPageState extends State<ComparisonPage> {
+  final ApiController apiController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,7 @@ class ComparisonPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const Spacer(flex: 2),
                 // Selected Image View
                 ConstrainedBox(
                   constraints: BoxConstraints(
@@ -37,9 +45,6 @@ class ComparisonPage extends StatelessWidget {
                   child: IntrinsicWidth(
                     child: IntrinsicHeight(
                       child: Container(
-                        // TODO: Delete the width and height later
-                        width: Get.width,
-                        height: Get.width,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -49,14 +54,13 @@ class ComparisonPage extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.5),
-                          child: const Text(
-                              'SELECTED IMAGE'), // TODO: Replace the text widget with the image later
+                          child: Image.file(apiController.uploadedImage.value!),
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const Spacer(flex: 1),
                 // Segmented Image View
                 ConstrainedBox(
                   constraints: BoxConstraints(
@@ -66,9 +70,6 @@ class ComparisonPage extends StatelessWidget {
                   child: IntrinsicWidth(
                     child: IntrinsicHeight(
                       child: Container(
-                        // TODO: Delete the width and height later
-                        width: Get.width,
-                        height: Get.width,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -78,14 +79,13 @@ class ComparisonPage extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.5),
-                          child: const Text(
-                              'SEGMENTED IMAGE'), // TODO: Replace the text widget with the image later
+                          child: Image.file(apiController.result.value!),
                         ),
                       ),
                     ),
                   ),
                 ),
-                const Spacer(),
+                const Spacer(flex: 3),
                 SizedBox(
                   width: Get.width * 0.35,
                   child: ElevatedButton(

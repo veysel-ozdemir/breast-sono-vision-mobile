@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
 import 'package:breast_sono_vision/presentation/controllers/permission_controller.dart';
 import 'package:breast_sono_vision/core/theme/app_theme.dart';
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
@@ -22,6 +23,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final PermissionController permissionController = Get.find();
+  final ApiController apiController = Get.find();
   final ImagePicker _imagePicker = ImagePicker();
   String? _filePath;
   bool _isImageSelected = false;
@@ -279,8 +281,67 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: ElevatedButton(
               onPressed: () async {
-                // TODO: Do the API call and show animated loading screen
-                await Get.offAll(() => const ResultPage());
+                if (_filePath != null) {
+                  apiController.uploadImage(File(_filePath!));
+                  // Show loading indicator while the API call is in progress
+                  await showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      return Obx(() {
+                        if (apiController.isLoading.value) {
+                          return Container(
+                            width: Get.width,
+                            color: Colors.black.withOpacity(0.5),
+                            child: Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const SizedBox(
+                                    width: 75,
+                                    height: 75,
+                                    child: CircularProgressIndicator(
+                                      color: ColorPalette.background,
+                                      strokeWidth: 5,
+                                      strokeCap: StrokeCap.round,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 15),
+                                  RichText(
+                                    text: TextSpan(
+                                      text: 'Analyzing...',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: ColorPalette.background,
+                                        fontFamily: AppTheme.manropeFontFamily,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        } else {
+                          // Delay the state update to avoid calling setState during build
+                          Future.delayed(Duration.zero, () {
+                            if (context.mounted) Navigator.of(context).pop();
+                            // Navigate to ResultPage if result is not null
+                            if (apiController.result.value != null) {
+                              Get.offAll(() => const ResultPage());
+                            }
+                          });
+                          return const SizedBox.shrink();
+                        }
+                      });
+                    },
+                  );
+                } else {
+                  // Handle case where no file is selected
+                  await showSnackbar(
+                    title: 'No Image Selected',
+                    description: 'Please select an image to upload.',
+                  );
+                }
               },
               child: const Text(
                 'Analyze',

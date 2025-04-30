@@ -1,4 +1,7 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class ApiConstants {
-  static const String baseUrl = 'http://127.0.0.1:5000';
+  static String baseUrl =
+      'http://${dotenv.env["API_HOST"]}:${dotenv.env["API_PORT"]}';
   static const String segmentationEndpoint = '/predict';
 }

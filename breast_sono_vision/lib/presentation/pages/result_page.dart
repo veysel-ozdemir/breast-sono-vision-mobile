@@ -1,4 +1,5 @@
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
+import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
 import 'package:breast_sono_vision/presentation/pages/comparison_page.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
 import 'package:breast_sono_vision/core/util/dialogs.dart';
@@ -14,6 +15,7 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
+  final ApiController apiController = Get.find();
   bool _pageVisible = false;
 
   @override
@@ -105,9 +107,6 @@ class _ResultPageState extends State<ResultPage> {
                     child: IntrinsicWidth(
                       child: IntrinsicHeight(
                         child: Container(
-                          // TODO: Delete the width and height later
-                          width: Get.width,
-                          height: Get.width,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -117,8 +116,7 @@ class _ResultPageState extends State<ResultPage> {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12.5),
-                            child: const Text(
-                                'SEGMENTED IMAGE'), // TODO: Replace the text widget with the image later
+                            child: Image.file(apiController.result.value!),
                           ),
                         ),
                       ),

@@ -4,6 +4,7 @@ import 'package:breast_sono_vision/presentation/pages/landing_page.dart';
 import 'package:breast_sono_vision/core/util/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,6 +14,9 @@ void main() async {
 
   // Initialize the native splash screen
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  // Load the .env file
+  await dotenv.load(fileName: ".env");
 
   // Load shared preferences data
   final prefs = await SharedPreferences.getInstance();
