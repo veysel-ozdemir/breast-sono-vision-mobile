@@ -1,5 +1,6 @@
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
 import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
+import 'package:breast_sono_vision/presentation/controllers/file_selection_controller.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class ComparisonPage extends StatefulWidget {
 }
 
 class _ComparisonPageState extends State<ComparisonPage> {
+  final FileSelectionController fileSelectionController = Get.find();
   final ApiController apiController = Get.find();
 
   @override
@@ -54,7 +56,8 @@ class _ComparisonPageState extends State<ComparisonPage> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.5),
-                          child: Image.file(apiController.uploadedImage.value!),
+                          child:
+                              Image.file(fileSelectionController.image.value!),
                         ),
                       ),
                     ),

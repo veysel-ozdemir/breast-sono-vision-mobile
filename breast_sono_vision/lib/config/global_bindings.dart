@@ -1,3 +1,4 @@
+import 'package:breast_sono_vision/presentation/controllers/file_selection_controller.dart';
 import 'package:breast_sono_vision/presentation/controllers/permission_controller.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +13,7 @@ class GlobalBindings extends Bindings {
   void dependencies() {
     // Controller
     Get.put(PermissionController(), permanent: true);
+    Get.put(FileSelectionController());
 
     // Core
     final apiClient = ApiClient();

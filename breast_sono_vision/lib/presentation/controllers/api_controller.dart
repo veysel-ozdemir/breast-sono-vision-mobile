@@ -10,13 +10,11 @@ class ApiController extends GetxController {
   ApiController(this._uploadUseCase);
 
   Rx<File?> result = Rx<File?>(null);
-  Rx<File?> uploadedImage = Rx<File?>(null);
   RxBool isLoading = false.obs;
   RxString errorMessage = ''.obs;
 
   Future<void> uploadImage(File image) async {
     try {
-      uploadedImage.value = image;
       debugPrint('Starting API call to upload image');
       isLoading.value = true;
       // syntactic sugar: callable class --> _uploadUseCase() = _uploadUseCase.call()

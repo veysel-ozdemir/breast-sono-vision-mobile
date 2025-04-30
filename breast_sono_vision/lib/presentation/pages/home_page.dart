@@ -1,18 +1,14 @@
-import 'dart:io';
-
 import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
+import 'package:breast_sono_vision/presentation/controllers/file_selection_controller.dart';
 import 'package:breast_sono_vision/presentation/controllers/permission_controller.dart';
 import 'package:breast_sono_vision/core/theme/app_theme.dart';
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
 import 'package:breast_sono_vision/presentation/pages/result_page.dart';
 import 'package:breast_sono_vision/core/util/dialogs.dart';
-import 'package:breast_sono_vision/core/util/functions.dart';
 import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,83 +19,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final PermissionController permissionController = Get.find();
+  final FileSelectionController fileSelectionController = Get.find();
   final ApiController apiController = Get.find();
-  final ImagePicker _imagePicker = ImagePicker();
-  String? _filePath;
   bool _isImageSelected = false;
-
-  // Pick file path from the files
-  Future<String?> pickFromFiles() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['png', 'jpg', 'jpeg'],
-    );
-
-    if (result != null && result.files.single.path != null) {
-      final filePath = result.files.single.path!;
-      debugPrint('Selected file path: $filePath');
-      if (filePath.toLowerCase().endsWith('.png')) {
-        // You can now use this path to display the image or send it to your model
-        return filePath;
-      } else if (filePath.toLowerCase().endsWith('.jpg') ||
-          filePath.toLowerCase().endsWith('.jpeg')) {
-        debugPrint('Image file is being formatted to PNG...');
-        // Convert JPG image file to PNG
-        final convertedImagePath = await convertJpgToPng(filePath);
-        if (convertedImagePath != null) {
-          return convertedImagePath;
-        } else {
-          await showSnackbar(
-            title: 'Image Conversion Failed',
-            description: 'Error occurred while converting your JPG file',
-          );
-          return null;
-        }
-      } else {
-        return null;
-      }
-    } else {
-      debugPrint('File selection canceled.');
-      return null;
-    }
-  }
-
-  // Pick image from the gallery
-  Future<String?> pickFromGallery() async {
-    final XFile? image =
-        await _imagePicker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      debugPrint('Selected image path: ${image.path}');
-      if (image.path.toLowerCase().endsWith('.png')) {
-        return image.path;
-      } else if (image.path.toLowerCase().endsWith('.jpg') ||
-          image.path.toLowerCase().endsWith('.jpeg')) {
-        debugPrint('Image is being formatted to PNG...');
-        // Convert JPG image file to PNG
-        final convertedImagePath = await convertJpgToPng(image.path);
-        if (convertedImagePath != null) {
-          return convertedImagePath;
-        } else {
-          await showSnackbar(
-            title: 'Image Conversion Failed',
-            description: 'Error occurred while converting your JPG file',
-          );
-          return null;
-        }
-      } else {
-        debugPrint('Unsupported image format selected.');
-        // Show format error
-        await showSnackbar(
-          title: 'Unsupported Format',
-          description: 'Please select a PNG image',
-        );
-        return null;
-      }
-    } else {
-      debugPrint('Image selection canceled.');
-      return null;
-    }
-  }
 
   @override
   void initState() {
@@ -209,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                             ? ClipRRect(
                                 borderRadius: BorderRadius.circular(12.5),
                                 child: Image.file(
-                                  File(_filePath!),
+                                  fileSelectionController.image.value!,
                                   scale: 0.8,
                                 ),
                               )
@@ -281,8 +203,9 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: ElevatedButton(
               onPressed: () async {
-                if (_filePath != null) {
-                  apiController.uploadImage(File(_filePath!));
+                if (_isImageSelected) {
+                  apiController
+                      .uploadImage(fileSelectionController.image.value!);
                   // Show loading indicator while the API call is in progress
                   await showDialog(
                     context: context,
@@ -395,14 +318,81 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 onPressed: () async {
-                  final fileSelection = await pickFromFiles();
-                  if (fileSelection != null) {
-                    setState(() {
-                      _filePath = fileSelection;
-                      _isImageSelected = true;
-                    });
-                    // Dismiss the modal bottom sheet
-                    if (context.mounted) Navigator.pop(context);
+                  // Create a separate dialog context reference
+                  BuildContext? dialogContext;
+
+                  // Setup a listener for conversion state changes
+                  final conversionListener = fileSelectionController
+                      .isConverting
+                      .listen((isConverting) {
+                    debugPrint(
+                        'Files: Conversion state changed to: $isConverting');
+
+                    if (isConverting) {
+                      // Show dialog when conversion starts
+                      if (context.mounted && dialogContext == null) {
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (BuildContext ctx) {
+                            dialogContext = ctx;
+                            return Container(
+                              width: Get.width,
+                              color: Colors.black.withOpacity(0.5),
+                              child: Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const SizedBox(
+                                      width: 75,
+                                      height: 75,
+                                      child: CircularProgressIndicator(
+                                        color: ColorPalette.background,
+                                        strokeWidth: 5,
+                                        strokeCap: StrokeCap.round,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 15),
+                                    RichText(
+                                      text: TextSpan(
+                                        text: 'Converting JPG File...',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: ColorPalette.background,
+                                          fontFamily:
+                                              AppTheme.manropeFontFamily,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    } else if (dialogContext != null) {
+                      // Close dialog when conversion completes
+                      Navigator.of(dialogContext!).pop();
+                      dialogContext = null;
+                    }
+                  });
+
+                  try {
+                    // Pick the file
+                    final isFileSelected =
+                        await fileSelectionController.pickFromFiles();
+
+                    if (isFileSelected != null && isFileSelected == true) {
+                      setState(() {
+                        _isImageSelected = true;
+                      });
+                      // Dismiss the modal bottom sheet
+                      if (context.mounted) Navigator.pop(context);
+                    }
+                  } finally {
+                    // Always cancel the listener when done
+                    conversionListener.cancel();
                   }
                 },
                 child: const Text(
@@ -426,14 +416,81 @@ class _HomePageState extends State<HomePage> {
                   bool permissionsGranted =
                       await permissionController.checkPhotoLibraryPermission();
                   if (permissionsGranted) {
-                    final imageSelection = await pickFromGallery();
-                    if (imageSelection != null) {
-                      setState(() {
-                        _filePath = imageSelection;
-                        _isImageSelected = true;
-                      });
-                      // Dismiss the modal bottom sheet
-                      if (context.mounted) Navigator.pop(context);
+                    // Create a separate dialog context reference
+                    BuildContext? dialogContext;
+
+                    // Setup a listener for conversion state changes
+                    final conversionListener = fileSelectionController
+                        .isConverting
+                        .listen((isConverting) {
+                      debugPrint(
+                          'Gallery: Conversion state changed to: $isConverting');
+
+                      if (isConverting) {
+                        // Show dialog when conversion starts
+                        if (context.mounted && dialogContext == null) {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext ctx) {
+                              dialogContext = ctx;
+                              return Container(
+                                width: Get.width,
+                                color: Colors.black.withOpacity(0.5),
+                                child: Center(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const SizedBox(
+                                        width: 75,
+                                        height: 75,
+                                        child: CircularProgressIndicator(
+                                          color: ColorPalette.background,
+                                          strokeWidth: 5,
+                                          strokeCap: StrokeCap.round,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 15),
+                                      RichText(
+                                        text: TextSpan(
+                                          text: 'Converting JPG File...',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: ColorPalette.background,
+                                            fontFamily:
+                                                AppTheme.manropeFontFamily,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      } else if (dialogContext != null) {
+                        // Close dialog when conversion completes
+                        Navigator.of(dialogContext!).pop();
+                        dialogContext = null;
+                      }
+                    });
+
+                    try {
+                      // Pick from gallery
+                      final isImageSelected =
+                          await fileSelectionController.pickFromGallery();
+
+                      if (isImageSelected != null && isImageSelected == true) {
+                        setState(() {
+                          _isImageSelected = true;
+                        });
+                        // Dismiss the modal bottom sheet
+                        if (context.mounted) Navigator.pop(context);
+                      }
+                    } finally {
+                      // Always cancel the listener when done
+                      conversionListener.cancel();
                     }
                   } else {
                     if (context.mounted) {
