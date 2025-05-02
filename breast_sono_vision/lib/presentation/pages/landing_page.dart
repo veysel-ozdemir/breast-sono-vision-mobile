@@ -4,6 +4,7 @@ import 'package:breast_sono_vision/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -63,28 +64,13 @@ class _LandingPageState extends State<LandingPage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 40),
-                // Circle with GIF placeholder
-                Container(
-                  width: 200,
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'GIF',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
+                const Spacer(flex: 1),
+                SizedBox(
+                  child: Lottie.asset(
+                      'assets/animation/breast-cancer-ribbon.json'),
                 ),
                 const Spacer(flex: 1),
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,14 +80,15 @@ class _LandingPageState extends State<LandingPage> {
                         'Early Diagnosis,\nSaves Lives.',
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 40,
                           fontWeight: FontWeight.bold,
                           color: ColorPalette.tertiary,
+                          fontFamily: AppTheme.bebasNeueFontFamily,
                         ),
                       ),
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
                       // Description Text
-                      Text(
+                      const Text(
                         'Breast ultrasound analysis made easy—\npowered by AI, designed to support your\nhealth journey.',
                         textAlign: TextAlign.left,
                         style: TextStyle(
@@ -112,7 +99,7 @@ class _LandingPageState extends State<LandingPage> {
                     ],
                   ),
                 ),
-                const Spacer(flex: 1),
+                const Spacer(flex: 2),
                 // Get Started Button
                 SizedBox(
                   width: Get.width * 0.5,

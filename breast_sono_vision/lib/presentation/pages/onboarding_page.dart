@@ -1,8 +1,12 @@
+import 'package:breast_sono_vision/core/theme/app_theme.dart';
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../widgets/onboarding_content.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -21,19 +25,118 @@ class _OnboardingPageState extends State<OnboardingPage> {
       title: 'Your Body Speaks,\nWe Help You Understand.',
       description:
           "We interpret your ultrasound image to give\nyou clearer insight into what's going on inside.",
-      gif: 'GIF 1',
+      illustration: Lottie.asset('assets/animation/medical-scan.json'),
     ),
     OnboardingContent(
       title: 'Upload, Analyze, and\nVisualize.',
       description:
           "Upload your image, and receive AI-segmented\nresults that highlight potential concerns in seconds.",
-      gif: 'GIF 2',
+      illustration: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: Get.width * 0.375,
+              maxHeight: Get.width * 0.375,
+            ),
+            child: IntrinsicWidth(
+              child: IntrinsicHeight(
+                child: Container(
+                  width: Get.width * 0.375, // TODO: Delete the line later
+                  height: Get.width * 0.375, // TODO: Delete the line later
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: ColorPalette.secondary, width: 3),
+                    color: ColorPalette.secondary,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.5),
+                    child: const Text('image'), // TODO: Replace with the image
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Lottie.asset('assets/animation/arrows.json'),
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: Get.width * 0.375,
+              maxHeight: Get.width * 0.375,
+            ),
+            child: IntrinsicWidth(
+              child: IntrinsicHeight(
+                child: Container(
+                  width: Get.width * 0.375, // TODO: Delete the line later
+                  height: Get.width * 0.375, // TODO: Delete the line later
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: ColorPalette.secondary, width: 3),
+                    color: ColorPalette.secondary,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.5),
+                    child: const Text('result'), // TODO: Replace with the image
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     ),
     OnboardingContent(
       title: 'Clear Results,\nConfident Next Steps.',
       description:
           "Visual segmentation helps you better\nunderstand your scan and what it may reveal.",
-      gif: 'GIF 3',
+      illustration: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(),
+          Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white,
+            ),
+            child: const Center(
+              child: Text('Segmented Result I', textAlign: TextAlign.center),
+            ),
+          ),
+          const Spacer(),
+          Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white,
+            ),
+            child: const Center(
+              child: Text('Segmented Result II', textAlign: TextAlign.center),
+            ),
+          ),
+          const Spacer(),
+          Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white,
+            ),
+            child: const Center(
+              child: Text('Segmented Result III', textAlign: TextAlign.center),
+            ),
+          ),
+          const Spacer(),
+        ],
+      ),
     ),
   ];
 
@@ -158,27 +261,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget _buildPage(OnboardingContent content) {
     return Column(
       children: [
-        const SizedBox(height: 40),
-        // Circle with GIF placeholder
-        Container(
-          width: 200,
-          height: 200,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-          ),
-          child: Center(
-            child: Text(
-              content.gif,
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),
         const Spacer(flex: 1),
+        SizedBox(
+          height: Get.width * 0.55,
+          child: content.illustration,
+        ),
+        const Spacer(flex: 2),
         Align(
           alignment: Alignment.centerLeft,
           child: Column(
@@ -188,10 +276,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
               Text(
                 content.title,
                 textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontSize: 30,
+                style: TextStyle(
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   color: ColorPalette.tertiary,
+                  fontFamily: AppTheme.bebasNeueFontFamily,
                 ),
               ),
               const SizedBox(height: 25),
@@ -207,7 +296,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ],
           ),
         ),
-        const Spacer(flex: 1),
+        const Spacer(flex: 2),
       ],
     );
   }
@@ -226,17 +315,4 @@ class _OnboardingPageState extends State<OnboardingPage> {
       ),
     );
   }
-}
-
-class OnboardingContent {
-  final String title;
-  final String description;
-  // TODO: Change the type to widget
-  final String gif;
-
-  OnboardingContent({
-    required this.title,
-    required this.description,
-    required this.gif,
-  });
 }

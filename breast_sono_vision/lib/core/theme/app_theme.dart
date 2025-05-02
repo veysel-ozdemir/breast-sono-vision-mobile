@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   // Font Family
   static String manropeFontFamily = GoogleFonts.manrope().fontFamily!;
+  static String bebasNeueFontFamily = GoogleFonts.bebasNeue().fontFamily!;
 
   static final light = ThemeData(
     useMaterial3: true,
