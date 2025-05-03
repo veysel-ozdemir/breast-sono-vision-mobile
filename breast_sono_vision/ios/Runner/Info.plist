@@ -2,9 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
-		<!-- PHOTO PERMISSION -->
+		<!-- PHOTO READ PERMISSION -->
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>We need access to select ultrasound image files.</string>
+
+		<!-- PHOTO WRITE PERMISSION -->
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>We need add only access to save segmented ultrasound image files</string>
 
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>

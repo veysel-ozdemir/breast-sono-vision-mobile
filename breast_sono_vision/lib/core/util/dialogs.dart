@@ -168,6 +168,7 @@ Future<void> showPermissionDialog({
 }
 
 Future<void> showSnackbar({
+  required String icon,
   required String title,
   required String description,
   int durationSeconds = 3,
@@ -193,9 +194,9 @@ Future<void> showSnackbar({
     borderColor: ColorPalette.border.withOpacity(0.75),
     borderRadius: 15,
     borderWidth: 3,
-    icon: const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: Text('❗️', style: TextStyle(fontSize: 24)),
+    icon: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Text(icon, style: const TextStyle(fontSize: 24)),
     ),
     snackPosition: SnackPosition.BOTTOM,
     duration: duration,

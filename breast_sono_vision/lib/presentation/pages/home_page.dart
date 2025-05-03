@@ -1,5 +1,5 @@
 import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
-import 'package:breast_sono_vision/presentation/controllers/file_selection_controller.dart';
+import 'package:breast_sono_vision/presentation/controllers/file_controller.dart';
 import 'package:breast_sono_vision/presentation/controllers/permission_controller.dart';
 import 'package:breast_sono_vision/core/theme/app_theme.dart';
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final PermissionController permissionController = Get.find();
-  final FileSelectionController fileSelectionController = Get.find();
+  final FileController fileController = Get.find();
   final ApiController apiController = Get.find();
   bool _isImageSelected = false;
 
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                             ? ClipRRect(
                                 borderRadius: BorderRadius.circular(12.5),
                                 child: Image.file(
-                                  fileSelectionController.image.value!,
+                                  fileController.image.value!,
                                   scale: 0.8,
                                 ),
                               )
@@ -204,8 +204,7 @@ class _HomePageState extends State<HomePage> {
             child: ElevatedButton(
               onPressed: () async {
                 if (_isImageSelected) {
-                  apiController
-                      .uploadImage(fileSelectionController.image.value!);
+                  apiController.uploadImage(fileController.image.value!);
                   // Show loading indicator while the API call is in progress
                   await showDialog(
                     context: context,
@@ -261,6 +260,7 @@ class _HomePageState extends State<HomePage> {
                 } else {
                   // Handle case where no file is selected
                   await showSnackbar(
+                    icon: '❗️',
                     title: 'No Image Selected',
                     description: 'Please select an image to upload.',
                   );
@@ -322,9 +322,8 @@ class _HomePageState extends State<HomePage> {
                   BuildContext? dialogContext;
 
                   // Setup a listener for conversion state changes
-                  final conversionListener = fileSelectionController
-                      .isConverting
-                      .listen((isConverting) {
+                  final conversionListener =
+                      fileController.isConverting.listen((isConverting) {
                     debugPrint(
                         'Files: Conversion state changed to: $isConverting');
 
@@ -380,8 +379,7 @@ class _HomePageState extends State<HomePage> {
 
                   try {
                     // Pick the file
-                    final isFileSelected =
-                        await fileSelectionController.pickFromFiles();
+                    final isFileSelected = await fileController.pickFromFiles();
 
                     if (isFileSelected != null && isFileSelected == true) {
                       setState(() {
@@ -420,9 +418,8 @@ class _HomePageState extends State<HomePage> {
                     BuildContext? dialogContext;
 
                     // Setup a listener for conversion state changes
-                    final conversionListener = fileSelectionController
-                        .isConverting
-                        .listen((isConverting) {
+                    final conversionListener =
+                        fileController.isConverting.listen((isConverting) {
                       debugPrint(
                           'Gallery: Conversion state changed to: $isConverting');
 
@@ -479,7 +476,7 @@ class _HomePageState extends State<HomePage> {
                     try {
                       // Pick from gallery
                       final isImageSelected =
-                          await fileSelectionController.pickFromGallery();
+                          await fileController.pickFromGallery();
 
                       if (isImageSelected != null && isImageSelected == true) {
                         setState(() {

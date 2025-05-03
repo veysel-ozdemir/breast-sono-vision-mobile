@@ -2,13 +2,15 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:gal/gal.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
 
 import '../../core/util/dialogs.dart';
 import '../../core/util/functions.dart';
 
-class FileSelectionController extends GetxController {
+class FileController extends GetxController {
   final ImagePicker _imagePicker = ImagePicker();
 
   Rx<File?> image = Rx<File?>(null);
@@ -41,6 +43,7 @@ class FileSelectionController extends GetxController {
             return true;
           } else {
             await showSnackbar(
+              icon: '❗️',
               title: 'Image Conversion Failed',
               description: 'Error occurred while converting your JPG file',
             );
@@ -57,7 +60,10 @@ class FileSelectionController extends GetxController {
       errorMessage.value = e.toString();
       debugPrint('Error message: ${errorMessage.value}');
       await showSnackbar(
-          title: 'File Selection Error', description: errorMessage.value);
+        icon: '❗️',
+        title: 'File Selection Error',
+        description: errorMessage.value,
+      );
     } finally {
       isConverting.value = false;
     }
@@ -85,6 +91,7 @@ class FileSelectionController extends GetxController {
             return true;
           } else {
             await showSnackbar(
+              icon: '❗️',
               title: 'Image Conversion Failed',
               description: 'Error occurred while converting your JPG file',
             );
@@ -94,6 +101,7 @@ class FileSelectionController extends GetxController {
           debugPrint('Unsupported image format selected.');
           // Show format error
           await showSnackbar(
+            icon: '❗️',
             title: 'Unsupported Format',
             description: 'Please select a PNG image',
           );
@@ -107,10 +115,86 @@ class FileSelectionController extends GetxController {
       errorMessage.value = e.toString();
       debugPrint('Error message: ${errorMessage.value}');
       await showSnackbar(
-          title: 'Image Selection Error', description: errorMessage.value);
+          icon: '❗️',
+          title: 'Image Selection Error',
+          description: errorMessage.value);
     } finally {
       isConverting.value = false;
     }
     return null;
+  }
+
+  // Save segmented image to files
+  Future<void> saveToFiles({required String imagePath}) async {
+    try {
+      // Get the directory to save the file
+      debugPrint('Getting directory path...');
+      final result = await FilePicker.platform.getDirectoryPath();
+
+      if (result == null) {
+        // User cancelled the directory selection
+        debugPrint('Cancel directory selection');
+      } else {
+        debugPrint('Directory path: $result');
+        final directory = Directory(result);
+
+        // Ensure the directory exists
+        debugPrint('Checking if directory exists...');
+        if (!await directory.exists()) {
+          debugPrint('The directory is being created...');
+          await directory.create(recursive: true);
+          debugPrint('The directory is created');
+        }
+
+        // Get the image file name
+        final fileName = path.basename(imagePath);
+        debugPrint('File name: $fileName');
+        final savePath = path.join(directory.path, fileName);
+        debugPrint('Selected directory path: ${directory.path}');
+
+        // Copy the file to the selected directory
+        final File sourceFile = File(imagePath);
+        await sourceFile.copy(savePath);
+
+        debugPrint('Image saved to: $savePath');
+        await showSnackbar(
+          icon: '✅',
+          title: 'Save Successful',
+          description: 'Image saved to your selected folder',
+        );
+      }
+    } catch (e) {
+      errorMessage.value = e.toString();
+      debugPrint('Error saving file: ${errorMessage.value}');
+      await showSnackbar(
+        icon: '❌',
+        title: 'Save Failed',
+        description: 'Failed to save image to folder: ${e.toString()}',
+      );
+    }
+  }
+
+  // Save segmented image to gallery
+  Future<void> saveToGallery({required String imagePath}) async {
+    try {
+      debugPrint('Saving image to gallery: $imagePath');
+
+      await Gal.putImage(imagePath);
+      debugPrint('Saved the image');
+
+      await showSnackbar(
+        icon: '✅',
+        title: 'Save Successful',
+        description: 'Image saved to your gallery',
+      );
+    } catch (e) {
+      errorMessage.value = e.toString();
+      debugPrint('Error saving to gallery: ${errorMessage.value}');
+      await showSnackbar(
+        icon: '❌',
+        title: 'Save Failed',
+        description: 'Failed to save image to gallery: ${e.toString()}',
+      );
+    }
   }
 }

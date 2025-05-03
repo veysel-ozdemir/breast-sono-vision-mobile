@@ -27,7 +27,11 @@ class ApiController extends GetxController {
     } catch (e) {
       errorMessage.value = e.toString();
       debugPrint('Error message: ${errorMessage.value}');
-      await showSnackbar(title: 'API Error', description: errorMessage.value);
+      await showSnackbar(
+        icon: '❗️',
+        title: 'API Error',
+        description: errorMessage.value,
+      );
     } finally {
       isLoading.value = false;
     }

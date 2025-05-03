@@ -1,5 +1,7 @@
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
 import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
+import 'package:breast_sono_vision/presentation/controllers/file_controller.dart';
+import 'package:breast_sono_vision/presentation/controllers/permission_controller.dart';
 import 'package:breast_sono_vision/presentation/pages/comparison_page.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
 import 'package:breast_sono_vision/core/util/dialogs.dart';
@@ -16,6 +18,8 @@ class ResultPage extends StatefulWidget {
 
 class _ResultPageState extends State<ResultPage> {
   final ApiController apiController = Get.find();
+  final FileController fileController = Get.find();
+  final PermissionController permissionController = Get.find();
   bool _pageVisible = false;
 
   @override
@@ -122,7 +126,20 @@ class _ResultPageState extends State<ResultPage> {
                       ),
                     ),
                   ),
-                  const Spacer(flex: 1),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    child: OutlinedButton(
+                      onPressed: () async {
+                        await _showSaveSourceSelection();
+                      },
+                      child: const Icon(
+                        Icons.download,
+                        color: ColorPalette.secondary,
+                        size: 32,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
                   SizedBox(
                     width: Get.width * 0.75,
                     child: const Text(
@@ -171,6 +188,113 @@ class _ResultPageState extends State<ResultPage> {
                 ],
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _showSaveSourceSelection() async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) => Padding(
+        padding: const EdgeInsets.all(10),
+        child: _saveSourceOptions(context: context),
+      ),
+      shape: const RoundedRectangleBorder(
+        side: BorderSide(
+          color: ColorPalette.border,
+          width: 3,
+        ),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
+      backgroundColor: ColorPalette.background,
+      isDismissible: true,
+    );
+  }
+
+  Widget _saveSourceOptions({required BuildContext context}) {
+    return SafeArea(
+      child: Container(
+        width: Get.width,
+        padding: const EdgeInsets.all(10),
+        child: IntrinsicWidth(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: ColorPalette.secondary,
+                  side: const BorderSide(
+                    color: ColorPalette.secondary,
+                    width: 2,
+                  ),
+                ),
+                onPressed: () async {
+                  await fileController
+                      .saveToFiles(
+                    imagePath: apiController.result.value!.path,
+                  )
+                      .then((_) {
+                    // Dismiss the modal bottom sheet
+                    if (context.mounted) Navigator.pop(context);
+                  });
+                },
+                child: const Text(
+                  'Save To Files',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: ColorPalette.secondary,
+                  side: const BorderSide(
+                    color: ColorPalette.secondary,
+                    width: 2,
+                  ),
+                ),
+                onPressed: () async {
+                  bool permissionGranted =
+                      await permissionController.checkPhotoLibraryPermission();
+                  if (permissionGranted) {
+                    await fileController
+                        .saveToGallery(
+                      imagePath: apiController.result.value!.path,
+                    )
+                        .then((_) {
+                      // Dismiss the modal bottom sheet
+                      if (context.mounted) Navigator.pop(context);
+                    });
+                  } else {
+                    if (context.mounted) {
+                      await showPermissionDialog(
+                        context: context,
+                        onPressed: () async =>
+                            await permissionController.openSettings(),
+                      ).then((_) {
+                        // Dismiss the modal bottom sheet
+                        if (context.mounted) Navigator.pop(context);
+                      });
+                    }
+                  }
+                },
+                child: const Text(
+                  'Save To Gallery',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
