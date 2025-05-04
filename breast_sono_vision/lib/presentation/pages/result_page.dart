@@ -235,17 +235,16 @@ class _ResultPageState extends State<ResultPage> {
                   ),
                 ),
                 onPressed: () async {
-                  await fileController
-                      .saveToFiles(
+                  final status = await fileController.share(
                     imagePath: apiController.result.value!.path,
-                  )
-                      .then((_) {
+                  );
+                  if (status) {
                     // Dismiss the modal bottom sheet
                     if (context.mounted) Navigator.pop(context);
-                  });
+                  }
                 },
                 child: const Text(
-                  'Save To Files',
+                  'Share the Image',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -287,7 +286,7 @@ class _ResultPageState extends State<ResultPage> {
                   }
                 },
                 child: const Text(
-                  'Save To Gallery',
+                  'Save to Gallery',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

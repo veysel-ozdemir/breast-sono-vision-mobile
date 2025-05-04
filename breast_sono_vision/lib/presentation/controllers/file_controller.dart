@@ -6,6 +6,7 @@ import 'package:gal/gal.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
+import 'package:share_plus/share_plus.dart';
 
 import '../../core/util/dialogs.dart';
 import '../../core/util/functions.dart';
@@ -124,53 +125,50 @@ class FileController extends GetxController {
     return null;
   }
 
-  // Save segmented image to files
-  Future<void> saveToFiles({required String imagePath}) async {
+  // Share segmented image
+  Future<bool> share({required String imagePath}) async {
     try {
-      // Get the directory to save the file
-      debugPrint('Getting directory path...');
-      final result = await FilePicker.platform.getDirectoryPath();
-
-      if (result == null) {
-        // User cancelled the directory selection
-        debugPrint('Cancel directory selection');
-      } else {
-        debugPrint('Directory path: $result');
-        final directory = Directory(result);
-
-        // Ensure the directory exists
-        debugPrint('Checking if directory exists...');
-        if (!await directory.exists()) {
-          debugPrint('The directory is being created...');
-          await directory.create(recursive: true);
-          debugPrint('The directory is created');
-        }
-
-        // Get the image file name
-        final fileName = path.basename(imagePath);
-        debugPrint('File name: $fileName');
-        final savePath = path.join(directory.path, fileName);
-        debugPrint('Selected directory path: ${directory.path}');
-
-        // Copy the file to the selected directory
-        final File sourceFile = File(imagePath);
-        await sourceFile.copy(savePath);
-
-        debugPrint('Image saved to: $savePath');
+      debugPrint('The image is being shared...');
+      final result = await SharePlus.instance.share(
+        ShareParams(
+          title: path.basename(imagePath),
+          files: [XFile(imagePath)],
+        ),
+      );
+      debugPrint(result.toString());
+      if (result.status == ShareResultStatus.success) {
         await showSnackbar(
           icon: '✅',
-          title: 'Save Successful',
-          description: 'Image saved to your selected folder',
+          title: 'Share Successful',
+          description: 'Image shared according to the selected action',
         );
+        return true;
+      } else if (result.status == ShareResultStatus.unavailable) {
+        throw Exception(
+            'The platform succeed to share content to user but the user action can not be determined');
+      } else {
+        debugPrint('Dismissed the share-sheet');
+        return false;
       }
-    } catch (e) {
+    } on PathAccessException catch (e) {
       errorMessage.value = e.toString();
       debugPrint('Error saving file: ${errorMessage.value}');
       await showSnackbar(
-        icon: '❌',
+        icon: '🔒',
         title: 'Save Failed',
-        description: 'Failed to save image to folder: ${e.toString()}',
+        description:
+            'Failed to save image at selected location due to folder access restriction',
       );
+      return false;
+    } catch (e) {
+      errorMessage.value = e.toString();
+      debugPrint('Error sharing file: ${errorMessage.value}');
+      await showSnackbar(
+        icon: '❌',
+        title: 'Share Failed',
+        description: 'Failed to share image: ${e.toString()}',
+      );
+      return false;
     }
   }
 

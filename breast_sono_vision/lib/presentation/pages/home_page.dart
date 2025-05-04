@@ -394,7 +394,7 @@ class _HomePageState extends State<HomePage> {
                   }
                 },
                 child: const Text(
-                  'Select From Files',
+                  'Select from Files',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -503,7 +503,7 @@ class _HomePageState extends State<HomePage> {
                   }
                 },
                 child: const Text(
-                  'Select From Gallery',
+                  'Select from Gallery',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
