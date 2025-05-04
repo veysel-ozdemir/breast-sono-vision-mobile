@@ -1,6 +1,7 @@
 import 'package:breast_sono_vision/core/theme/app_theme.dart';
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
+import 'package:breast_sono_vision/presentation/widgets/slanted_image_cards.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -34,56 +35,88 @@ class _OnboardingPageState extends State<OnboardingPage> {
       illustration: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: Get.width * 0.375,
-              maxHeight: Get.width * 0.375,
-            ),
-            child: IntrinsicWidth(
-              child: IntrinsicHeight(
-                child: Container(
-                  width: Get.width * 0.375, // TODO: Delete the line later
-                  height: Get.width * 0.375, // TODO: Delete the line later
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: ColorPalette.secondary, width: 3),
-                    color: ColorPalette.secondary,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12.5),
-                    child: const Text('image'), // TODO: Replace with the image
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Spacer(),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: Get.width * 0.375,
+                  maxHeight: Get.width * 0.375,
+                ),
+                child: IntrinsicWidth(
+                  child: IntrinsicHeight(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: ColorPalette.secondary, width: 3),
+                        color: ColorPalette.secondary,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.5),
+                        child: Image.asset(
+                          'assets/image/breast_ultrasound_871.png',
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              const Spacer(),
+              Text(
+                'Your Ultrasound',
+                style: TextStyle(
+                  color: ColorPalette.secondary,
+                  fontSize: 24,
+                  fontFamily: AppTheme.bebasNeueFontFamily,
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: Lottie.asset('assets/animation/arrows.json'),
           ),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: Get.width * 0.375,
-              maxHeight: Get.width * 0.375,
-            ),
-            child: IntrinsicWidth(
-              child: IntrinsicHeight(
-                child: Container(
-                  width: Get.width * 0.375, // TODO: Delete the line later
-                  height: Get.width * 0.375, // TODO: Delete the line later
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: ColorPalette.secondary, width: 3),
-                    color: ColorPalette.secondary,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12.5),
-                    child: const Text('result'), // TODO: Replace with the image
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Spacer(),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: Get.width * 0.375,
+                  maxHeight: Get.width * 0.375,
+                ),
+                child: IntrinsicWidth(
+                  child: IntrinsicHeight(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: ColorPalette.secondary, width: 3),
+                        color: ColorPalette.secondary,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.5),
+                        child: Image.asset(
+                          'assets/image/segmentation_result_871.PNG',
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              const Spacer(),
+              Text(
+                'Our Result',
+                style: TextStyle(
+                  color: ColorPalette.secondary,
+                  fontSize: 24,
+                  fontFamily: AppTheme.bebasNeueFontFamily,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -92,49 +125,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
       title: 'Clear Results,\nConfident Next Steps.',
       description:
           "Visual segmentation helps you better\nunderstand your scan and what it may reveal.",
-      illustration: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Spacer(),
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.white,
-            ),
-            child: const Center(
-              child: Text('Segmented Result I', textAlign: TextAlign.center),
-            ),
-          ),
-          const Spacer(),
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.white,
-            ),
-            child: const Center(
-              child: Text('Segmented Result II', textAlign: TextAlign.center),
-            ),
-          ),
-          const Spacer(),
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.white,
-            ),
-            child: const Center(
-              child: Text('Segmented Result III', textAlign: TextAlign.center),
-            ),
-          ),
-          const Spacer(),
+      illustration: const SlantedImageCards(
+        assetPaths: [
+          'assets/image/segmentation_result_836.PNG',
+          'assets/image/segmentation_result_929.PNG',
+          'assets/image/segmentation_result_862.PNG',
         ],
       ),
     ),
