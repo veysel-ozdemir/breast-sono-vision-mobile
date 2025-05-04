@@ -56,7 +56,10 @@ class _ComparisonPageState extends State<ComparisonPage> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.5),
-                          child: Image.file(fileController.image.value!),
+                          child: Image.file(
+                            fileController.image.value!,
+                            scale: 0.8,
+                          ),
                         ),
                       ),
                     ),
@@ -81,7 +84,10 @@ class _ComparisonPageState extends State<ComparisonPage> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.5),
-                          child: Image.file(apiController.result.value!),
+                          child: Image.file(
+                            apiController.result.value!,
+                            scale: 0.8,
+                          ),
                         ),
                       ),
                     ),
@@ -100,7 +106,7 @@ class _ComparisonPageState extends State<ComparisonPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 25),
+                const Spacer(flex: 1),
               ],
             ),
           ),

@@ -124,7 +124,9 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                           border: Border.all(
                               color: ColorPalette.secondary, width: 3),
-                          color: Colors.white.withOpacity(0.5),
+                          color: _isImageSelected
+                              ? ColorPalette.secondary
+                              : Colors.white.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: _isImageSelected
@@ -176,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                const SizedBox(height: 25),
+                const Spacer(flex: 1),
               ],
             ),
           ),

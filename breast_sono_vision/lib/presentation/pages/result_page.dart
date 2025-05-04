@@ -52,7 +52,7 @@ class _ResultPageState extends State<ResultPage> {
               padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
-                  const SizedBox(height: 20),
+                  const Spacer(flex: 1),
                   // Information Card
                   const InfoCard(
                     icon: '🔎',
@@ -120,7 +120,10 @@ class _ResultPageState extends State<ResultPage> {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12.5),
-                            child: Image.file(apiController.result.value!),
+                            child: Image.file(
+                              apiController.result.value!,
+                              scale: 0.8,
+                            ),
                           ),
                         ),
                       ),
@@ -184,7 +187,7 @@ class _ResultPageState extends State<ResultPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const Spacer(flex: 1),
                 ],
               ),
             ),
