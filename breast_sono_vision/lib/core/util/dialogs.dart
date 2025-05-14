@@ -204,3 +204,260 @@ Future<void> showSnackbar({
   // Wait for the snackbar to finish showing
   await Future.delayed(duration);
 }
+
+Future<void> showTimeSchedulerDialog({
+  required BuildContext context,
+  required void Function(TimeOfDay)? onTimeSelected,
+}) async {
+  int selectedHour = TimeOfDay.now().hour;
+  int selectedMinute = TimeOfDay.now().minute;
+
+  final alertDialog = AlertDialog(
+    backgroundColor: Colors.transparent,
+    contentPadding: EdgeInsets.zero,
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        InfoCard(
+          icon: '⏰',
+          title: 'Schedule Daily Reminder',
+          description: null,
+          bottomWidgets: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 150,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: StatefulBuilder(
+                  builder: (context, setState) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        // Hours
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              'Hour',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: ColorPalette.border,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: 60,
+                              height: 100,
+                              child: ListWheelScrollView.useDelegate(
+                                itemExtent: 40,
+                                perspective: 0.005,
+                                diameterRatio: 1.2,
+                                physics: const FixedExtentScrollPhysics(),
+                                onSelectedItemChanged: (index) {
+                                  setState(() {
+                                    selectedHour = index;
+                                  });
+                                },
+                                controller: FixedExtentScrollController(
+                                  initialItem: selectedHour,
+                                ),
+                                childDelegate: ListWheelChildBuilderDelegate(
+                                  childCount: 24,
+                                  builder: (context, index) {
+                                    return Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: selectedHour == index
+                                            ? ColorPalette.secondary
+                                                .withOpacity(0.2)
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Text(
+                                        index.toString().padLeft(2, '0'),
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: selectedHour == index
+                                              ? FontWeight.bold
+                                              : FontWeight.normal,
+                                          color: selectedHour == index
+                                              ? ColorPalette.secondary
+                                              : ColorPalette.onBackground,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // Center colon with proper vertical alignment
+                        Padding(
+                          padding: const EdgeInsets.only(top: 25),
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: const Text(
+                              ':',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // Minutes
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              'Minute',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: ColorPalette.border,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: 60,
+                              height: 100,
+                              child: ListWheelScrollView.useDelegate(
+                                itemExtent: 40,
+                                perspective: 0.005,
+                                diameterRatio: 1.2,
+                                physics: const FixedExtentScrollPhysics(),
+                                onSelectedItemChanged: (index) {
+                                  setState(() {
+                                    selectedMinute = index;
+                                  });
+                                },
+                                controller: FixedExtentScrollController(
+                                  initialItem: selectedMinute,
+                                ),
+                                childDelegate: ListWheelChildBuilderDelegate(
+                                  childCount: 60,
+                                  builder: (context, index) {
+                                    return Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: selectedMinute == index
+                                            ? ColorPalette.secondary
+                                                .withOpacity(0.2)
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Text(
+                                        index.toString().padLeft(2, '0'),
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: selectedMinute == index
+                                              ? FontWeight.bold
+                                              : FontWeight.normal,
+                                          color: selectedMinute == index
+                                              ? ColorPalette.secondary
+                                              : ColorPalette.onBackground,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: ColorPalette.onBackground,
+                      side: const BorderSide(
+                        color: ColorPalette.onBackground,
+                        width: 2,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: ColorPalette.onBackground,
+                      side: const BorderSide(
+                        color: ColorPalette.onBackground,
+                        width: 2,
+                      ),
+                    ),
+                    onPressed: () {
+                      if (onTimeSelected != null) {
+                        onTimeSelected(
+                          TimeOfDay(hour: selectedHour, minute: selectedMinute),
+                        );
+                      }
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'Confirm',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+
+  await showGeneralDialog(
+    context: context,
+    barrierDismissible: true,
+    barrierLabel: '',
+    barrierColor: Colors.black.withOpacity(0.35),
+    transitionDuration: const Duration(milliseconds: 350),
+    pageBuilder: (context, animation, secondaryAnimation) => Container(),
+    transitionBuilder: (context, animation, secondaryAnimation, child) =>
+        ScaleTransition(
+      scale: Tween<double>(
+        begin: 0.5,
+        end: 1.0,
+      ).animate(CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutBack,
+      )),
+      child: FadeTransition(
+        opacity: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).animate(CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeIn,
+        )),
+        child: alertDialog,
+      ),
+    ),
+  );
+}

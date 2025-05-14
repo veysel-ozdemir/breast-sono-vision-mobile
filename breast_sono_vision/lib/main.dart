@@ -1,4 +1,5 @@
 import 'package:breast_sono_vision/app/app.dart';
+import 'package:breast_sono_vision/data/services/notification_service.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
 import 'package:breast_sono_vision/presentation/pages/landing_page.dart';
 import 'package:breast_sono_vision/core/util/functions.dart';
@@ -18,11 +19,14 @@ void main() async {
   // Load the .env file
   await dotenv.load(fileName: ".env");
 
+  // Initialize notifications
+  await NotificationService().initNotification();
+
   // Load shared preferences data
   final prefs = await SharedPreferences.getInstance();
 
   // TODO: This line is for testing, delete it later
-  await prefs.clear();
+  // await prefs.clear();
 
   debugPrint('\nShared Prefs Key-Value Pairs:');
   printKeyValueOfSharedPrefs(prefs);

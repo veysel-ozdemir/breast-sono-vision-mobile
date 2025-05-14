@@ -1,3 +1,4 @@
+import 'package:breast_sono_vision/data/services/notification_service.dart';
 import 'package:breast_sono_vision/presentation/controllers/api_controller.dart';
 import 'package:breast_sono_vision/presentation/controllers/file_controller.dart';
 import 'package:breast_sono_vision/presentation/controllers/permission_controller.dart';
@@ -9,6 +10,7 @@ import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   final PermissionController permissionController = Get.find();
   final FileController fileController = Get.find();
   final ApiController apiController = Get.find();
+  final NotificationService notificationService = NotificationService();
   bool _isImageSelected = false;
 
   @override
@@ -33,6 +36,147 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'Breast',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTheme.manropeFontFamily,
+                ),
+              ),
+              TextSpan(
+                text: 'Sono',
+                style: TextStyle(
+                  color: ColorPalette.secondary,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTheme.manropeFontFamily,
+                ),
+              ),
+              TextSpan(
+                text: 'Vision',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTheme.manropeFontFamily,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawer: SafeArea(
+        child: Drawer(
+          backgroundColor: ColorPalette.background,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(15),
+              bottomRight: Radius.circular(15),
+            ),
+          ),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              Lottie.asset('assets/animation/breast-cancer-ribbon.json'),
+              ListTile(
+                leading: const Icon(
+                  Icons.notifications_none_rounded,
+                  color: ColorPalette.border,
+                  size: 32,
+                ),
+                onTap: () async {
+                  final isGranted =
+                      await permissionController.checkNotificationsPermission();
+                  if (!isGranted) {
+                    if (context.mounted) {
+                      await showPermissionDialog(
+                        context: context,
+                        onPressed: () async =>
+                            await permissionController.openSettings(),
+                      );
+                    }
+                  } else {
+                    await notificationService.showNotification(
+                      title: "📲 Quick Check-In Reminder",
+                      body:
+                          "Don't miss your scheduled breast scan. Open BreastSonoVision to view or upload new results.",
+                    );
+                  }
+                },
+                title: Text(
+                  'Get Instant Notification',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: AppTheme.manropeFontFamily,
+                    fontWeight: FontWeight.bold,
+                    color: ColorPalette.border,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.schedule_rounded,
+                  color: ColorPalette.border,
+                  size: 32,
+                ),
+                onTap: () async {
+                  final isGranted =
+                      await permissionController.checkNotificationsPermission();
+                  if (!isGranted) {
+                    if (context.mounted) {
+                      await showPermissionDialog(
+                        context: context,
+                        onPressed: () async =>
+                            await permissionController.openSettings(),
+                      );
+                    }
+                  } else {
+                    if (context.mounted) {
+                      await showTimeSchedulerDialog(
+                        context: context,
+                        onTimeSelected: (selectedTime) async {
+                          // Set the scheduled notification
+                          await notificationService.scheduleNotification(
+                            title: '🕒 Time for Your Breast Health Check!',
+                            body:
+                                'Stay proactive—open BreastSonoVision and review your latest ultrasound results today.',
+                            hour: selectedTime.hour,
+                            minute: selectedTime.minute,
+                          );
+                          // Show snackbar
+                          await showSnackbar(
+                            icon: '✅',
+                            title: 'Notification Successfully Set',
+                            description:
+                                'The daily reminder has been set at ${selectedTime.hour}:${selectedTime.minute}',
+                          );
+                        },
+                      );
+                    }
+                  }
+                },
+                title: Text(
+                  'Schedule Daily Reminder',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: AppTheme.manropeFontFamily,
+                    fontWeight: FontWeight.bold,
+                    color: ColorPalette.border,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SizedBox(
           width: Get.width,
@@ -40,39 +184,6 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Breast',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: AppTheme.manropeFontFamily,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Sono',
-                        style: TextStyle(
-                          color: ColorPalette.secondary,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: AppTheme.manropeFontFamily,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Vision',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: AppTheme.manropeFontFamily,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 const Spacer(flex: 1),
                 // Information Card
                 const InfoCard(
