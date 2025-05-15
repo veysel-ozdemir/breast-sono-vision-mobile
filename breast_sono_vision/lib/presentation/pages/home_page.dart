@@ -140,26 +140,7 @@ class _HomePageState extends State<HomePage> {
                     }
                   } else {
                     if (context.mounted) {
-                      await showTimeSchedulerDialog(
-                        context: context,
-                        onTimeSelected: (selectedTime) async {
-                          // Set the scheduled notification
-                          await notificationService.scheduleNotification(
-                            title: '🕒 Time for Your Breast Health Check!',
-                            body:
-                                'Stay proactive—open BreastSonoVision and review your latest ultrasound results today.',
-                            hour: selectedTime.hour,
-                            minute: selectedTime.minute,
-                          );
-                          // Show snackbar
-                          await showSnackbar(
-                            icon: '✅',
-                            title: 'Notification Successfully Set',
-                            description:
-                                'The daily reminder has been set at ${selectedTime.hour}:${selectedTime.minute}',
-                          );
-                        },
-                      );
+                      await showScheduledNotificationDialog(context: context);
                     }
                   }
                 },

@@ -4,9 +4,14 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class NotificationService {
   final notificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  // Key for storing notification times in SharedPreferences
+  static const _notificationTimesKey = 'notification_times';
 
   final RxBool _isInitialized = RxBool(false);
 
@@ -111,11 +116,155 @@ class NotificationService {
       matchDateTimeComponents: DateTimeComponents.time,
     );
 
+    // Store the time information
+    _saveNotificationTime(id, hour, minute);
+
     debugPrint('Notification has been scheduled at $scheduledDate');
+  }
+
+  // Save notification time information
+  Future<void> _saveNotificationTime(int id, int hour, int minute) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+
+      // Get the existing times Map
+      final String? timesJson = prefs.getString(_notificationTimesKey);
+      Map<String, dynamic> times = {};
+      if (timesJson != null) {
+        times = jsonDecode(timesJson) as Map<String, dynamic>;
+      }
+
+      // Save the time for this notification ID
+      times[id.toString()] = {
+        'hour': hour,
+        'minute': minute,
+      };
+
+      // Store back to shared preferences
+      await prefs.setString(_notificationTimesKey, jsonEncode(times));
+      debugPrint('Saved notification time for ID $id: $hour:$minute');
+    } catch (e) {
+      debugPrint('Error saving notification time: $e');
+    }
+  }
+
+  // Get notification time for a specific ID
+  Future<TimeOfDay?> getNotificationTime(int id) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? timesJson = prefs.getString(_notificationTimesKey);
+
+      if (timesJson == null) return null;
+
+      final Map<String, dynamic> times =
+          jsonDecode(timesJson) as Map<String, dynamic>;
+      final timeData = times[id.toString()];
+
+      if (timeData == null) return null;
+
+      return TimeOfDay(
+        hour: timeData['hour'] as int,
+        minute: timeData['minute'] as int,
+      );
+    } catch (e) {
+      debugPrint('Error getting notification time: $e');
+      return null;
+    }
+  }
+
+  // Get all notification times
+  Future<Map<int, TimeOfDay>> getAllNotificationTimes() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? timesJson = prefs.getString(_notificationTimesKey);
+
+      if (timesJson == null) return {};
+
+      final Map<String, dynamic> times =
+          jsonDecode(timesJson) as Map<String, dynamic>;
+      final Map<int, TimeOfDay> result = {};
+
+      times.forEach((key, value) {
+        final id = int.parse(key);
+        result[id] = TimeOfDay(
+            hour: value['hour'] as int, minute: value['minute'] as int);
+      });
+
+      return result;
+    } catch (e) {
+      debugPrint('Error getting all notification times: $e');
+      return {};
+    }
+  }
+
+  // Get pending notifications
+  Future<List<PendingNotificationRequest>> getPendingNotifications() async {
+    return await notificationsPlugin.pendingNotificationRequests();
+  }
+
+  // Cancel a specific notification
+  Future<void> cancelNotification(int id) async {
+    await notificationsPlugin.cancel(id);
+
+    // Also remove from stored times
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? timesJson = prefs.getString(_notificationTimesKey);
+
+      if (timesJson != null) {
+        final Map<String, dynamic> times =
+            jsonDecode(timesJson) as Map<String, dynamic>;
+        times.remove(id.toString());
+        await prefs.setString(_notificationTimesKey, jsonEncode(times));
+      }
+    } catch (e) {
+      debugPrint('Error removing notification time: $e');
+    }
+
+    debugPrint('Notifications with ID $id have been cancelled');
   }
 
   // Cancel all notifications
   Future<void> cancelAllNotifications() async {
     await notificationsPlugin.cancelAll();
+
+    // Clear all stored times
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_notificationTimesKey);
+    } catch (e) {
+      debugPrint('Error clearing notification times: $e');
+    }
+
+    debugPrint('All notifications have been cancelled');
+  }
+
+  // Get number of scheduled notifications and generate a new ID
+  Future<int> getNextNotificationId() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? timesJson = prefs.getString(_notificationTimesKey);
+
+      if (timesJson == null) return 1;
+
+      final Map<String, dynamic> times =
+          jsonDecode(timesJson) as Map<String, dynamic>;
+
+      if (times.isEmpty) return 1;
+
+      // Find the highest existing ID and add 1
+      int highestId = 0;
+      for (String key in times.keys) {
+        final int id = int.parse(key);
+        if (id > highestId) {
+          highestId = id;
+        }
+      }
+
+      return highestId + 1;
+    } catch (e) {
+      debugPrint("Failed to generate next notification ID: $e");
+      return 1; // Fallback to ID 1 if there's an error
+    }
   }
 }

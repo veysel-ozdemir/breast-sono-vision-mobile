@@ -1,7 +1,9 @@
 import 'package:breast_sono_vision/core/theme/color_palette.dart';
+import 'package:breast_sono_vision/data/services/notification_service.dart';
 import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 Future<void> showDisclaimerDialog({
   required BuildContext context,
@@ -417,6 +419,296 @@ Future<void> showTimeSchedulerDialog({
                     },
                     child: const Text(
                       'Confirm',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+
+  await showGeneralDialog(
+    context: context,
+    barrierDismissible: true,
+    barrierLabel: '',
+    barrierColor: Colors.black.withOpacity(0.35),
+    transitionDuration: const Duration(milliseconds: 350),
+    pageBuilder: (context, animation, secondaryAnimation) => Container(),
+    transitionBuilder: (context, animation, secondaryAnimation, child) =>
+        ScaleTransition(
+      scale: Tween<double>(
+        begin: 0.5,
+        end: 1.0,
+      ).animate(CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutBack,
+      )),
+      child: FadeTransition(
+        opacity: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).animate(CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeIn,
+        )),
+        child: alertDialog,
+      ),
+    ),
+  );
+}
+
+Future<void> showScheduledNotificationDialog({
+  required BuildContext context,
+}) async {
+  final notificationService = NotificationService();
+  final alertDialog = AlertDialog(
+    backgroundColor: Colors.transparent,
+    contentPadding: EdgeInsets.zero,
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        InfoCard(
+          icon: '🔔',
+          title: 'Scheduled Notifications',
+          description: null,
+          bottomWidgets: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 200,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: FutureBuilder<List<PendingNotificationRequest>>(
+                  future: notificationService.getPendingNotifications(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text(
+                          'Error loading notifications',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: ColorPalette.border,
+                          ),
+                        ),
+                      );
+                    }
+
+                    final notifications = snapshot.data ?? [];
+
+                    if (notifications.isEmpty) {
+                      return const Center(
+                        child: Text(
+                          'No scheduled notifications',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: ColorPalette.border,
+                          ),
+                        ),
+                      );
+                    }
+
+                    return FutureBuilder<Map<int, TimeOfDay>>(
+                      future: notificationService.getAllNotificationTimes(),
+                      builder: (context, timeSnapshot) {
+                        final notificationTimes = timeSnapshot.data ?? {};
+
+                        // Create a sorted list of notifications based on their time
+                        final sortedNotifications =
+                            List<PendingNotificationRequest>.from(
+                                notifications);
+                        sortedNotifications.sort((a, b) {
+                          final timeA = notificationTimes[a.id];
+                          final timeB = notificationTimes[b.id];
+
+                          if (timeA == null || timeB == null) {
+                            return 0;
+                          }
+
+                          // Compare hours first
+                          if (timeA.hour != timeB.hour) {
+                            return timeA.hour.compareTo(timeB.hour);
+                          }
+
+                          // If hours are the same, compare minutes
+                          return timeA.minute.compareTo(timeB.minute);
+                        });
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Scrollbar(
+                                thickness: 5,
+                                radius: const Radius.circular(10),
+                                thumbVisibility: true,
+                                trackVisibility: true,
+                                interactive: true,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: ListView.builder(
+                                    itemCount: sortedNotifications.length,
+                                    padding: EdgeInsets.zero,
+                                    itemExtent:
+                                        50, // Fixed height for each item
+                                    itemBuilder: (context, index) {
+                                      final notification =
+                                          sortedNotifications[index];
+                                      final time =
+                                          notificationTimes[notification.id];
+
+                                      return Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 4),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.access_time_rounded,
+                                                  color: ColorPalette.border,
+                                                  size: 18,
+                                                ),
+                                                const SizedBox(width: 10),
+                                                Text(
+                                                  '${time?.hour.toString().padLeft(2, '0')}:${time?.minute.toString().padLeft(2, '0')}',
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18,
+                                                    color: ColorPalette.border,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            IconButton(
+                                              constraints:
+                                                  const BoxConstraints(),
+                                              padding: EdgeInsets.zero,
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              icon: const Icon(
+                                                Icons.delete_outline,
+                                                color: Colors.red,
+                                                size: 20,
+                                              ),
+                                              onPressed: () async {
+                                                await notificationService
+                                                    .cancelNotification(
+                                                        notification.id);
+                                                if (context.mounted) {
+                                                  Navigator.of(context).pop();
+                                                  showScheduledNotificationDialog(
+                                                      context: context);
+                                                }
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      await notificationService.cancelAllNotifications();
+                      if (context.mounted) {
+                        Navigator.of(context).pop();
+                        showScheduledNotificationDialog(context: context);
+                      }
+                    },
+                    child: const Text(
+                      'Cancel All',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: ColorPalette.onBackground,
+                      side: const BorderSide(
+                        color: ColorPalette.onBackground,
+                        width: 2,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: ColorPalette.onBackground,
+                      side: const BorderSide(
+                        color: ColorPalette.onBackground,
+                        width: 2,
+                      ),
+                    ),
+                    onPressed: () async {
+                      Navigator.of(context).pop();
+                      await showTimeSchedulerDialog(
+                        context: context,
+                        onTimeSelected: (selectedTime) async {
+                          // Get the next notification ID
+                          final id =
+                              await notificationService.getNextNotificationId();
+
+                          // Set the scheduled notification
+                          await notificationService.scheduleNotification(
+                            id: id,
+                            title: '🕒 Time for Your Breast Health Check!',
+                            body:
+                                'Stay proactive—open BreastSonoVision and review your latest ultrasound results today.',
+                            hour: selectedTime.hour,
+                            minute: selectedTime.minute,
+                          );
+                          // Show snackbar
+                          await showSnackbar(
+                            icon: '✅',
+                            title: 'Notification Successfully Set',
+                            description:
+                                'The daily reminder has been set at ${selectedTime.hour.toString().padLeft(2, '0')}:${selectedTime.minute.toString().padLeft(2, '0')}',
+                          );
+                        },
+                      );
+                    },
+                    child: const Text(
+                      'New',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
