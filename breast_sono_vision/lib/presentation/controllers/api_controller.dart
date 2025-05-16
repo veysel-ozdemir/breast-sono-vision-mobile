@@ -29,7 +29,7 @@ class ApiController extends GetxController {
       debugPrint('Error message: ${errorMessage.value}');
       await showSnackbar(
         icon: '❗️',
-        title: 'API Error',
+        title: 'api_error'.tr,
         description: errorMessage.value,
       );
     } finally {

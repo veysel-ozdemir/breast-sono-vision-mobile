@@ -45,8 +45,8 @@ class FileController extends GetxController {
           } else {
             await showSnackbar(
               icon: '❗️',
-              title: 'Image Conversion Failed',
-              description: 'Error occurred while converting your JPG file',
+              title: 'image_conversion_failed'.tr,
+              description: 'image_conversion_failed_description'.tr,
             );
             return null;
           }
@@ -62,7 +62,7 @@ class FileController extends GetxController {
       debugPrint('Error message: ${errorMessage.value}');
       await showSnackbar(
         icon: '❗️',
-        title: 'File Selection Error',
+        title: 'file_selection_error'.tr,
         description: errorMessage.value,
       );
     } finally {
@@ -93,8 +93,8 @@ class FileController extends GetxController {
           } else {
             await showSnackbar(
               icon: '❗️',
-              title: 'Image Conversion Failed',
-              description: 'Error occurred while converting your JPG file',
+              title: 'image_conversion_failed'.tr,
+              description: 'image_conversion_failed_description'.tr,
             );
             return null;
           }
@@ -103,8 +103,8 @@ class FileController extends GetxController {
           // Show format error
           await showSnackbar(
             icon: '❗️',
-            title: 'Unsupported Format',
-            description: 'Please select a PNG image',
+            title: 'unsupported_format'.tr,
+            description: 'unsupported_format_description'.tr,
           );
           return null;
         }
@@ -117,7 +117,7 @@ class FileController extends GetxController {
       debugPrint('Error message: ${errorMessage.value}');
       await showSnackbar(
           icon: '❗️',
-          title: 'Image Selection Error',
+          title: 'image_selection_error'.tr,
           description: errorMessage.value);
     } finally {
       isConverting.value = false;
@@ -139,8 +139,8 @@ class FileController extends GetxController {
       if (result.status == ShareResultStatus.success) {
         await showSnackbar(
           icon: '✅',
-          title: 'Share Successful',
-          description: 'Image shared according to the selected action',
+          title: 'share_successful'.tr,
+          description: 'share_successful_description'.tr,
         );
         return true;
       } else if (result.status == ShareResultStatus.unavailable) {
@@ -155,9 +155,8 @@ class FileController extends GetxController {
       debugPrint('Error saving file: ${errorMessage.value}');
       await showSnackbar(
         icon: '🔒',
-        title: 'Save Failed',
-        description:
-            'Failed to save image at selected location due to folder access restriction',
+        title: 'save_failed'.tr,
+        description: 'save_failed_description'.tr,
       );
       return false;
     } catch (e) {
@@ -165,8 +164,8 @@ class FileController extends GetxController {
       debugPrint('Error sharing file: ${errorMessage.value}');
       await showSnackbar(
         icon: '❌',
-        title: 'Share Failed',
-        description: 'Failed to share image: ${e.toString()}',
+        title: 'share_failed'.tr,
+        description: '${'share_failed_description'.tr}: ${e.toString()}',
       );
       return false;
     }
@@ -182,16 +181,16 @@ class FileController extends GetxController {
 
       await showSnackbar(
         icon: '✅',
-        title: 'Save Successful',
-        description: 'Image saved to your gallery',
+        title: 'save_successful'.tr,
+        description: 'save_successful_description'.tr,
       );
     } catch (e) {
       errorMessage.value = e.toString();
       debugPrint('Error saving to gallery: ${errorMessage.value}');
       await showSnackbar(
         icon: '❌',
-        title: 'Save Failed',
-        description: 'Failed to save image to gallery: ${e.toString()}',
+        title: 'save_failed'.tr,
+        description: '${'save_failed_description_gallery'.tr}: ${e.toString()}',
       );
     }
   }

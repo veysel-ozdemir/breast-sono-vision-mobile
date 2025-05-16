@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -30,6 +31,22 @@ void main() async {
 
   debugPrint('\nShared Prefs Key-Value Pairs:');
   printKeyValueOfSharedPrefs(prefs);
+  debugPrint('------------------------\n');
+
+  // Set the default locale for the app
+  final Locale locale;
+  String? currentLocale = prefs.getString('locale');
+  if (currentLocale == null) {
+    // If the locale is not set, use the device's locale
+    locale = Get.deviceLocale ?? const Locale('en');
+    // Save the device's locale to shared preferences
+    await prefs.setString('locale', locale.languageCode);
+    debugPrint('Locale not set. Using device locale: $locale');
+  } else {
+    // If the locale is set, use it
+    locale = Locale(currentLocale);
+    debugPrint('Locale set in shared preferences: $currentLocale');
+  }
 
   final Widget startingPage;
 
@@ -48,7 +65,10 @@ void main() async {
   ]).then((_) {
     // Run the app
     runApp(
-      BreastSonoVisionApp(startingPage: startingPage),
+      BreastSonoVisionApp(
+        startingPage: startingPage,
+        locale: locale,
+      ),
     );
   });
 }

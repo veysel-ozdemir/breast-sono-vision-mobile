@@ -54,51 +54,41 @@ class _ResultPageState extends State<ResultPage> {
                 children: [
                   const Spacer(flex: 1),
                   // Information Card
-                  const InfoCard(
+                  InfoCard(
                     icon: '🔎',
-                    title: 'Understanding Your Result',
+                    title: 'result_info_card_title'.tr,
                     description: [
+                      TextSpan(text: 'result_info_card_text_1'.tr),
                       TextSpan(
-                          text:
-                              'This image shows the segmented regions detected by our AI system:\n🟥 '),
-                      TextSpan(
-                        text: 'Red',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        text: 'red'.tr,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: ' areas may indicate potentially '),
+                      TextSpan(text: 'result_info_card_text_2'.tr),
                       TextSpan(
-                        text: 'malignant',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        text: 'malignant'.tr,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: ' (cancerous) tissue.\n🟩 '),
+                      TextSpan(text: 'result_info_card_text_3'.tr),
                       TextSpan(
-                        text: 'Green',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        text: 'green'.tr,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: ' areas may suggest '),
+                      TextSpan(text: 'result_info_card_text_4'.tr),
                       TextSpan(
-                        text: 'benign',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        text: 'benign'.tr,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: ' (non-cancerous) findings.\n✅ If '),
+                      TextSpan(text: 'result_info_card_text_5'.tr),
                       TextSpan(
-                        text: 'no colored regions',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        text: 'result_info_card_text_6'.tr,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
+                      TextSpan(text: 'result_info_card_text_7'.tr),
                       TextSpan(
-                          text:
-                              ' appear, no notable tissue was detected — which is often a '),
-                      TextSpan(
-                        text: 'good sign',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        text: 'result_info_card_text_8'.tr,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: '.'),
+                      const TextSpan(text: '.'),
                     ],
                   ),
                   const Spacer(flex: 1),
@@ -145,10 +135,10 @@ class _ResultPageState extends State<ResultPage> {
                   const SizedBox(height: 10),
                   SizedBox(
                     width: Get.width * 0.75,
-                    child: const Text(
-                      'Curious to compare? View your original next to the result — or go home to try another scan.',
+                    child: Text(
+                      'result_page_description'.tr,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Colors.white,
                       ),
@@ -164,9 +154,9 @@ class _ResultPageState extends State<ResultPage> {
                             onPressed: () async {
                               await Get.to(() => const ComparisonPage());
                             },
-                            child: const Text(
-                              'Compare',
-                              style: TextStyle(
+                            child: Text(
+                              'compare'.tr,
+                              style: const TextStyle(
                                   fontSize: 24, fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -246,9 +236,9 @@ class _ResultPageState extends State<ResultPage> {
                     if (context.mounted) Navigator.pop(context);
                   }
                 },
-                child: const Text(
-                  'Share the Image',
-                  style: TextStyle(
+                child: Text(
+                  'share_the_image'.tr,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -288,9 +278,9 @@ class _ResultPageState extends State<ResultPage> {
                     }
                   }
                 },
-                child: const Text(
-                  'Save to Gallery',
-                  style: TextStyle(
+                child: Text(
+                  'save_to_gallery'.tr,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

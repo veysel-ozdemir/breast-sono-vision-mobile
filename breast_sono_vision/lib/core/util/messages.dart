@@ -1,0 +1,127 @@
+import 'package:get/get.dart';
+
+class Messages extends Translations {
+  @override
+  Map<String, Map<String, String>> get keys => {
+        // English translations
+        'en': {
+          'german': 'German',
+          'english': 'English',
+          'turkish': 'Turkish',
+          'landing_page_tagline': 'Early Diagnosis,\nSaves Lives.',
+          'landing_page_description':
+              'Breast ultrasound analysis made easy—\npowered by AI, designed to support your\nhealth journey.',
+          'get_started': 'Get Started',
+          'onboarding_title_1': 'Your Body Speaks,\nWe Help You Understand.',
+          'onboarding_description_1':
+              "We interpret your ultrasound image to give\nyou clearer insight into what's going on inside.",
+          'onboarding_title_2': 'Upload, Analyze, and\nVisualize.',
+          'onboarding_description_2':
+              "Upload your image, and receive AI-segmented\nresults that highlight potential concerns in seconds.",
+          'your_ultrasound': 'Your Ultrasound',
+          'our_result': 'Our Result',
+          'onboarding_title_3': 'Clear Results,\nConfident Next Steps.',
+          'onboarding_description_3':
+              "Visual segmentation helps you better\nunderstand your scan and what it may reveal.",
+          'continue': 'Continue',
+          'schedule_daily_reminder': 'Schedule Daily Reminder',
+          'language': 'Language',
+          'home_page_description_1':
+              'Ready to see the result? Let AI analyze your image — or tap below to choose a different one.',
+          'home_page_description_2':
+              "Let's select your breast ultrasound.\nEnsure that all permissions are granted for the app to work properly.",
+          'upload_image': 'Upload Image',
+          'upload_again': 'Upload Again',
+          'analyzing': 'Analyzing...',
+          'analyze': 'Analyze',
+          'no_image_selected': 'No Image Selected',
+          'no_image_selected_description': 'Please select an image to upload.',
+          'converting_jpg_file': 'Converting JPG File...',
+          'select_from_files': 'Select from Files',
+          'select_from_gallery': 'Select from Gallery',
+          'home_info_card_title': 'Information',
+          'home_info_card_text_1':
+              'For the most accurate results, upload your ultrasound as a ',
+          'home_info_card_text_2': ' file with a resolution around ',
+          'home_info_card_text_3': ' pixels. \n\n',
+          'home_info_card_text_4': ' and ',
+          'home_info_card_text_5':
+              ' files are also accepted but will be converted to PNG to maintain quality for AI analysis.',
+          'result_info_card_title': 'Understanding Your Result',
+          'result_info_card_text_1':
+              'This image shows the segmented regions detected by our AI system:\n🟥 ',
+          'red': 'Red',
+          'result_info_card_text_2': ' areas may indicate potentially ',
+          'malignant': 'malignant',
+          'result_info_card_text_3': ' (cancerous) tissue.\n🟩 ',
+          'green': 'Green',
+          'result_info_card_text_4': ' areas may suggest ',
+          'benign': 'benign',
+          'result_info_card_text_5': ' (non-cancerous) findings.\n✅ If ',
+          'result_info_card_text_6': 'no colored regions',
+          'result_info_card_text_7':
+              ' appear, no notable tissue was detected — which is often a ',
+          'result_info_card_text_8': 'good sign',
+          'result_page_description':
+              'Curious to compare? View your original next to the result — or go home to try another scan.',
+          'compare': 'Compare',
+          'share_the_image': 'Share the Image',
+          'save_to_gallery': 'Save to Gallery',
+          'api_error': 'API Error',
+          'image_conversion_failed': 'Image Conversion Failed',
+          'image_conversion_failed_description':
+              'Error occurred while converting your JPG file',
+          'file_selection_error': 'File Selection Error',
+          'unsupported_format': 'Unsupported Format',
+          'unsupported_format_description': 'Please select a PNG image',
+          'image_selection_error': 'Image Selection Error',
+          'share_successful': 'Share Successful',
+          'share_successful_description':
+              'Image shared according to the selected action',
+          'save_failed': 'Save Failed',
+          'save_failed_description':
+              'Failed to save image at selected location due to folder access restriction',
+          'save_failed_description_gallery': 'Failed to save image to gallery',
+          'share_failed': 'Share Failed',
+          'share_failed_description': 'Failed to share image',
+          'save_successful': 'Save Successful',
+          'save_successful_description': 'Image saved to your gallery',
+          'disclaimer_dialog_title': 'Disclaimer',
+          'disclaimer_dialog_text_1':
+              'This result is generated by an AI model and is ',
+          'disclaimer_dialog_text_2': 'not a medical diagnosis',
+          'disclaimer_dialog_text_3':
+              '.\n\nPlease consult a healthcare professional for a full evaluation and proper medical advice.',
+          'understood': 'Understood',
+          'permission_dialog_title': 'Permission Required',
+          'permission_dialog_text':
+              'The permissions are not granted. Please visit the settings.',
+          'open_settings': 'Open Settings',
+          'hour': 'Hour',
+          'minute': 'Minute',
+          'cancel': 'Cancel',
+          'confirm': 'Confirm',
+          'scheduled_notifications': 'Scheduled Notifications',
+          'error_loading_notifications': 'Error loading notifications',
+          'no_scheduled_notifications': 'No scheduled notifications',
+          'cancel_all': 'Cancel All',
+          'scheduled_notification_title':
+              '🕒 Time for Your Breast Health Check!',
+          'scheduled_notification_description':
+              'Stay proactive—open BreastSonoVision and review your latest ultrasound results today.',
+          'notification_successfully_set': 'Notification Successfully Set',
+          'notification_successfully_set_description':
+              'The daily reminder has been set at ',
+          'new': 'New',
+          'select_language': 'Select Language',
+          'language_changed': 'Language Changed',
+          'language_changed_description':
+              'The app language has been changed to ',
+          'apply': 'Apply',
+        },
+        // German translations
+        'de': {},
+        // Turkish translations
+        'tr': {},
+      };
+}

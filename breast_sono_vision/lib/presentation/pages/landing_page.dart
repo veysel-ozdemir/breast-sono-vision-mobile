@@ -77,7 +77,7 @@ class _LandingPageState extends State<LandingPage> {
                     children: [
                       // Tagline
                       Text(
-                        'Early Diagnosis,\nSaves Lives.',
+                        'landing_page_tagline'.tr,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 40,
@@ -88,10 +88,10 @@ class _LandingPageState extends State<LandingPage> {
                       ),
                       const SizedBox(height: 25),
                       // Description Text
-                      const Text(
-                        'Breast ultrasound analysis made easy—\npowered by AI, designed to support your\nhealth journey.',
+                      Text(
+                        'landing_page_description'.tr,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                         ),
@@ -107,9 +107,9 @@ class _LandingPageState extends State<LandingPage> {
                     onPressed: () async {
                       await Get.to(() => const OnboardingPage());
                     },
-                    child: const Text(
-                      'Get Started',
-                      style: TextStyle(
+                    child: Text(
+                      'get_started'.tr,
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),

@@ -23,15 +23,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   final List<OnboardingContent> _contents = [
     OnboardingContent(
-      title: 'Your Body Speaks,\nWe Help You Understand.',
-      description:
-          "We interpret your ultrasound image to give\nyou clearer insight into what's going on inside.",
+      title: 'onboarding_title_1'.tr,
+      description: 'onboarding_description_1'.tr,
       illustration: Lottie.asset('assets/animation/medical-scan.json'),
     ),
     OnboardingContent(
-      title: 'Upload, Analyze, and\nVisualize.',
-      description:
-          "Upload your image, and receive AI-segmented\nresults that highlight potential concerns in seconds.",
+      title: 'onboarding_title_2'.tr,
+      description: 'onboarding_description_2'.tr,
       illustration: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -66,7 +64,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
               const Spacer(),
               Text(
-                'Your Ultrasound',
+                'your_ultrasound'.tr,
                 style: TextStyle(
                   color: ColorPalette.secondary,
                   fontSize: 24,
@@ -109,7 +107,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
               const Spacer(),
               Text(
-                'Our Result',
+                'our_result'.tr,
                 style: TextStyle(
                   color: ColorPalette.secondary,
                   fontSize: 24,
@@ -122,9 +120,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
       ),
     ),
     OnboardingContent(
-      title: 'Clear Results,\nConfident Next Steps.',
-      description:
-          "Visual segmentation helps you better\nunderstand your scan and what it may reveal.",
+      title: 'onboarding_title_3'.tr,
+      description: 'onboarding_description_3'.tr,
       illustration: const SlantedImageCards(
         assetPaths: [
           'assets/image/segmentation_result_836.PNG',
@@ -226,8 +223,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         Text(
                           // If current page isn't the last
                           _currentPage < _contents.length - 1
-                              ? 'Continue'
-                              : 'Get Started',
+                              ? 'continue'.tr
+                              : 'get_started'.tr,
                           style: const TextStyle(
                             color: ColorPalette.secondary,
                             fontSize: 24,

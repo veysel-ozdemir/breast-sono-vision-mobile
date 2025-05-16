@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,11 +25,21 @@ class _HomePageState extends State<HomePage> {
   final FileController fileController = Get.find();
   final ApiController apiController = Get.find();
   final NotificationService notificationService = NotificationService();
+  late final SharedPreferences prefs;
+  String? _currentLocale;
   bool _isImageSelected = false;
+
+  _loadSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _currentLocale = prefs.getString('locale');
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    _loadSharedPreferences();
     // Remove the native splash screen
     FlutterNativeSplash.remove();
   }
@@ -88,41 +99,6 @@ class _HomePageState extends State<HomePage> {
               Lottie.asset('assets/animation/breast-cancer-ribbon.json'),
               ListTile(
                 leading: const Icon(
-                  Icons.notifications_none_rounded,
-                  color: ColorPalette.border,
-                  size: 32,
-                ),
-                onTap: () async {
-                  final isGranted =
-                      await permissionController.checkNotificationsPermission();
-                  if (!isGranted) {
-                    if (context.mounted) {
-                      await showPermissionDialog(
-                        context: context,
-                        onPressed: () async =>
-                            await permissionController.openSettings(),
-                      );
-                    }
-                  } else {
-                    await notificationService.showNotification(
-                      title: "📲 Quick Check-In Reminder",
-                      body:
-                          "Don't miss your scheduled breast scan. Open BreastSonoVision to view or upload new results.",
-                    );
-                  }
-                },
-                title: Text(
-                  'Get Instant Notification',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: AppTheme.manropeFontFamily,
-                    fontWeight: FontWeight.bold,
-                    color: ColorPalette.border,
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: const Icon(
                   Icons.schedule_rounded,
                   color: ColorPalette.border,
                   size: 32,
@@ -145,7 +121,29 @@ class _HomePageState extends State<HomePage> {
                   }
                 },
                 title: Text(
-                  'Schedule Daily Reminder',
+                  'schedule_daily_reminder'.tr,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: AppTheme.manropeFontFamily,
+                    fontWeight: FontWeight.bold,
+                    color: ColorPalette.border,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.language_rounded,
+                  color: ColorPalette.border,
+                  size: 32,
+                ),
+                onTap: () async {
+                  await showLanguageSelectorDialog(
+                    context: context,
+                    currentLocale: _currentLocale!,
+                  );
+                },
+                title: Text(
+                  'language'.tr,
                   style: TextStyle(
                     fontSize: 16,
                     fontFamily: AppTheme.manropeFontFamily,
@@ -167,37 +165,33 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const Spacer(flex: 1),
                 // Information Card
-                const InfoCard(
+                InfoCard(
                   icon: 'ℹ️',
-                  title: 'Information',
+                  title: 'home_info_card_title'.tr,
                   description: [
-                    TextSpan(
-                        text:
-                            'For the most accurate results, upload your ultrasound as a '),
-                    TextSpan(
+                    TextSpan(text: 'home_info_card_text_1'.tr),
+                    const TextSpan(
                       text: 'PNG',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(text: ' file with a resolution around '),
-                    TextSpan(
+                    TextSpan(text: 'home_info_card_text_2'.tr),
+                    const TextSpan(
                       text: '600×600',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(text: ' pixels. \n\n'),
-                    TextSpan(
+                    TextSpan(text: 'home_info_card_text_3'.tr),
+                    const TextSpan(
                       text: 'JPG',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(text: ' and '),
-                    TextSpan(
+                    TextSpan(text: 'home_info_card_text_4'.tr),
+                    const TextSpan(
                       text: 'JPEG',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     TextSpan(
-                        text:
-                            ' files are also accepted but will be converted to PNG to maintain quality for AI analysis.'),
+                      text: 'home_info_card_text_5'.tr,
+                    ),
                   ],
                 ),
                 const Spacer(flex: 1),
@@ -243,8 +237,8 @@ class _HomePageState extends State<HomePage> {
                   width: Get.width * 0.75,
                   child: Text(
                     _isImageSelected
-                        ? 'Ready to see the result? Let AI analyze your image — or tap below to choose a different one.'
-                        : "Let's select your breast ultrasound.\nEnsure that all permissions are granted for the app to work properly.",
+                        ? 'home_page_description_1'.tr
+                        : 'home_page_description_2'.tr,
                     textAlign: TextAlign.left,
                     style: const TextStyle(
                       fontSize: 16,
@@ -261,9 +255,9 @@ class _HomePageState extends State<HomePage> {
                         child: ElevatedButton(
                           onPressed: () async =>
                               await _showUploadSourceSelection(),
-                          child: const Text(
-                            'Upload Image',
-                            style: TextStyle(
+                          child: Text(
+                            'upload_image'.tr,
+                            style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
@@ -287,9 +281,10 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: OutlinedButton(
               onPressed: () async => await _showUploadSourceSelection(),
-              child: const Text(
-                'Upload Again',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              child: Text(
+                'upload_again'.tr,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -325,7 +320,7 @@ class _HomePageState extends State<HomePage> {
                                   const SizedBox(height: 15),
                                   RichText(
                                     text: TextSpan(
-                                      text: 'Analyzing...',
+                                      text: 'analyzing'.tr,
                                       style: TextStyle(
                                         fontSize: 18,
                                         color: ColorPalette.background,
@@ -355,14 +350,15 @@ class _HomePageState extends State<HomePage> {
                   // Handle case where no file is selected
                   await showSnackbar(
                     icon: '❗️',
-                    title: 'No Image Selected',
-                    description: 'Please select an image to upload.',
+                    title: 'no_image_selected'.tr,
+                    description: 'no_image_selected_description'.tr,
                   );
                 }
               },
-              child: const Text(
-                'Analyze',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              child: Text(
+                'analyze'.tr,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -448,7 +444,7 @@ class _HomePageState extends State<HomePage> {
                                     const SizedBox(height: 15),
                                     RichText(
                                       text: TextSpan(
-                                        text: 'Converting JPG File...',
+                                        text: 'converting_jpg_file'.tr,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: ColorPalette.background,
@@ -487,9 +483,9 @@ class _HomePageState extends State<HomePage> {
                     conversionListener.cancel();
                   }
                 },
-                child: const Text(
-                  'Select from Files',
-                  style: TextStyle(
+                child: Text(
+                  'select_from_files'.tr,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -544,7 +540,7 @@ class _HomePageState extends State<HomePage> {
                                       const SizedBox(height: 15),
                                       RichText(
                                         text: TextSpan(
-                                          text: 'Converting JPG File...',
+                                          text: 'converting_jpg_file'.tr,
                                           style: TextStyle(
                                             fontSize: 18,
                                             color: ColorPalette.background,
@@ -596,9 +592,9 @@ class _HomePageState extends State<HomePage> {
                     }
                   }
                 },
-                child: const Text(
-                  'Select from Gallery',
-                  style: TextStyle(
+                child: Text(
+                  'select_from_gallery'.tr,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

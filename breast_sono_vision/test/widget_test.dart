@@ -8,13 +8,15 @@
 import 'package:breast_sono_vision/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(
-      const BreastSonoVisionApp(
-        startingPage: Center(child: Text('Welcome to BreastSonoVision!')),
+      BreastSonoVisionApp(
+        startingPage: const Center(child: Text('Welcome to BreastSonoVision!')),
+        locale: Get.deviceLocale!,
       ),
     );
 
