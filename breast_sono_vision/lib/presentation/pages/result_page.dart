@@ -157,7 +157,7 @@ class _ResultPageState extends State<ResultPage> {
                             child: Text(
                               'compare'.tr,
                               style: const TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -170,7 +170,7 @@ class _ResultPageState extends State<ResultPage> {
                             child: const Text(
                               'Home',
                               style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),

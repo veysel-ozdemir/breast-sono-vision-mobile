@@ -189,7 +189,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     icon: const Icon(
                       Icons.arrow_back_ios_new_rounded,
                       color: ColorPalette.secondary,
-                      size: 40,
+                      size: 32,
                     ),
                   ),
                 ),
@@ -227,7 +227,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               : 'get_started'.tr,
                           style: const TextStyle(
                             color: ColorPalette.secondary,
-                            fontSize: 24,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -235,7 +235,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         const Icon(
                           Icons.arrow_forward_ios_rounded,
                           color: ColorPalette.secondary,
-                          size: 40,
+                          size: 32,
                         ),
                       ],
                     ),

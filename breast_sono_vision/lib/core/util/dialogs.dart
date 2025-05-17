@@ -754,7 +754,9 @@ Future<void> showLanguageSelectorDialog({
   required BuildContext context,
   required String currentLocale,
 }) async {
-  String selectedLanguage = currentLocale; // Initialize with current language
+  final prefs = await SharedPreferences.getInstance();
+  String selectedLanguage = prefs.getString('locale') ??
+      currentLocale; // Initialize with current language
   final alertDialog = AlertDialog(
     backgroundColor: Colors.transparent,
     contentPadding: EdgeInsets.zero,
@@ -876,7 +878,6 @@ Future<void> showLanguageSelectorDialog({
                       // Update the app's locale
                       await Get.updateLocale(locale);
                       // Save the selected language to shared preferences
-                      final prefs = await SharedPreferences.getInstance();
                       await prefs.setString('locale', locale.languageCode);
                       // Pop the dialog
                       if (context.mounted) Navigator.of(context).pop();
@@ -905,32 +906,34 @@ Future<void> showLanguageSelectorDialog({
     ),
   );
 
-  await showGeneralDialog(
-    context: context,
-    barrierDismissible: true,
-    barrierLabel: '',
-    barrierColor: Colors.black.withOpacity(0.35),
-    transitionDuration: const Duration(milliseconds: 350),
-    pageBuilder: (context, animation, secondaryAnimation) => Container(),
-    transitionBuilder: (context, animation, secondaryAnimation, child) =>
-        ScaleTransition(
-      scale: Tween<double>(
-        begin: 0.5,
-        end: 1.0,
-      ).animate(CurvedAnimation(
-        parent: animation,
-        curve: Curves.easeOutBack,
-      )),
-      child: FadeTransition(
-        opacity: Tween<double>(
-          begin: 0.0,
+  if (context.mounted) {
+    await showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: '',
+      barrierColor: Colors.black.withOpacity(0.35),
+      transitionDuration: const Duration(milliseconds: 350),
+      pageBuilder: (context, animation, secondaryAnimation) => Container(),
+      transitionBuilder: (context, animation, secondaryAnimation, child) =>
+          ScaleTransition(
+        scale: Tween<double>(
+          begin: 0.5,
           end: 1.0,
         ).animate(CurvedAnimation(
           parent: animation,
-          curve: Curves.easeIn,
+          curve: Curves.easeOutBack,
         )),
-        child: alertDialog,
+        child: FadeTransition(
+          opacity: Tween<double>(
+            begin: 0.0,
+            end: 1.0,
+          ).animate(CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeIn,
+          )),
+          child: alertDialog,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

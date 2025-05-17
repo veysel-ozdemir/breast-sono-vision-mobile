@@ -26,8 +26,9 @@ void main() async {
   // Load shared preferences data
   final prefs = await SharedPreferences.getInstance();
 
-  // TODO: This line is for testing, delete it later
+  // TODO: These two lines are for testing, delete it later
   // await prefs.clear();
+  // NotificationService().cancelAllNotifications();
 
   debugPrint('\nShared Prefs Key-Value Pairs:');
   printKeyValueOfSharedPrefs(prefs);

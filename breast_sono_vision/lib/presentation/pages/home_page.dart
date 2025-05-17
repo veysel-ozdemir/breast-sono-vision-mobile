@@ -258,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                           child: Text(
                             'upload_image'.tr,
                             style: const TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -284,7 +284,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 'upload_again'.tr,
                 style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -358,7 +358,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 'analyze'.tr,
                 style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),

@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
-Map<String, String> languages = {
-  'de': 'german'.tr,
-  'en': 'english'.tr,
-  'tr': 'turkish'.tr,
-};
+// ! Use as getter to let the translations be applied instantly
+Map<String, String> get languages => {
+      'de': 'german'.tr,
+      'en': 'english'.tr,
+      'tr': 'turkish'.tr,
+    };

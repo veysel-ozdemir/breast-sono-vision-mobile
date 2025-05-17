@@ -110,7 +110,7 @@ class _LandingPageState extends State<LandingPage> {
                     child: Text(
                       'get_started'.tr,
                       style: const TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

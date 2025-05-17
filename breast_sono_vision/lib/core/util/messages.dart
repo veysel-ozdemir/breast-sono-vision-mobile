@@ -120,8 +120,244 @@ class Messages extends Translations {
           'apply': 'Apply',
         },
         // German translations
-        'de': {},
+        'de': {
+          'german': 'Deutsch',
+          'english': 'Englisch',
+          'turkish': 'Türkisch',
+          'landing_page_tagline': 'Frühzeitige Diagnose,\nrettet Leben.',
+          'landing_page_description':
+              'Brustultraschallanalyse leicht gemacht—\nangetrieben von KI, entwickelt zur Unterstützung\nIhrer Gesundheitsreise.',
+          'get_started': 'Loslegen',
+          'onboarding_title_1':
+              'Ihr Körper spricht,\nWir helfen Ihnen zu verstehen.',
+          'onboarding_description_1':
+              "Wir interpretieren Ihr Ultraschallbild, um\nIhnen einen klareren Einblick in das zu geben, was im Inneren vor sich geht.",
+          'onboarding_title_2': 'Hochladen, Analysieren\nund Visualisieren.',
+          'onboarding_description_2':
+              "Laden Sie Ihr Bild hoch und erhalten Sie KI-segmentierte\nErgebnisse, die potenzielle Probleme in Sekunden hervorheben.",
+          'your_ultrasound': 'Ihr Ultraschall',
+          'our_result': 'Unser Ergebnis',
+          'onboarding_title_3': 'Klare Ergebnisse,\nSichere nächste Schritte.',
+          'onboarding_description_3':
+              "Visuelle Segmentierung hilft Ihnen, Ihren\nScan und was er möglicherweise zeigt, besser zu verstehen.",
+          'continue': 'Weiter',
+          'schedule_daily_reminder': 'Tägliche Erinnerung planen',
+          'language': 'Sprache',
+          'home_page_description_1':
+              'Bereit, das Ergebnis zu sehen? Lassen Sie KI Ihr Bild analysieren — oder tippen Sie unten, um ein anderes auszuwählen.',
+          'home_page_description_2':
+              "Lassen Sie uns Ihren Brustultraschall auswählen.\nStellen Sie sicher, dass alle Berechtigungen für die ordnungsgemäße Funktionsweise der App erteilt wurden.",
+          'upload_image': 'Bild hochladen',
+          'upload_again': 'Erneut hochladen',
+          'analyzing': 'Analysiere...',
+          'analyze': 'Analysieren',
+          'no_image_selected': 'Kein Bild ausgewählt',
+          'no_image_selected_description':
+              'Bitte wählen Sie ein Bild zum Hochladen aus.',
+          'converting_jpg_file': 'Konvertiere JPG-Datei...',
+          'select_from_files': 'Aus Dateien auswählen',
+          'select_from_gallery': 'Aus Galerie auswählen',
+          'home_info_card_title': 'Information',
+          'home_info_card_text_1':
+              'Für die genauesten Ergebnisse laden Sie Ihren Ultraschall als ',
+          'home_info_card_text_2': '-Datei mit einer Auflösung von etwa ',
+          'home_info_card_text_3': ' Pixeln hoch. \n\n',
+          'home_info_card_text_4': ' und ',
+          'home_info_card_text_5':
+              '-Dateien werden ebenfalls akzeptiert, werden aber in PNG konvertiert, um die Qualität für die KI-Analyse zu erhalten.',
+          'result_info_card_title': 'Ihr Ergebnis verstehen',
+          'result_info_card_text_1':
+              'Dieses Bild zeigt die von unserem KI-System erkannten segmentierten Regionen:\n🟥 ',
+          'red': 'Rote',
+          'result_info_card_text_2': ' Bereiche können auf potenziell ',
+          'malignant': 'bösartiges',
+          'result_info_card_text_3': ' (krebsartiges) Gewebe hinweisen.\n🟩 ',
+          'green': 'Grüne',
+          'result_info_card_text_4': ' Bereiche könnten auf ',
+          'benign': 'gutartige',
+          'result_info_card_text_5':
+              ' (nicht krebsartige) Befunde hindeuten.\n✅ Wenn ',
+          'result_info_card_text_6': 'keine farbigen Regionen',
+          'result_info_card_text_7':
+              ' erscheinen, wurde kein bemerkenswertes Gewebe erkannt — was oft ein ',
+          'result_info_card_text_8': 'gutes Zeichen ist',
+          'result_page_description':
+              'Neugierig auf einen Vergleich? Sehen Sie Ihr Original neben dem Ergebnis — oder gehen Sie zurück, um einen anderen Scan zu versuchen.',
+          'compare': 'Vergleichen',
+          'share_the_image': 'Bild teilen',
+          'save_to_gallery': 'In Galerie speichern',
+          'api_error': 'API-Fehler',
+          'image_conversion_failed': 'Bildkonvertierung fehlgeschlagen',
+          'image_conversion_failed_description':
+              'Fehler beim Konvertieren Ihrer JPG-Datei',
+          'file_selection_error': 'Dateiauswahlfehler',
+          'unsupported_format': 'Nicht unterstütztes Format',
+          'unsupported_format_description': 'Bitte wählen Sie ein PNG-Bild',
+          'image_selection_error': 'Bildauswahlfehler',
+          'share_successful': 'Erfolgreich geteilt',
+          'share_successful_description':
+              'Bild gemäß der ausgewählten Aktion geteilt',
+          'save_failed': 'Speichern fehlgeschlagen',
+          'save_failed_description':
+              'Fehler beim Speichern des Bildes am ausgewählten Ort aufgrund von Zugriffseinschränkungen',
+          'save_failed_description_gallery':
+              'Fehler beim Speichern des Bildes in der Galerie',
+          'share_failed': 'Teilen fehlgeschlagen',
+          'share_failed_description': 'Fehler beim Teilen des Bildes',
+          'save_successful': 'Erfolgreich gespeichert',
+          'save_successful_description':
+              'Bild wurde in Ihrer Galerie gespeichert',
+          'disclaimer_dialog_title': 'Haftungsausschluss',
+          'disclaimer_dialog_text_1':
+              'Dieses Ergebnis wurde von einem KI-Modell generiert und ist ',
+          'disclaimer_dialog_text_2': 'keine medizinische Diagnose',
+          'disclaimer_dialog_text_3':
+              '.\n\nBitte konsultieren Sie einen Arzt für eine vollständige Bewertung und angemessene medizinische Beratung.',
+          'understood': 'Verstanden',
+          'permission_dialog_title': 'Berechtigung erforderlich',
+          'permission_dialog_text':
+              'Die Berechtigungen wurden nicht erteilt. Bitte besuchen Sie die Einstellungen.',
+          'open_settings': 'Einstellungen öffnen',
+          'hour': 'Stunde',
+          'minute': 'Minute',
+          'cancel': 'Abbrechen',
+          'confirm': 'Bestätigen',
+          'scheduled_notifications': 'Geplante Benachrichtigungen',
+          'error_loading_notifications':
+              'Fehler beim Laden der Benachrichtigungen',
+          'no_scheduled_notifications': 'Keine geplanten Benachrichtigungen',
+          'cancel_all': 'Alle abbrechen',
+          'scheduled_notification_title':
+              '🕒 Zeit für Ihre Brustgesundheitskontrolle!',
+          'scheduled_notification_description':
+              'Bleiben Sie proaktiv—öffnen Sie BreastSonoVision und überprüfen Sie noch heute Ihre neuesten Ultraschallergebnisse.',
+          'notification_successfully_set':
+              'Benachrichtigung erfolgreich eingestellt',
+          'notification_successfully_set_description':
+              'Die tägliche Erinnerung wurde eingestellt für ',
+          'new': 'Neu',
+          'select_language': 'Sprache auswählen',
+          'language_changed': 'Sprache geändert',
+          'language_changed_description': 'Die App-Sprache wurde geändert auf ',
+          'apply': 'Anwenden',
+        },
         // Turkish translations
-        'tr': {},
+        'tr': {
+          'german': 'Almanca',
+          'english': 'İngilizce',
+          'turkish': 'Türkçe',
+          'landing_page_tagline': 'Erken Teşhis,\nHayat Kurtarır.',
+          'landing_page_description':
+              'Meme ultrason analizi artık çok kolay—\nYapay zeka tarafından desteklenen, sağlık\nyolculuğunuzu desteklemek için tasarlanmış.',
+          'get_started': 'Başlayın',
+          'onboarding_title_1':
+              'Vücudunuz Konuşur,\nBiz Anlamanıza Yardımcı Oluruz.',
+          'onboarding_description_1':
+              "Ultrason görüntünüzü yorumlayarak içeride\nne olduğuna dair daha net bir fikir edinmenizi sağlarız.",
+          'onboarding_title_2': 'Yükleyin, Analiz Edin\nve Görselleştirin.',
+          'onboarding_description_2':
+              "Görüntünüzü yükleyin ve saniyeler içinde potansiyel\nendişeleri vurgulayan yapay zeka segmentasyon sonuçlarını alın.",
+          'your_ultrasound': 'Ultrasonunuz',
+          'our_result': 'Sonucumuz',
+          'onboarding_title_3': 'Net Sonuçlar,\nGüvenli Sonraki Adımlar.',
+          'onboarding_description_3':
+              "Görsel segmentasyon, taramanızı ve\nolası sonuçlarını daha iyi anlamanıza yardımcı olur.",
+          'continue': 'Devam Et',
+          'schedule_daily_reminder': 'Günlük Hatırlatma Planla',
+          'language': 'Dil',
+          'home_page_description_1':
+              'Sonucu görmeye hazır mısınız? Yapay zekanın görüntünüzü analiz etmesine izin verin — veya farklı bir görüntü seçmek için aşağıya dokunun.',
+          'home_page_description_2':
+              "Meme ultrasonunuzu seçelim.\nUygulamanın düzgün çalışması için tüm izinlerin verildiğinden emin olun.",
+          'upload_image': 'Görüntü Yükle',
+          'upload_again': 'Tekrar Yükle',
+          'analyzing': 'Analiz Ediliyor...',
+          'analyze': 'Analiz Et',
+          'no_image_selected': 'Görüntü Seçilmedi',
+          'no_image_selected_description':
+              'Lütfen yüklemek için bir görüntü seçin.',
+          'converting_jpg_file': 'JPG Dosyası Dönüştürülüyor...',
+          'select_from_files': 'Dosyalardan Seç',
+          'select_from_gallery': 'Galeriden Seç',
+          'home_info_card_title': 'Bilgi',
+          'home_info_card_text_1': 'En doğru sonuçlar için, ultrasonunuzu ',
+          'home_info_card_text_2': ' dosyası olarak yaklaşık ',
+          'home_info_card_text_3': ' piksel çözünürlüğünde yükleyin. \n\n',
+          'home_info_card_text_4': ' ve ',
+          'home_info_card_text_5':
+              ' dosyaları da kabul edilir ancak yapay zeka analizi için kaliteyi korumak amacıyla PNG\'ye dönüştürülecektir.',
+          'result_info_card_title': 'Sonucunuzu Anlamak',
+          'result_info_card_text_1':
+              'Bu görüntü, yapay zeka sistemimiz tarafından tespit edilen segmentli bölgeleri gösterir:\n🟥 ',
+          'red': 'Kırmızı',
+          'result_info_card_text_2': ' alanlar potansiyel olarak ',
+          'malignant': 'kötü huylu',
+          'result_info_card_text_3': ' (kanserli) doku belirtebilir.\n🟩 ',
+          'green': 'Yeşil',
+          'result_info_card_text_4': ' alanlar ',
+          'benign': 'iyi huylu',
+          'result_info_card_text_5':
+              ' (kanserli olmayan) bulgulara işaret edebilir.\n✅ Eğer ',
+          'result_info_card_text_6': 'renkli bölgeler',
+          'result_info_card_text_7':
+              ' görünmüyorsa, dikkate değer bir doku tespit edilmemiştir — bu genellikle ',
+          'result_info_card_text_8': 'iyi bir işarettir',
+          'result_page_description':
+              'Karşılaştırmak ister misiniz? Orijinal görüntünüzü sonucun yanında görün — veya başka bir tarama denemek için ana sayfaya dönün.',
+          'compare': 'Karşılaştır',
+          'share_the_image': 'Görüntüyü Paylaş',
+          'save_to_gallery': 'Galeriye Kaydet',
+          'api_error': 'API Hatası',
+          'image_conversion_failed': 'Görüntü Dönüştürme Başarısız',
+          'image_conversion_failed_description':
+              'JPG dosyanızı dönüştürürken hata oluştu',
+          'file_selection_error': 'Dosya Seçim Hatası',
+          'unsupported_format': 'Desteklenmeyen Format',
+          'unsupported_format_description': 'Lütfen bir PNG görüntü seçin',
+          'image_selection_error': 'Görüntü Seçim Hatası',
+          'share_successful': 'Paylaşma Başarılı',
+          'share_successful_description':
+              'Görüntü seçilen eyleme göre paylaşıldı',
+          'save_failed': 'Kaydetme Başarısız',
+          'save_failed_description':
+              'Klasör erişim kısıtlaması nedeniyle görüntü seçilen konuma kaydedilemedi',
+          'save_failed_description_gallery': 'Görüntü galeriye kaydedilemedi',
+          'share_failed': 'Paylaşma Başarısız',
+          'share_failed_description': 'Görüntü paylaşılamadı',
+          'save_successful': 'Kaydetme Başarılı',
+          'save_successful_description': 'Görüntü galerinize kaydedildi',
+          'disclaimer_dialog_title': 'Feragatname',
+          'disclaimer_dialog_text_1':
+              'Bu sonuç bir yapay zeka modeli tarafından oluşturulmuştur ve ',
+          'disclaimer_dialog_text_2': 'tıbbi bir teşhis değildir',
+          'disclaimer_dialog_text_3':
+              '.\n\nLütfen tam bir değerlendirme ve uygun tıbbi tavsiye için bir sağlık uzmanına danışın.',
+          'understood': 'Anladım',
+          'permission_dialog_title': 'İzin Gerekli',
+          'permission_dialog_text':
+              'İzinler verilmedi. Lütfen ayarları ziyaret edin.',
+          'open_settings': 'Ayarları Aç',
+          'hour': 'Saat',
+          'minute': 'Dakika',
+          'cancel': 'İptal',
+          'confirm': 'Onayla',
+          'scheduled_notifications': 'Planlanmış Bildirimler',
+          'error_loading_notifications': 'Bildirimleri yükleme hatası',
+          'no_scheduled_notifications': 'Planlanmış bildirim yok',
+          'cancel_all': 'Tümünü İptal Et',
+          'scheduled_notification_title':
+              '🕒 Meme Sağlığı Kontrolünüzün Zamanı Geldi!',
+          'scheduled_notification_description':
+              'Proaktif kalın—BreastSonoVision\'ı açın ve en son ultrason sonuçlarınızı bugün inceleyin.',
+          'notification_successfully_set': 'Bildirim Başarıyla Ayarlandı',
+          'notification_successfully_set_description':
+              'Günlük hatırlatıcı şu saate ayarlandı: ',
+          'new': 'Yeni',
+          'select_language': 'Dil Seçin',
+          'language_changed': 'Dil Değiştirildi',
+          'language_changed_description':
+              'Uygulama dili şu dile değiştirildi: ',
+          'apply': 'Uygula',
+        },
       };
 }
