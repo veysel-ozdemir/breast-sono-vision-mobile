@@ -10,26 +10,26 @@ class Messages extends Translations {
           'turkish': 'Turkish',
           'landing_page_tagline': 'Early Diagnosis,\nSaves Lives.',
           'landing_page_description':
-              'Breast ultrasound analysis made easy—\npowered by AI, designed to support your\nhealth journey.',
+              'Breast ultrasound analysis made easy — powered by AI, designed to support your health journey.',
           'get_started': 'Get Started',
           'onboarding_title_1': 'Your Body Speaks,\nWe Help You Understand.',
           'onboarding_description_1':
-              "We interpret your ultrasound image to give\nyou clearer insight into what's going on inside.",
+              "We interpret your ultrasound image to give you clearer insight into what's going on inside.",
           'onboarding_title_2': 'Upload, Analyze, and\nVisualize.',
           'onboarding_description_2':
-              "Upload your image, and receive AI-segmented\nresults that highlight potential concerns in seconds.",
+              "Upload your image, and receive AI-segmented results that highlight potential concerns in seconds.",
           'your_ultrasound': 'Your Ultrasound',
           'our_result': 'Our Result',
           'onboarding_title_3': 'Clear Results,\nConfident Next Steps.',
           'onboarding_description_3':
-              "Visual segmentation helps you better\nunderstand your scan and what it may reveal.",
+              "Visual segmentation helps you better understand your scan and what it may reveal.",
           'continue': 'Continue',
           'schedule_daily_reminder': 'Schedule Daily Reminder',
           'language': 'Language',
           'home_page_description_1':
               'Ready to see the result? Let AI analyze your image — or tap below to choose a different one.',
           'home_page_description_2':
-              "Let's select your breast ultrasound.\nEnsure that all permissions are granted for the app to work properly.",
+              "Let's select your breast ultrasound. Ensure that all permissions are granted for the app to work properly.",
           'upload_image': 'Upload Image',
           'upload_again': 'Upload Again',
           'analyzing': 'Analyzing...',
@@ -126,27 +126,27 @@ class Messages extends Translations {
           'turkish': 'Türkisch',
           'landing_page_tagline': 'Frühzeitige Diagnose,\nrettet Leben.',
           'landing_page_description':
-              'Brustultraschallanalyse leicht gemacht—\nangetrieben von KI, entwickelt zur Unterstützung\nIhrer Gesundheitsreise.',
+              'Brustultraschallanalyse leicht gemacht — angetrieben von KI, entwickelt zur Unterstützung Ihrer Gesundheitsreise.',
           'get_started': 'Loslegen',
           'onboarding_title_1':
               'Ihr Körper spricht,\nWir helfen Ihnen zu verstehen.',
           'onboarding_description_1':
-              "Wir interpretieren Ihr Ultraschallbild, um\nIhnen einen klareren Einblick in das zu geben, was im Inneren vor sich geht.",
+              "Wir interpretieren Ihr Ultraschallbild, um Ihnen einen klareren Einblick in das zu geben, was im Inneren vor sich geht.",
           'onboarding_title_2': 'Hochladen, Analysieren\nund Visualisieren.',
           'onboarding_description_2':
-              "Laden Sie Ihr Bild hoch und erhalten Sie KI-segmentierte\nErgebnisse, die potenzielle Probleme in Sekunden hervorheben.",
+              "Laden Sie Ihr Bild hoch und erhalten Sie KI-segmentierte Ergebnisse, die potenzielle Probleme in Sekunden hervorheben.",
           'your_ultrasound': 'Ihr Ultraschall',
           'our_result': 'Unser Ergebnis',
           'onboarding_title_3': 'Klare Ergebnisse,\nSichere nächste Schritte.',
           'onboarding_description_3':
-              "Visuelle Segmentierung hilft Ihnen, Ihren\nScan und was er möglicherweise zeigt, besser zu verstehen.",
+              "Visuelle Segmentierung hilft Ihnen, Ihren Scan und was er möglicherweise zeigt, besser zu verstehen.",
           'continue': 'Weiter',
           'schedule_daily_reminder': 'Tägliche Erinnerung planen',
           'language': 'Sprache',
           'home_page_description_1':
               'Bereit, das Ergebnis zu sehen? Lassen Sie KI Ihr Bild analysieren — oder tippen Sie unten, um ein anderes auszuwählen.',
           'home_page_description_2':
-              "Lassen Sie uns Ihren Brustultraschall auswählen.\nStellen Sie sicher, dass alle Berechtigungen für die ordnungsgemäße Funktionsweise der App erteilt wurden.",
+              "Lassen Sie uns Ihren Brustultraschall auswählen. Stellen Sie sicher, dass alle Berechtigungen für die ordnungsgemäße Funktionsweise der App erteilt wurden.",
           'upload_image': 'Bild hochladen',
           'upload_again': 'Erneut hochladen',
           'analyzing': 'Analysiere...',
@@ -248,27 +248,27 @@ class Messages extends Translations {
           'turkish': 'Türkçe',
           'landing_page_tagline': 'Erken Teşhis,\nHayat Kurtarır.',
           'landing_page_description':
-              'Meme ultrason analizi artık çok kolay—\nYapay zeka tarafından desteklenen, sağlık\nyolculuğunuzu desteklemek için tasarlanmış.',
+              'Meme ultrason analizi artık çok kolay — Yapay zeka tarafından desteklenen, sağlık yolculuğunuzu desteklemek için tasarlanmış.',
           'get_started': 'Başlayın',
           'onboarding_title_1':
               'Vücudunuz Konuşur,\nBiz Anlamanıza Yardımcı Oluruz.',
           'onboarding_description_1':
-              "Ultrason görüntünüzü yorumlayarak içeride\nne olduğuna dair daha net bir fikir edinmenizi sağlarız.",
+              "Ultrason görüntünüzü yorumlayarak içeride ne olduğuna dair daha net bir fikir edinmenizi sağlarız.",
           'onboarding_title_2': 'Yükleyin, Analiz Edin\nve Görselleştirin.',
           'onboarding_description_2':
-              "Görüntünüzü yükleyin ve saniyeler içinde potansiyel\nendişeleri vurgulayan yapay zeka segmentasyon sonuçlarını alın.",
+              "Görüntünüzü yükleyin ve saniyeler içinde potansiyel endişeleri vurgulayan yapay zeka segmentasyon sonuçlarını alın.",
           'your_ultrasound': 'Ultrasonunuz',
           'our_result': 'Sonucumuz',
           'onboarding_title_3': 'Net Sonuçlar,\nGüvenli Sonraki Adımlar.',
           'onboarding_description_3':
-              "Görsel segmentasyon, taramanızı ve\nolası sonuçlarını daha iyi anlamanıza yardımcı olur.",
+              "Görsel segmentasyon, taramanızı ve olası sonuçlarını daha iyi anlamanıza yardımcı olur.",
           'continue': 'Devam Et',
           'schedule_daily_reminder': 'Günlük Hatırlatma Planla',
           'language': 'Dil',
           'home_page_description_1':
               'Sonucu görmeye hazır mısınız? Yapay zekanın görüntünüzü analiz etmesine izin verin — veya farklı bir görüntü seçmek için aşağıya dokunun.',
           'home_page_description_2':
-              "Meme ultrasonunuzu seçelim.\nUygulamanın düzgün çalışması için tüm izinlerin verildiğinden emin olun.",
+              "Meme ultrasonunuzu seçelim. Uygulamanın düzgün çalışması için tüm izinlerin verildiğinden emin olun.",
           'upload_image': 'Görüntü Yükle',
           'upload_again': 'Tekrar Yükle',
           'analyzing': 'Analiz Ediliyor...',
