@@ -8,6 +8,7 @@ class Messages extends Translations {
           'german': 'German',
           'english': 'English',
           'french': 'French',
+          'spanish': 'Spanish',
           'turkish': 'Turkish',
           'landing_page_tagline': 'Early Diagnosis,\nSaves Lives.',
           'landing_page_description':
@@ -125,6 +126,7 @@ class Messages extends Translations {
           'german': 'Deutsch',
           'english': 'Englisch',
           'french': 'Französisch',
+          'spanish': 'Spanisch',
           'turkish': 'Türkisch',
           'landing_page_tagline': 'Frühzeitige Diagnose,\nrettet Leben.',
           'landing_page_description':
@@ -248,6 +250,7 @@ class Messages extends Translations {
           'german': 'Almanca',
           'english': 'İngilizce',
           'french': 'Fransızca',
+          'spanish': 'İspanyolca',
           'turkish': 'Türkçe',
           'landing_page_tagline': 'Erken Teşhis,\nHayat Kurtarır.',
           'landing_page_description':
@@ -367,6 +370,7 @@ class Messages extends Translations {
           'german': 'Allemand',
           'english': 'Anglais',
           'french': 'Français',
+          'spanish': 'Espagnol',
           'turkish': 'Turc',
           'landing_page_tagline': 'Diagnostic précoce,\nSauve des vies.',
           'landing_page_description':
@@ -486,6 +490,130 @@ class Messages extends Translations {
           'language_changed_description':
               'La langue de l\'application a été changée en ',
           'apply': 'Appliquer',
+        },
+        // Spanish translations
+        'es': {
+          'german': 'Alemán',
+          'english': 'Inglés',
+          'french': 'Francés',
+          'spanish': 'Español',
+          'turkish': 'Turco',
+          'landing_page_tagline': 'Diagnóstico Temprano,\nSalva Vidas.',
+          'landing_page_description':
+              'Análisis de ultrasonido de mama simplificado — impulsado por IA, diseñado para apoyar tu camino hacia la salud.',
+          'get_started': 'Comenzar',
+          'onboarding_title_1': 'Tu Cuerpo Habla,\nTe Ayudamos a Entenderlo.',
+          'onboarding_description_1':
+              "Interpretamos tu imagen de ultrasonido para darte una visión más clara de lo que sucede en tu interior.",
+          'onboarding_title_2': 'Sube, Analiza y\nVisualiza.',
+          'onboarding_description_2':
+              "Sube tu imagen y recibe resultados segmentados por IA que destacan posibles preocupaciones en segundos.",
+          'your_ultrasound': 'Tu Ultrasonido',
+          'our_result': 'Nuestro Resultado',
+          'onboarding_title_3':
+              'Resultados Claros,\nPróximos Pasos con Confianza.',
+          'onboarding_description_3':
+              "La segmentación visual te ayuda a entender mejor tu exploración y lo que puede revelar.",
+          'continue': 'Continuar',
+          'schedule_daily_reminder': 'Programar Recordatorio Diario',
+          'language': 'Idioma',
+          'home_page_description_1':
+              '¿Listo para ver el resultado? Deja que la IA analice tu imagen — o pulsa abajo para elegir una diferente.',
+          'home_page_description_2':
+              "Seleccionemos tu ultrasonido de mama. Asegúrate de que todos los permisos estén concedidos para que la aplicación funcione correctamente.",
+          'upload_image': 'Subir Imagen',
+          'upload_again': 'Subir de Nuevo',
+          'analyzing': 'Analizando...',
+          'analyze': 'Analizar',
+          'no_image_selected': 'Ninguna Imagen Seleccionada',
+          'no_image_selected_description':
+              'Por favor, selecciona una imagen para subir.',
+          'converting_jpg_file': 'Convirtiendo Archivo JPG...',
+          'select_from_files': 'Seleccionar de Archivos',
+          'select_from_gallery': 'Seleccionar de la Galería',
+          'home_info_card_title': 'Información',
+          'home_info_card_text_1':
+              'Para obtener los resultados más precisos, sube tu ultrasonido como un archivo ',
+          'home_info_card_text_2': ' con una resolución de alrededor de ',
+          'home_info_card_text_3': ' píxeles. \n\n',
+          'home_info_card_text_4': ' y ',
+          'home_info_card_text_5':
+              ' también se aceptan archivos pero se convertirán a PNG para mantener la calidad para el análisis de IA.',
+          'result_info_card_title': 'Entendiendo Tu Resultado',
+          'result_info_card_text_1':
+              'Esta imagen muestra las regiones segmentadas detectadas por nuestro sistema de IA:\n🟥 ',
+          'red': 'Rojas',
+          'result_info_card_text_2':
+              ' las áreas pueden indicar tejido potencialmente ',
+          'malignant': 'maligno',
+          'result_info_card_text_3': ' (canceroso).\n🟩 ',
+          'green': 'Verdes',
+          'result_info_card_text_4': ' las áreas pueden sugerir hallazgos ',
+          'benign': 'benignos',
+          'result_info_card_text_5': ' (no cancerosos).\n✅ Si ',
+          'result_info_card_text_6': 'no aparecen regiones coloreadas',
+          'result_info_card_text_7':
+              ', no se detectó tejido notable — lo que a menudo es una ',
+          'result_info_card_text_8': 'buena señal',
+          'result_page_description':
+              '¿Curioso por comparar? Ve tu original junto al resultado — o vuelve al inicio para probar otro escaneo.',
+          'compare': 'Comparar',
+          'share_the_image': 'Compartir la Imagen',
+          'save_to_gallery': 'Guardar en la Galería',
+          'api_error': 'Error de API',
+          'image_conversion_failed': 'Error en la Conversión de Imagen',
+          'image_conversion_failed_description':
+              'Ocurrió un error al convertir tu archivo JPG',
+          'file_selection_error': 'Error de Selección de Archivo',
+          'unsupported_format': 'Formato No Compatible',
+          'unsupported_format_description':
+              'Por favor, selecciona una imagen PNG',
+          'image_selection_error': 'Error de Selección de Imagen',
+          'share_successful': 'Compartido Exitosamente',
+          'share_successful_description':
+              'Imagen compartida según la acción seleccionada',
+          'save_failed': 'Error al Guardar',
+          'save_failed_description':
+              'No se pudo guardar la imagen en la ubicación seleccionada debido a restricciones de acceso a carpetas',
+          'save_failed_description_gallery':
+              'No se pudo guardar la imagen en la galería',
+          'share_failed': 'Error al Compartir',
+          'share_failed_description': 'No se pudo compartir la imagen',
+          'save_successful': 'Guardado Exitoso',
+          'save_successful_description': 'Imagen guardada en tu galería',
+          'disclaimer_dialog_title': 'Aviso Legal',
+          'disclaimer_dialog_text_1':
+              'Este resultado es generado por un modelo de IA y ',
+          'disclaimer_dialog_text_2': 'no es un diagnóstico médico',
+          'disclaimer_dialog_text_3':
+              '.\n\nPor favor, consulta a un profesional de la salud para una evaluación completa y asesoramiento médico adecuado.',
+          'understood': 'Entendido',
+          'permission_dialog_title': 'Permiso Requerido',
+          'permission_dialog_text':
+              'Los permisos no han sido concedidos. Por favor, visita la configuración.',
+          'open_settings': 'Abrir Configuración',
+          'hour': 'Hora',
+          'minute': 'Minuto',
+          'cancel': 'Cancelar',
+          'confirm': 'Confirmar',
+          'scheduled_notifications': 'Notificaciones Programadas',
+          'error_loading_notifications': 'Error al cargar notificaciones',
+          'no_scheduled_notifications': 'No hay notificaciones programadas',
+          'cancel_all': 'Cancelar Todo',
+          'scheduled_notification_title':
+              '🕒 ¡Hora de tu control de salud mamaria!',
+          'scheduled_notification_description':
+              'Mantente proactiva—abre BreastSonoVision y revisa tus últimos resultados de ultrasonido hoy.',
+          'notification_successfully_set':
+              'Notificación Configurada Exitosamente',
+          'notification_successfully_set_description':
+              'El recordatorio diario ha sido configurado a las ',
+          'new': 'Nuevo',
+          'select_language': 'Seleccionar Idioma',
+          'language_changed': 'Idioma Cambiado',
+          'language_changed_description':
+              'El idioma de la aplicación ha sido cambiado a ',
+          'apply': 'Aplicar',
         }
       };
 }

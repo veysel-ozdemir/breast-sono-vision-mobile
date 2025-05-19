@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 Map<String, Map<String, String>> get languages => {
       'de': {'flag': '🇩🇪', 'name': 'german'.tr},
       'en': {'flag': '🇺🇸', 'name': 'english'.tr},
+      'es': {'flag': '🇪🇸', 'name': 'spanish'.tr},
       'fr': {'flag': '🇫🇷', 'name': 'french'.tr},
       'tr': {'flag': '🇹🇷', 'name': 'turkish'.tr},
     };
