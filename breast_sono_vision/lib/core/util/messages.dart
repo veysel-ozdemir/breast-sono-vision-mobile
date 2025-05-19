@@ -8,6 +8,7 @@ class Messages extends Translations {
           'german': 'German',
           'english': 'English',
           'french': 'French',
+          'italian': 'Italian',
           'spanish': 'Spanish',
           'turkish': 'Turkish',
           'landing_page_tagline': 'Early Diagnosis,\nSaves Lives.',
@@ -126,6 +127,7 @@ class Messages extends Translations {
           'german': 'Deutsch',
           'english': 'Englisch',
           'french': 'Französisch',
+          'italian': 'Italienisch',
           'spanish': 'Spanisch',
           'turkish': 'Türkisch',
           'landing_page_tagline': 'Frühzeitige Diagnose,\nrettet Leben.',
@@ -250,6 +252,7 @@ class Messages extends Translations {
           'german': 'Almanca',
           'english': 'İngilizce',
           'french': 'Fransızca',
+          'italian': 'İtalyanca',
           'spanish': 'İspanyolca',
           'turkish': 'Türkçe',
           'landing_page_tagline': 'Erken Teşhis,\nHayat Kurtarır.',
@@ -370,6 +373,7 @@ class Messages extends Translations {
           'german': 'Allemand',
           'english': 'Anglais',
           'french': 'Français',
+          'italian': 'Italien',
           'spanish': 'Espagnol',
           'turkish': 'Turc',
           'landing_page_tagline': 'Diagnostic précoce,\nSauve des vies.',
@@ -496,6 +500,7 @@ class Messages extends Translations {
           'german': 'Alemán',
           'english': 'Inglés',
           'french': 'Francés',
+          'italian': 'Italiano',
           'spanish': 'Español',
           'turkish': 'Turco',
           'landing_page_tagline': 'Diagnóstico Temprano,\nSalva Vidas.',
@@ -614,6 +619,130 @@ class Messages extends Translations {
           'language_changed_description':
               'El idioma de la aplicación ha sido cambiado a ',
           'apply': 'Aplicar',
+        },
+        // Italian translations
+        'it': {
+          'german': 'Tedesco',
+          'english': 'Inglese',
+          'french': 'Francese',
+          'italian': 'Italiano',
+          'spanish': 'Spagnolo',
+          'turkish': 'Turco',
+          'landing_page_tagline': 'Diagnosi Precoce,\nSalva Vite.',
+          'landing_page_description':
+              'Analisi ecografica del seno semplificata — alimentata da IA, progettata per supportare il tuo percorso di salute.',
+          'get_started': 'Inizia',
+          'onboarding_title_1': 'Il Tuo Corpo Parla,\nTi Aiutiamo a Capirlo.',
+          'onboarding_description_1':
+              "Interpretiamo la tua immagine ecografica per darti un'idea più chiara di ciò che sta succedendo all'interno.",
+          'onboarding_title_2': 'Carica, Analizza e\nVisualizza.',
+          'onboarding_description_2':
+              "Carica la tua immagine e ricevi risultati segmentati dall'IA che evidenziano potenziali problemi in pochi secondi.",
+          'your_ultrasound': 'La Tua Ecografia',
+          'our_result': 'Il Nostro Risultato',
+          'onboarding_title_3': 'Risultati Chiari,\nProssimi Passi Sicuri.',
+          'onboarding_description_3':
+              "La segmentazione visiva ti aiuta a comprendere meglio la tua scansione e ciò che potrebbe rivelare.",
+          'continue': 'Continua',
+          'schedule_daily_reminder': 'Programma Promemoria Giornaliero',
+          'language': 'Lingua',
+          'home_page_description_1':
+              'Pronto a vedere il risultato? Lascia che l\'IA analizzi la tua immagine — o tocca sotto per sceglierne una diversa.',
+          'home_page_description_2':
+              "Selezioniamo la tua ecografia mammaria. Assicurati che tutte le autorizzazioni siano concesse affinché l'app funzioni correttamente.",
+          'upload_image': 'Carica Immagine',
+          'upload_again': 'Carica di Nuovo',
+          'analyzing': 'Analisi in corso...',
+          'analyze': 'Analizza',
+          'no_image_selected': 'Nessuna Immagine Selezionata',
+          'no_image_selected_description':
+              'Per favore seleziona un\'immagine da caricare.',
+          'converting_jpg_file': 'Conversione File JPG...',
+          'select_from_files': 'Seleziona dai File',
+          'select_from_gallery': 'Seleziona dalla Galleria',
+          'home_info_card_title': 'Informazioni',
+          'home_info_card_text_1':
+              'Per risultati più accurati, carica la tua ecografia come un file ',
+          'home_info_card_text_2': ' con una risoluzione di circa ',
+          'home_info_card_text_3': ' pixel. \n\n',
+          'home_info_card_text_4': ' e ',
+          'home_info_card_text_5':
+              ' sono accettati anche file ma verranno convertiti in PNG per mantenere la qualità per l\'analisi IA.',
+          'result_info_card_title': 'Comprensione del Risultato',
+          'result_info_card_text_1':
+              'Questa immagine mostra le regioni segmentate rilevate dal nostro sistema IA:\n🟥 ',
+          'red': 'Rosse',
+          'result_info_card_text_2':
+              ' le aree potrebbero indicare tessuto potenzialmente ',
+          'malignant': 'maligno',
+          'result_info_card_text_3': ' (canceroso).\n🟩 ',
+          'green': 'Verdi',
+          'result_info_card_text_4': ' le aree potrebbero suggerire risultati ',
+          'benign': 'benigni',
+          'result_info_card_text_5': ' (non cancerosi).\n✅ Se ',
+          'result_info_card_text_6': 'non appaiono regioni colorate',
+          'result_info_card_text_7':
+              ', non è stato rilevato alcun tessuto notevole — il che spesso è un ',
+          'result_info_card_text_8': 'buon segno',
+          'result_page_description':
+              'Curioso di confrontare? Visualizza l\'originale accanto al risultato — o torna alla home per provare un\'altra scansione.',
+          'compare': 'Confronta',
+          'share_the_image': 'Condividi l\'Immagine',
+          'save_to_gallery': 'Salva nella Galleria',
+          'api_error': 'Errore API',
+          'image_conversion_failed': 'Conversione Immagine Fallita',
+          'image_conversion_failed_description':
+              'Errore durante la conversione del file JPG',
+          'file_selection_error': 'Errore di Selezione File',
+          'unsupported_format': 'Formato Non Supportato',
+          'unsupported_format_description':
+              'Per favore seleziona un\'immagine PNG',
+          'image_selection_error': 'Errore di Selezione Immagine',
+          'share_successful': 'Condivisione Riuscita',
+          'share_successful_description':
+              'Immagine condivisa secondo l\'azione selezionata',
+          'save_failed': 'Salvataggio Fallito',
+          'save_failed_description':
+              'Impossibile salvare l\'immagine nella posizione selezionata a causa della restrizione di accesso alla cartella',
+          'save_failed_description_gallery':
+              'Impossibile salvare l\'immagine nella galleria',
+          'share_failed': 'Condivisione Fallita',
+          'share_failed_description': 'Impossibile condividere l\'immagine',
+          'save_successful': 'Salvataggio Riuscito',
+          'save_successful_description': 'Immagine salvata nella tua galleria',
+          'disclaimer_dialog_title': 'Avviso Legale',
+          'disclaimer_dialog_text_1':
+              'Questo risultato è generato da un modello di IA e ',
+          'disclaimer_dialog_text_2': 'non è una diagnosi medica',
+          'disclaimer_dialog_text_3':
+              '.\n\nConsulta un professionista sanitario per una valutazione completa e un consiglio medico appropriato.',
+          'understood': 'Capito',
+          'permission_dialog_title': 'Autorizzazione Richiesta',
+          'permission_dialog_text':
+              'Le autorizzazioni non sono concesse. Visita le impostazioni.',
+          'open_settings': 'Apri Impostazioni',
+          'hour': 'Ora',
+          'minute': 'Minuto',
+          'cancel': 'Annulla',
+          'confirm': 'Conferma',
+          'scheduled_notifications': 'Notifiche Programmate',
+          'error_loading_notifications':
+              'Errore nel caricamento delle notifiche',
+          'no_scheduled_notifications': 'Nessuna notifica programmata',
+          'cancel_all': 'Annulla Tutto',
+          'scheduled_notification_title':
+              '🕒 È ora del tuo controllo della salute del seno!',
+          'scheduled_notification_description':
+              'Sii proattiva—apri BreastSonoVision e rivedi i tuoi ultimi risultati ecografici oggi.',
+          'notification_successfully_set': 'Notifica Impostata con Successo',
+          'notification_successfully_set_description':
+              'Il promemoria giornaliero è stato impostato alle ',
+          'new': 'Nuovo',
+          'select_language': 'Seleziona Lingua',
+          'language_changed': 'Lingua Modificata',
+          'language_changed_description':
+              'La lingua dell\'app è stata cambiata in ',
+          'apply': 'Applica',
         }
       };
 }

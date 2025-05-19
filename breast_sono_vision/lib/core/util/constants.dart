@@ -6,5 +6,6 @@ Map<String, Map<String, String>> get languages => {
       'en': {'flag': '🇺🇸', 'name': 'english'.tr},
       'es': {'flag': '🇪🇸', 'name': 'spanish'.tr},
       'fr': {'flag': '🇫🇷', 'name': 'french'.tr},
+      'it': {'flag': '🇮🇹', 'name': 'italian'.tr},
       'tr': {'flag': '🇹🇷', 'name': 'turkish'.tr},
     };
