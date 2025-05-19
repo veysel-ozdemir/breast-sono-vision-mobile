@@ -795,8 +795,12 @@ Future<void> showLanguageSelectorDialog({
                                 itemBuilder: (context, index) {
                                   String languageKey =
                                       languages.keys.elementAt(index);
-                                  String languageValue =
+                                  Map<String, String> languageValue =
                                       languages.values.elementAt(index);
+                                  String languageFlag =
+                                      languageValue['flag'] ?? '';
+                                  String languageName =
+                                      languageValue['name'] ?? '';
 
                                   return ListTile(
                                     contentPadding: EdgeInsets.zero,
@@ -812,13 +816,27 @@ Future<void> showLanguageSelectorDialog({
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(
-                                            languageValue,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18,
-                                              color: ColorPalette.border,
-                                            ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                languageFlag,
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                  color: ColorPalette.border,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
+                                                languageName,
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                  color: ColorPalette.border,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                           if (selectedLanguage == languageKey)
                                             const Icon(

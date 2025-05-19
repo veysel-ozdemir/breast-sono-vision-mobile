@@ -7,6 +7,7 @@ class Messages extends Translations {
         'en': {
           'german': 'German',
           'english': 'English',
+          'french': 'French',
           'turkish': 'Turkish',
           'landing_page_tagline': 'Early Diagnosis,\nSaves Lives.',
           'landing_page_description':
@@ -123,6 +124,7 @@ class Messages extends Translations {
         'de': {
           'german': 'Deutsch',
           'english': 'Englisch',
+          'french': 'Französisch',
           'turkish': 'Türkisch',
           'landing_page_tagline': 'Frühzeitige Diagnose,\nrettet Leben.',
           'landing_page_description':
@@ -245,6 +247,7 @@ class Messages extends Translations {
         'tr': {
           'german': 'Almanca',
           'english': 'İngilizce',
+          'french': 'Fransızca',
           'turkish': 'Türkçe',
           'landing_page_tagline': 'Erken Teşhis,\nHayat Kurtarır.',
           'landing_page_description':
@@ -359,5 +362,130 @@ class Messages extends Translations {
               'Uygulama dili şu dile değiştirildi: ',
           'apply': 'Uygula',
         },
+        // French translations
+        'fr': {
+          'german': 'Allemand',
+          'english': 'Anglais',
+          'french': 'Français',
+          'turkish': 'Turc',
+          'landing_page_tagline': 'Diagnostic précoce,\nSauve des vies.',
+          'landing_page_description':
+              'Analyse d\'échographie mammaire simplifiée — propulsée par l\'IA, conçue pour soutenir votre parcours de santé.',
+          'get_started': 'Commencer',
+          'onboarding_title_1':
+              'Votre Corps Parle,\nNous Vous Aidons à Comprendre.',
+          'onboarding_description_1':
+              "Nous interprétons votre image échographique pour vous donner un aperçu plus clair de ce qui se passe à l'intérieur.",
+          'onboarding_title_2': 'Téléchargez, Analysez et\nVisualisez.',
+          'onboarding_description_2':
+              "Téléchargez votre image et recevez des résultats segmentés par l'IA qui mettent en évidence les préoccupations potentielles en quelques secondes.",
+          'your_ultrasound': 'Votre Échographie',
+          'our_result': 'Notre Résultat',
+          'onboarding_title_3':
+              'Résultats Clairs,\nProchaines Étapes en Confiance.',
+          'onboarding_description_3':
+              "La segmentation visuelle vous aide à mieux comprendre votre scan et ce qu'il peut révéler.",
+          'continue': 'Continuer',
+          'schedule_daily_reminder': 'Planifier un Rappel Quotidien',
+          'language': 'Langue',
+          'home_page_description_1':
+              'Prêt à voir le résultat ? Laissez l\'IA analyser votre image — ou appuyez ci-dessous pour en choisir une autre.',
+          'home_page_description_2':
+              "Sélectionnons votre échographie mammaire. Assurez-vous que toutes les autorisations sont accordées pour que l'application fonctionne correctement.",
+          'upload_image': 'Télécharger l\'Image',
+          'upload_again': 'Re-télécharger',
+          'analyzing': 'Analyse en cours...',
+          'analyze': 'Analyser',
+          'no_image_selected': 'Aucune Image Sélectionnée',
+          'no_image_selected_description':
+              'Veuillez sélectionner une image à télécharger.',
+          'converting_jpg_file': 'Conversion du Fichier JPG...',
+          'select_from_files': 'Sélectionner depuis les Fichiers',
+          'select_from_gallery': 'Sélectionner depuis la Galerie',
+          'home_info_card_title': 'Information',
+          'home_info_card_text_1':
+              'Pour les résultats les plus précis, téléchargez votre échographie sous forme de fichier ',
+          'home_info_card_text_2': ' avec une résolution d\'environ ',
+          'home_info_card_text_3': ' pixels. \n\n',
+          'home_info_card_text_4': ' et ',
+          'home_info_card_text_5':
+              ' sont également acceptés mais seront convertis en PNG pour maintenir la qualité pour l\'analyse par IA.',
+          'result_info_card_title': 'Comprendre Votre Résultat',
+          'result_info_card_text_1':
+              'Cette image montre les régions segmentées détectées par notre système d\'IA:\n🟥 ',
+          'red': 'Rouges',
+          'result_info_card_text_2':
+              ' les zones peuvent indiquer un tissu potentiellement ',
+          'malignant': 'malin',
+          'result_info_card_text_3': ' (cancéreux).\n🟩 ',
+          'green': 'Vertes',
+          'result_info_card_text_4':
+              ' les zones peuvent suggérer des résultats ',
+          'benign': 'bénins',
+          'result_info_card_text_5': ' (non cancéreux).\n✅ Si ',
+          'result_info_card_text_6': 'aucune région colorée',
+          'result_info_card_text_7':
+              ' n\'apparaît, aucun tissu notable n\'a été détecté — ce qui est souvent un ',
+          'result_info_card_text_8': 'bon signe',
+          'result_page_description':
+              'Curieux de comparer ? Visualisez votre original à côté du résultat — ou retournez à l\'accueil pour essayer un autre scan.',
+          'compare': 'Comparer',
+          'share_the_image': 'Partager l\'Image',
+          'save_to_gallery': 'Enregistrer dans la Galerie',
+          'api_error': 'Erreur API',
+          'image_conversion_failed': 'Échec de la Conversion d\'Image',
+          'image_conversion_failed_description':
+              'Une erreur s\'est produite lors de la conversion de votre fichier JPG',
+          'file_selection_error': 'Erreur de Sélection de Fichier',
+          'unsupported_format': 'Format Non Pris en Charge',
+          'unsupported_format_description':
+              'Veuillez sélectionner une image PNG',
+          'image_selection_error': 'Erreur de Sélection d\'Image',
+          'share_successful': 'Partage Réussi',
+          'share_successful_description':
+              'Image partagée selon l\'action sélectionnée',
+          'save_failed': 'Échec de l\'Enregistrement',
+          'save_failed_description':
+              'Impossible d\'enregistrer l\'image à l\'emplacement sélectionné en raison d\'une restriction d\'accès au dossier',
+          'save_failed_description_gallery':
+              'Impossible d\'enregistrer l\'image dans la galerie',
+          'share_failed': 'Échec du Partage',
+          'share_failed_description': 'Impossible de partager l\'image',
+          'save_successful': 'Enregistrement Réussi',
+          'save_successful_description': 'Image enregistrée dans votre galerie',
+          'disclaimer_dialog_title': 'Avertissement',
+          'disclaimer_dialog_text_1':
+              'Ce résultat est généré par un modèle d\'IA et n\'est ',
+          'disclaimer_dialog_text_2': 'pas un diagnostic médical',
+          'disclaimer_dialog_text_3':
+              '.\n\nVeuillez consulter un professionnel de la santé pour une évaluation complète et des conseils médicaux appropriés.',
+          'understood': 'Compris',
+          'permission_dialog_title': 'Autorisation Requise',
+          'permission_dialog_text':
+              'Les autorisations ne sont pas accordées. Veuillez visiter les paramètres.',
+          'open_settings': 'Ouvrir les Paramètres',
+          'hour': 'Heure',
+          'minute': 'Minute',
+          'cancel': 'Annuler',
+          'confirm': 'Confirmer',
+          'scheduled_notifications': 'Notifications Programmées',
+          'error_loading_notifications':
+              'Erreur de chargement des notifications',
+          'no_scheduled_notifications': 'Aucune notification programmée',
+          'cancel_all': 'Tout Annuler',
+          'scheduled_notification_title':
+              '🕒 C\'est l\'heure de votre examen de santé mammaire !',
+          'scheduled_notification_description':
+              'Restez proactive—ouvrez BreastSonoVision et examinez vos derniers résultats d\'échographie aujourd\'hui.',
+          'notification_successfully_set': 'Notification Définie Avec Succès',
+          'notification_successfully_set_description':
+              'Le rappel quotidien a été défini à ',
+          'new': 'Nouveau',
+          'select_language': 'Sélectionner la Langue',
+          'language_changed': 'Langue Modifiée',
+          'language_changed_description':
+              'La langue de l\'application a été changée en ',
+          'apply': 'Appliquer',
+        }
       };
 }
