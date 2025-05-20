@@ -8,5 +8,6 @@ Map<String, Map<String, String>> get languages => {
       'fr': {'flag': '🇫🇷', 'name': 'french'.tr},
       'it': {'flag': '🇮🇹', 'name': 'italian'.tr},
       'pt': {'flag': '🇵🇹', 'name': 'portuguese'.tr},
+      'ru': {'flag': '🇷🇺', 'name': 'russian'.tr},
       'tr': {'flag': '🇹🇷', 'name': 'turkish'.tr},
     };
