@@ -33,7 +33,7 @@ class _ComparisonPageState extends State<ComparisonPage> {
                     icon: const Icon(
                       Icons.arrow_back_ios_new_rounded,
                       color: ColorPalette.secondary,
-                      size: 40,
+                      size: 32,
                     ),
                   ),
                 ),

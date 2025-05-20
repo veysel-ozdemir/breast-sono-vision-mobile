@@ -10,6 +10,7 @@ class Messages extends Translations {
           'french': 'French',
           'italian': 'Italian',
           'spanish': 'Spanish',
+          'portuguese': 'Portuguese',
           'turkish': 'Turkish',
           'landing_page_tagline': 'Early Diagnosis,\nSaves Lives.',
           'landing_page_description':
@@ -129,6 +130,7 @@ class Messages extends Translations {
           'french': 'Französisch',
           'italian': 'Italienisch',
           'spanish': 'Spanisch',
+          'portuguese': 'Portugiesisch',
           'turkish': 'Türkisch',
           'landing_page_tagline': 'Frühzeitige Diagnose,\nrettet Leben.',
           'landing_page_description':
@@ -254,6 +256,7 @@ class Messages extends Translations {
           'french': 'Fransızca',
           'italian': 'İtalyanca',
           'spanish': 'İspanyolca',
+          'portuguese': 'Portekizce',
           'turkish': 'Türkçe',
           'landing_page_tagline': 'Erken Teşhis,\nHayat Kurtarır.',
           'landing_page_description':
@@ -375,6 +378,7 @@ class Messages extends Translations {
           'french': 'Français',
           'italian': 'Italien',
           'spanish': 'Espagnol',
+          'portuguese': 'Portugais',
           'turkish': 'Turc',
           'landing_page_tagline': 'Diagnostic précoce,\nSauve des vies.',
           'landing_page_description':
@@ -502,6 +506,7 @@ class Messages extends Translations {
           'french': 'Francés',
           'italian': 'Italiano',
           'spanish': 'Español',
+          'portuguese': 'Portugués',
           'turkish': 'Turco',
           'landing_page_tagline': 'Diagnóstico Temprano,\nSalva Vidas.',
           'landing_page_description':
@@ -627,6 +632,7 @@ class Messages extends Translations {
           'french': 'Francese',
           'italian': 'Italiano',
           'spanish': 'Spagnolo',
+          'portuguese': 'Portoghese',
           'turkish': 'Turco',
           'landing_page_tagline': 'Diagnosi Precoce,\nSalva Vite.',
           'landing_page_description':
@@ -743,6 +749,132 @@ class Messages extends Translations {
           'language_changed_description':
               'La lingua dell\'app è stata cambiata in ',
           'apply': 'Applica',
+        },
+        // Portuguese translations
+        'pt': {
+          'german': 'Alemão',
+          'english': 'Inglês',
+          'french': 'Francês',
+          'italian': 'Italiano',
+          'spanish': 'Espanhol',
+          'portuguese': 'Português',
+          'turkish': 'Turco',
+          'landing_page_tagline': 'Diagnóstico Precoce,\nSalva Vidas.',
+          'landing_page_description':
+              'Análise de ultrassom mamário simplificada — alimentada por IA, projetada para apoiar sua jornada de saúde.',
+          'get_started': 'Começar',
+          'onboarding_title_1': 'Seu Corpo Fala,\nNós Ajudamos a Entender.',
+          'onboarding_description_1':
+              "Interpretamos sua imagem de ultrassom para fornecer informações mais claras sobre o que está acontecendo por dentro.",
+          'onboarding_title_2': 'Carregue, Analise e\nVisualize.',
+          'onboarding_description_2':
+              "Carregue sua imagem e receba resultados segmentados por IA que destacam possíveis preocupações em segundos.",
+          'your_ultrasound': 'Seu Ultrassom',
+          'our_result': 'Nosso Resultado',
+          'onboarding_title_3':
+              'Resultados Claros,\nPróximos Passos Confiantes.',
+          'onboarding_description_3':
+              "A segmentação visual ajuda você a entender melhor sua varredura e o que ela pode revelar.",
+          'continue': 'Continuar',
+          'schedule_daily_reminder': 'Agendar Lembrete Diário',
+          'language': 'Idioma',
+          'home_page_description_1':
+              'Pronto para ver o resultado? Deixe a IA analisar sua imagem — ou toque abaixo para escolher uma diferente.',
+          'home_page_description_2':
+              "Vamos selecionar seu ultrassom mamário. Certifique-se de que todas as permissões sejam concedidas para que o aplicativo funcione corretamente.",
+          'upload_image': 'Carregar Imagem',
+          'upload_again': 'Carregar de novo',
+          'analyzing': 'Analisando...',
+          'analyze': 'Analisar',
+          'no_image_selected': 'Nenhuma Imagem Selecionada',
+          'no_image_selected_description':
+              'Por favor, selecione uma imagem para carregar.',
+          'converting_jpg_file': 'Convertendo Arquivo JPG...',
+          'select_from_files': 'Selecionar dos Arquivos',
+          'select_from_gallery': 'Selecionar da Galeria',
+          'home_info_card_title': 'Informação',
+          'home_info_card_text_1':
+              'Para resultados mais precisos, carregue seu ultrassom como um arquivo ',
+          'home_info_card_text_2': ' com uma resolução de aproximadamente ',
+          'home_info_card_text_3': ' pixels. \n\n',
+          'home_info_card_text_4': ' e ',
+          'home_info_card_text_5':
+              ' arquivos também são aceitos, mas serão convertidos para PNG para manter a qualidade para análise de IA.',
+          'result_info_card_title': 'Entendendo Seu Resultado',
+          'result_info_card_text_1':
+              'Esta imagem mostra as regiões segmentadas detectadas pelo nosso sistema de IA:\n🟥 ',
+          'red': 'Vermelhas',
+          'result_info_card_text_2':
+              ' as áreas podem indicar tecido potencialmente ',
+          'malignant': 'maligno',
+          'result_info_card_text_3': ' (canceroso).\n🟩 ',
+          'green': 'Verdes',
+          'result_info_card_text_4': ' as áreas podem sugerir achados ',
+          'benign': 'benignos',
+          'result_info_card_text_5': ' (não cancerosos).\n✅ Se ',
+          'result_info_card_text_6': 'nenhuma região colorida',
+          'result_info_card_text_7':
+              ' aparecer, nenhum tecido notável foi detectado — o que frequentemente é um ',
+          'result_info_card_text_8': 'bom sinal',
+          'result_page_description':
+              'Curioso para comparar? Veja seu original ao lado do resultado — ou volte para casa para tentar outra varredura.',
+          'compare': 'Comparar',
+          'share_the_image': 'Compartilhar a Imagem',
+          'save_to_gallery': 'Salvar na Galeria',
+          'api_error': 'Erro de API',
+          'image_conversion_failed': 'Falha na Conversão da Imagem',
+          'image_conversion_failed_description':
+              'Ocorreu um erro ao converter seu arquivo JPG',
+          'file_selection_error': 'Erro na Seleção de Arquivo',
+          'unsupported_format': 'Formato Não Suportado',
+          'unsupported_format_description':
+              'Por favor, selecione uma imagem PNG',
+          'image_selection_error': 'Erro na Seleção de Imagem',
+          'share_successful': 'Compartilhamento Bem-sucedido',
+          'share_successful_description':
+              'Imagem compartilhada de acordo com a ação selecionada',
+          'save_failed': 'Falha ao Salvar',
+          'save_failed_description':
+              'Falha ao salvar a imagem no local selecionado devido à restrição de acesso à pasta',
+          'save_failed_description_gallery':
+              'Falha ao salvar a imagem na galeria',
+          'share_failed': 'Falha ao Compartilhar',
+          'share_failed_description': 'Falha ao compartilhar a imagem',
+          'save_successful': 'Salvo com Sucesso',
+          'save_successful_description': 'Imagem salva na sua galeria',
+          'disclaimer_dialog_title': 'Aviso Legal',
+          'disclaimer_dialog_text_1':
+              'Este resultado é gerado por um modelo de IA e ',
+          'disclaimer_dialog_text_2': 'não é um diagnóstico médico',
+          'disclaimer_dialog_text_3':
+              '.\n\nPor favor, consulte um profissional de saúde para uma avaliação completa e aconselhamento médico adequado.',
+          'understood': 'Entendido',
+          'permission_dialog_title': 'Permissão Necessária',
+          'permission_dialog_text':
+              'As permissões não foram concedidas. Por favor, visite as configurações.',
+          'open_settings': 'Abrir Configurações',
+          'hour': 'Hora',
+          'minute': 'Minuto',
+          'cancel': 'Cancelar',
+          'confirm': 'Confirmar',
+          'scheduled_notifications': 'Notificações Agendadas',
+          'error_loading_notifications': 'Erro ao carregar notificações',
+          'no_scheduled_notifications': 'Nenhuma notificação agendada',
+          'cancel_all': 'Cancelar Tudo',
+          'scheduled_notification_title':
+              '🕒 Hora do seu Exame de Saúde Mamária!',
+          'scheduled_notification_description':
+              'Seja proativa—abra o BreastSonoVision e reveja seus últimos resultados de ultrassom hoje.',
+          'notification_successfully_set':
+              'Notificação Configurada com Sucesso',
+          'notification_successfully_set_description':
+              'O lembrete diário foi configurado para às ',
+          'new': 'Novo',
+          'select_language': 'Selecionar Idioma',
+          'language_changed': 'Idioma Alterado',
+          'language_changed_description':
+              'O idioma do aplicativo foi alterado para ',
+          'apply': 'Aplicar',
         }
       };
 }
