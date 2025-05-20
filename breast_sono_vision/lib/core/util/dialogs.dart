@@ -781,10 +781,6 @@ Future<void> showLanguageSelectorDialog({
                         Expanded(
                           child: Scrollbar(
                             thickness: 5,
-                            radius: const Radius.circular(10),
-                            thumbVisibility: true,
-                            trackVisibility: true,
-                            interactive: true,
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
@@ -904,7 +900,7 @@ Future<void> showLanguageSelectorDialog({
                         icon: '✅',
                         title: 'language_changed'.tr,
                         description:
-                            '${'language_changed_description'.tr}${languages[selectedLanguage]}',
+                            '${'language_changed_description'.tr}${languages[selectedLanguage]?['name']} ${languages[selectedLanguage]?['flag']}',
                       );
                     },
                     child: Text(
