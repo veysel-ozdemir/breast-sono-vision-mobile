@@ -55,147 +55,162 @@ class _ResultPageState extends State<ResultPage> {
               width: Get.width,
               child: CustomScrollbar(
                 controller: scrollController,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SingleChildScrollView(
+                child: LayoutBuilder(
+                  builder: (context, constraints) => SingleChildScrollView(
                     controller: scrollController,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 10),
-                        // Information Card
-                        InfoCard(
-                          icon: '🔎',
-                          title: 'result_info_card_title'.tr,
-                          description: [
-                            TextSpan(text: 'result_info_card_text_1'.tr),
-                            TextSpan(
-                              text: 'red'.tr,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(text: 'result_info_card_text_2'.tr),
-                            TextSpan(
-                              text: 'malignant'.tr,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(text: 'result_info_card_text_3'.tr),
-                            TextSpan(
-                              text: 'green'.tr,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(text: 'result_info_card_text_4'.tr),
-                            TextSpan(
-                              text: 'benign'.tr,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(text: 'result_info_card_text_5'.tr),
-                            TextSpan(
-                              text: 'result_info_card_text_6'.tr,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(text: 'result_info_card_text_7'.tr),
-                            TextSpan(
-                              text: 'result_info_card_text_8'.tr,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            const TextSpan(text: '.'),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        // Image View
-                        ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxWidth: Get.width * 0.8,
-                            maxHeight: Get.width * 0.8,
-                          ),
-                          child: IntrinsicWidth(
-                            child: IntrinsicHeight(
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: ColorPalette.secondary, width: 3),
-                                  color: ColorPalette.secondary,
-                                  borderRadius: BorderRadius.circular(15),
+                    child: ConstrainedBox(
+                      constraints:
+                          BoxConstraints(minHeight: constraints.maxHeight),
+                      child: IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Information Card
+                              InfoCard(
+                                icon: '🔎',
+                                title: 'result_info_card_title'.tr,
+                                description: [
+                                  TextSpan(text: 'result_info_card_text_1'.tr),
+                                  TextSpan(
+                                    text: 'red'.tr,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: 'result_info_card_text_2'.tr),
+                                  TextSpan(
+                                    text: 'malignant'.tr,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: 'result_info_card_text_3'.tr),
+                                  TextSpan(
+                                    text: 'green'.tr,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: 'result_info_card_text_4'.tr),
+                                  TextSpan(
+                                    text: 'benign'.tr,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: 'result_info_card_text_5'.tr),
+                                  TextSpan(
+                                    text: 'result_info_card_text_6'.tr,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: 'result_info_card_text_7'.tr),
+                                  TextSpan(
+                                    text: 'result_info_card_text_8'.tr,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const TextSpan(text: '.'),
+                                ],
+                              ),
+                              const Spacer(flex: 1),
+                              // Image View
+                              ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxWidth: Get.width * 0.8,
+                                  maxHeight: Get.width * 0.8,
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.5),
-                                  child: Image.file(
-                                    apiController.result.value!,
-                                    scale: 0.8,
+                                child: IntrinsicWidth(
+                                  child: IntrinsicHeight(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: ColorPalette.secondary,
+                                            width: 3),
+                                        color: ColorPalette.secondary,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(12.5),
+                                        child: Image.file(
+                                          apiController.result.value!,
+                                          scale: 0.8,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        SizedBox(
-                          child: OutlinedButton(
-                            onPressed: () async {
-                              await _showSaveSourceSelection();
-                            },
-                            child: const Icon(
-                              Icons.download,
-                              color: ColorPalette.secondary,
-                              size: 32,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        SizedBox(
-                          width: Get.width * 0.75,
-                          child: Text(
-                            'result_page_description'.tr,
-                            textAlign: TextAlign.left,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        IntrinsicWidth(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
+                              const Spacer(flex: 1),
+                              // Download & Share Button
+                              SizedBox(
                                 child: OutlinedButton(
                                   onPressed: () async {
-                                    await Get.to(() => const ComparisonPage());
+                                    await _showSaveSourceSelection();
                                   },
-                                  child: Text(
-                                    'compare'.tr,
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                                  child: const Icon(
+                                    Icons.download,
+                                    color: ColorPalette.secondary,
+                                    size: 32,
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 25),
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () async {
-                                    await Get.offAll(() => const HomePage());
-                                  },
-                                  child: const Text(
-                                    'Home',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                              const Spacer(flex: 1),
+                              // Description Text
+                              SizedBox(
+                                width: Get.width * 0.75,
+                                child: Text(
+                                  'result_page_description'.tr,
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),
+                              const Spacer(flex: 2),
+                              // Compare & Home Buttons
+                              IntrinsicWidth(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: OutlinedButton(
+                                        onPressed: () async {
+                                          await Get.to(
+                                              () => const ComparisonPage());
+                                        },
+                                        child: Text(
+                                          'compare'.tr,
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 25),
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        onPressed: () async {
+                                          await Get.offAll(
+                                              () => const HomePage());
+                                        },
+                                        child: const Text(
+                                          'Home',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const Spacer(flex: 1),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
