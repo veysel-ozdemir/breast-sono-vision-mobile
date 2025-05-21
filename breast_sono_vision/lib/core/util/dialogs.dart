@@ -28,6 +28,11 @@ Future<void> showDisclaimerDialog({
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             TextSpan(text: 'disclaimer_dialog_text_3'.tr),
+            TextSpan(
+              text: 'disclaimer_dialog_text_4'.tr,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            TextSpan(text: 'disclaimer_dialog_text_5'.tr),
           ],
           bottomWidgets: Column(
             mainAxisSize: MainAxisSize.min,

@@ -97,6 +97,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'not a medical diagnosis',
           'disclaimer_dialog_text_3':
               '.\n\nPlease consult a healthcare professional for a full evaluation and proper medical advice.',
+          'disclaimer_dialog_text_4': '\n\nCaution: ',
+          'disclaimer_dialog_text_5':
+              'If you feel that you have a lump or a hard spot on your breast, contact your doctor.',
           'understood': 'Understood',
           'permission_dialog_title': 'Permission Required',
           'permission_dialog_text':
@@ -223,6 +226,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'keine medizinische Diagnose',
           'disclaimer_dialog_text_3':
               '.\n\nBitte konsultieren Sie einen Arzt für eine vollständige Bewertung und angemessene medizinische Beratung.',
+          'disclaimer_dialog_text_4': '\n\nAchtung: ',
+          'disclaimer_dialog_text_5':
+              'Wenn Sie einen Knoten oder eine verhärtete Stelle an Ihrer Brust bemerken, kontaktieren Sie Ihren Arzt.',
           'understood': 'Verstanden',
           'permission_dialog_title': 'Berechtigung erforderlich',
           'permission_dialog_text':
@@ -347,6 +353,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'tıbbi bir teşhis değildir',
           'disclaimer_dialog_text_3':
               '.\n\nLütfen tam bir değerlendirme ve uygun tıbbi tavsiye için bir sağlık uzmanına danışın.',
+          'disclaimer_dialog_text_4': '\n\nUyarı: ',
+          'disclaimer_dialog_text_5':
+              'Eğer memede bir kitle veya sert bir nokta hissediyorsanız, doktorunuzla iletişime geçin.',
           'understood': 'Anladım',
           'permission_dialog_title': 'İzin Gerekli',
           'permission_dialog_text':
@@ -475,6 +484,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'pas un diagnostic médical',
           'disclaimer_dialog_text_3':
               '.\n\nVeuillez consulter un professionnel de la santé pour une évaluation complète et des conseils médicaux appropriés.',
+          'disclaimer_dialog_text_4': '\n\nAttention: ',
+          'disclaimer_dialog_text_5':
+              'Si vous sentez une bosse ou un point dur sur votre sein, contactez votre médecin.',
           'understood': 'Compris',
           'permission_dialog_title': 'Autorisation Requise',
           'permission_dialog_text':
@@ -602,6 +614,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'no es un diagnóstico médico',
           'disclaimer_dialog_text_3':
               '.\n\nPor favor, consulta a un profesional de la salud para una evaluación completa y asesoramiento médico adecuado.',
+          'disclaimer_dialog_text_4': '\n\nPrecaución: ',
+          'disclaimer_dialog_text_5':
+              'Si sientes que tienes un bulto o una zona dura en tu pecho, contacta a tu médico.',
           'understood': 'Entendido',
           'permission_dialog_title': 'Permiso Requerido',
           'permission_dialog_text':
@@ -728,6 +743,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'non è una diagnosi medica',
           'disclaimer_dialog_text_3':
               '.\n\nConsulta un professionista sanitario per una valutazione completa e un consiglio medico appropriato.',
+          'disclaimer_dialog_text_4': '\n\nAttenzione: ',
+          'disclaimer_dialog_text_5':
+              'Se avverti la presenza di un nodulo o di un punto duro sul seno, contatta il tuo medico.',
           'understood': 'Capito',
           'permission_dialog_title': 'Autorizzazione Richiesta',
           'permission_dialog_text':
@@ -855,6 +873,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'não é um diagnóstico médico',
           'disclaimer_dialog_text_3':
               '.\n\nPor favor, consulte um profissional de saúde para uma avaliação completa e aconselhamento médico adequado.',
+          'disclaimer_dialog_text_4': '\n\nAtenção: ',
+          'disclaimer_dialog_text_5':
+              'Se você sentir que tem um nódulo ou um ponto endurecido em seu seio, entre em contato com seu médico.',
           'understood': 'Entendido',
           'permission_dialog_title': 'Permissão Necessária',
           'permission_dialog_text':
@@ -981,6 +1002,9 @@ class Messages extends Translations {
           'disclaimer_dialog_text_2': 'не является медицинским диагнозом',
           'disclaimer_dialog_text_3':
               '.\n\nПожалуйста, проконсультируйтесь с медицинским специалистом для полной оценки и надлежащей медицинской консультации.',
+          'disclaimer_dialog_text_4': '\n\nПредостережение: ',
+          'disclaimer_dialog_text_5':
+              'Если вы ощущаете уплотнение или твердый участок в молочной железе, обратитесь к врачу.',
           'understood': 'Понятно',
           'permission_dialog_title': 'Требуется разрешение',
           'permission_dialog_text':

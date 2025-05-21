@@ -259,6 +259,7 @@ class _HomePageState extends State<HomePage> {
                                 await _showUploadSourceSelection(),
                             child: Text(
                               'upload_image'.tr,
+                              textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,

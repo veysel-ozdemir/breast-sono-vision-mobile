@@ -26,7 +26,8 @@ void main() async {
   // Load shared preferences data
   final prefs = await SharedPreferences.getInstance();
 
-  // TODO: These two lines are for testing, delete it later
+  // TODO: These lines are for testing, delete it later
+  await prefs.remove('isOnboardingPassed');
   // await prefs.clear();
   // NotificationService().cancelAllNotifications();
 
