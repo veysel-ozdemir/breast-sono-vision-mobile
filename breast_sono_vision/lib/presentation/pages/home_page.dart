@@ -13,6 +13,8 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../widgets/custom_scrollbar.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -162,12 +164,8 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: SizedBox(
             width: Get.width,
-            child: RawScrollbar(
+            child: CustomScrollbar(
               controller: scrollController,
-              thickness: 5,
-              thumbColor: ColorPalette.secondary,
-              radius: const Radius.circular(10),
-              interactive: true,
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: SingleChildScrollView(

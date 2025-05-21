@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../presentation/widgets/custom_scrollbar.dart';
 import 'constants.dart';
 
 Future<void> showDisclaimerDialog({
@@ -551,12 +552,8 @@ Future<void> showScheduledNotificationDialog({
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child: RawScrollbar(
+                              child: CustomScrollbar(
                                 controller: scrollController,
-                                thickness: 5,
-                                thumbColor: ColorPalette.secondary,
-                                radius: const Radius.circular(10),
-                                interactive: true,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10),
@@ -788,12 +785,8 @@ Future<void> showLanguageSelectorDialog({
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: RawScrollbar(
+                          child: CustomScrollbar(
                             controller: scrollController,
-                            thickness: 5,
-                            thumbColor: ColorPalette.secondary,
-                            radius: const Radius.circular(10),
-                            interactive: true,
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),

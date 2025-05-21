@@ -9,6 +9,8 @@ import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../widgets/custom_scrollbar.dart';
+
 class ResultPage extends StatefulWidget {
   const ResultPage({super.key});
 
@@ -51,12 +53,8 @@ class _ResultPageState extends State<ResultPage> {
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: SizedBox(
               width: Get.width,
-              child: RawScrollbar(
+              child: CustomScrollbar(
                 controller: scrollController,
-                thickness: 5,
-                thumbColor: ColorPalette.secondary,
-                radius: const Radius.circular(10),
-                interactive: true,
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: SingleChildScrollView(
