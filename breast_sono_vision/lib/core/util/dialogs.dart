@@ -545,20 +545,23 @@ Future<void> showScheduledNotificationDialog({
                           return timeA.minute.compareTo(timeB.minute);
                         });
 
+                        ScrollController scrollController = ScrollController();
+
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child: Scrollbar(
+                              child: RawScrollbar(
+                                controller: scrollController,
                                 thickness: 5,
+                                thumbColor: ColorPalette.secondary,
                                 radius: const Radius.circular(10),
-                                thumbVisibility: true,
-                                trackVisibility: true,
                                 interactive: true,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10),
                                   child: ListView.builder(
+                                    controller: scrollController,
                                     itemCount: sortedNotifications.length,
                                     padding: EdgeInsets.zero,
                                     itemExtent:
@@ -762,6 +765,7 @@ Future<void> showLanguageSelectorDialog({
   final prefs = await SharedPreferences.getInstance();
   String selectedLanguage = prefs.getString('locale') ??
       currentLocale; // Initialize with current language
+  ScrollController scrollController = ScrollController();
   final alertDialog = AlertDialog(
     backgroundColor: Colors.transparent,
     contentPadding: EdgeInsets.zero,
@@ -784,12 +788,17 @@ Future<void> showLanguageSelectorDialog({
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: Scrollbar(
+                          child: RawScrollbar(
+                            controller: scrollController,
                             thickness: 5,
+                            thumbColor: ColorPalette.secondary,
+                            radius: const Radius.circular(10),
+                            interactive: true,
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: ListView.builder(
+                                controller: scrollController,
                                 itemCount: languages.length,
                                 padding: EdgeInsets.zero,
                                 itemExtent: 50, // Fixed height for each item

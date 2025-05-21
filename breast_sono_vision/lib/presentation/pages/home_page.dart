@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   final FileController fileController = Get.find();
   final ApiController apiController = Get.find();
   final NotificationService notificationService = NotificationService();
+  final ScrollController scrollController = ScrollController();
   late final SharedPreferences prefs;
   String? _currentLocale;
   bool _isImageSelected = false;
@@ -157,117 +158,128 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: SizedBox(
-          width: Get.width,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 10),
-                  // Information Card
-                  InfoCard(
-                    icon: 'ℹ️',
-                    title: 'home_info_card_title'.tr,
-                    description: [
-                      TextSpan(text: 'home_info_card_text_1'.tr),
-                      const TextSpan(
-                        text: 'PNG',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: 'home_info_card_text_2'.tr),
-                      const TextSpan(
-                        text: '600×600',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: 'home_info_card_text_3'.tr),
-                      const TextSpan(
-                        text: 'JPG',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: 'home_info_card_text_4'.tr),
-                      const TextSpan(
-                        text: 'JPEG',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: 'home_info_card_text_5'.tr,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  // Conditional Image View
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: Get.width * 0.8,
-                      maxHeight: Get.width * 0.8,
-                    ),
-                    child: IntrinsicWidth(
-                      child: IntrinsicHeight(
-                        child: Container(
-                          width: _isImageSelected ? null : Get.width,
-                          height: _isImageSelected ? null : Get.width,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: ColorPalette.secondary, width: 3),
-                            color: _isImageSelected
-                                ? ColorPalette.secondary
-                                : Colors.white.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(15),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: SizedBox(
+            width: Get.width,
+            child: RawScrollbar(
+              controller: scrollController,
+              thickness: 5,
+              thumbColor: ColorPalette.secondary,
+              radius: const Radius.circular(10),
+              interactive: true,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 10),
+                      // Information Card
+                      InfoCard(
+                        icon: 'ℹ️',
+                        title: 'home_info_card_title'.tr,
+                        description: [
+                          TextSpan(text: 'home_info_card_text_1'.tr),
+                          const TextSpan(
+                            text: 'PNG',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          child: _isImageSelected
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.5),
-                                  child: Image.file(
-                                    fileController.image.value!,
-                                    scale: 0.8,
-                                  ),
-                                )
-                              : const Icon(
-                                  Icons.image,
-                                  color: Colors.black45,
-                                  size: 75,
-                                ),
+                          TextSpan(text: 'home_info_card_text_2'.tr),
+                          const TextSpan(
+                            text: '600×600',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: 'home_info_card_text_3'.tr),
+                          const TextSpan(
+                            text: 'JPG',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: 'home_info_card_text_4'.tr),
+                          const TextSpan(
+                            text: 'JPEG',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: 'home_info_card_text_5'.tr,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      // Conditional Image View
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: Get.width * 0.8,
+                          maxHeight: Get.width * 0.8,
                         ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    width: Get.width * 0.75,
-                    child: Text(
-                      _isImageSelected
-                          ? 'home_page_description_1'.tr
-                          : 'home_page_description_2'.tr,
-                      textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  // Conditional Button Layout
-                  _isImageSelected
-                      ? _selectedImageButtons()
-                      : SizedBox(
-                          width: Get.width * 0.5,
-                          child: ElevatedButton(
-                            onPressed: () async =>
-                                await _showUploadSourceSelection(),
-                            child: Text(
-                              'upload_image'.tr,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                        child: IntrinsicWidth(
+                          child: IntrinsicHeight(
+                            child: Container(
+                              width: _isImageSelected ? null : Get.width,
+                              height: _isImageSelected ? null : Get.width,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: ColorPalette.secondary, width: 3),
+                                color: _isImageSelected
+                                    ? ColorPalette.secondary
+                                    : Colors.white.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(15),
                               ),
+                              child: _isImageSelected
+                                  ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.5),
+                                      child: Image.file(
+                                        fileController.image.value!,
+                                        scale: 0.8,
+                                      ),
+                                    )
+                                  : const Icon(
+                                      Icons.image,
+                                      color: Colors.black45,
+                                      size: 75,
+                                    ),
                             ),
                           ),
                         ),
-                ],
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: Get.width * 0.75,
+                        child: Text(
+                          _isImageSelected
+                              ? 'home_page_description_1'.tr
+                              : 'home_page_description_2'.tr,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      // Conditional Button Layout
+                      _isImageSelected
+                          ? _selectedImageButtons()
+                          : SizedBox(
+                              width: Get.width * 0.5,
+                              child: ElevatedButton(
+                                onPressed: () async =>
+                                    await _showUploadSourceSelection(),
+                                child: Text(
+                                  'upload_image'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
