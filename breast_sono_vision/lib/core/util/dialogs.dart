@@ -763,6 +763,7 @@ Future<void> showLanguageSelectorDialog({
   String selectedLanguage = prefs.getString('locale') ??
       currentLocale; // Initialize with current language
   ScrollController scrollController = ScrollController();
+  NotificationService notificationService = NotificationService();
   final alertDialog = AlertDialog(
     backgroundColor: Colors.transparent,
     contentPadding: EdgeInsets.zero,
@@ -900,6 +901,11 @@ Future<void> showLanguageSelectorDialog({
                       await Get.updateLocale(locale);
                       // Save the selected language to shared preferences
                       await prefs.setString('locale', locale.languageCode);
+                      // Update texts of scheduled notifications
+                      await notificationService.updateAllScheduledNotifications(
+                        title: 'scheduled_notification_title'.tr,
+                        body: 'scheduled_notification_description'.tr,
+                      );
                       // Pop the dialog
                       if (context.mounted) Navigator.of(context).pop();
                       // Show snackbar

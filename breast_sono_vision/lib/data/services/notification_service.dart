@@ -239,6 +239,69 @@ class NotificationService {
     debugPrint('All notifications have been cancelled');
   }
 
+  // UPDATE SCHEDULED NOTIFICATION (e.g., for language change)
+  Future<void> updateScheduledNotification({
+    required int id,
+    required String title,
+    required String body,
+  }) async {
+    try {
+      // Get the original scheduled time
+      final TimeOfDay? originalTime = await getNotificationTime(id);
+
+      if (originalTime == null) {
+        debugPrint(
+            'Cannot update notification $id: Original schedule time not found.');
+        return;
+      }
+
+      // Cancel the existing notification (without removing from SharedPreferences yet,
+      // as scheduleNotification will handle updating/re-saving it)
+      await notificationsPlugin.cancel(id);
+      debugPrint('Cancelled notification $id for update.');
+
+      // Schedule the notification with the new title and body, but original time
+      await scheduleNotification(
+        id: id,
+        title: title,
+        body: body,
+        hour: originalTime.hour,
+        minute: originalTime.minute,
+      );
+
+      debugPrint('Notification $id updated with new title/body.');
+    } catch (e) {
+      debugPrint('Error updating scheduled notification $id: $e');
+    }
+  }
+
+  // UPDATE ALL SCHEDULED NOTIFICATIONS (e.g., for language change)
+  Future<void> updateAllScheduledNotifications({
+    required String title,
+    required String body,
+  }) async {
+    try {
+      final Map<int, TimeOfDay> allTimes = await getAllNotificationTimes();
+
+      if (allTimes.isEmpty) {
+        debugPrint('No scheduled notifications found to update.');
+        return;
+      }
+
+      for (final entry in allTimes.entries) {
+        final int id = entry.key;
+        // The updateScheduledNotification method already handles fetching the time,
+        // cancelling, and rescheduling with the original time.
+        await updateScheduledNotification(id: id, title: title, body: body);
+      }
+
+      debugPrint(
+          'All scheduled notifications have been updated with new title/body.');
+    } catch (e) {
+      debugPrint('Error updating all scheduled notifications: $e');
+    }
+  }
+
   // Get number of scheduled notifications and generate a new ID
   Future<int> getNextNotificationId() async {
     try {
