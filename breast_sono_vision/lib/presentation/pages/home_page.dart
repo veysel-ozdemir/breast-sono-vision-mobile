@@ -332,16 +332,12 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  const SizedBox(
+                                  SizedBox(
                                     width: 75,
                                     height: 75,
-                                    child: CircularProgressIndicator(
-                                      color: ColorPalette.background,
-                                      strokeWidth: 5,
-                                      strokeCap: StrokeCap.round,
-                                    ),
+                                    child: Lottie.asset(
+                                        'assets/animation/loading.json'),
                                   ),
-                                  const SizedBox(height: 15),
                                   RichText(
                                     text: TextSpan(
                                       text: 'analyzing'.tr,
@@ -456,16 +452,12 @@ class _HomePageState extends State<HomePage> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    const SizedBox(
+                                    SizedBox(
                                       width: 75,
                                       height: 75,
-                                      child: CircularProgressIndicator(
-                                        color: ColorPalette.background,
-                                        strokeWidth: 5,
-                                        strokeCap: StrokeCap.round,
-                                      ),
+                                      child: Lottie.asset(
+                                          'assets/animation/loading.json'),
                                     ),
-                                    const SizedBox(height: 15),
                                     RichText(
                                       text: TextSpan(
                                         text: 'converting_jpg_file'.tr,
@@ -552,16 +544,12 @@ class _HomePageState extends State<HomePage> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 75,
                                         height: 75,
-                                        child: CircularProgressIndicator(
-                                          color: ColorPalette.background,
-                                          strokeWidth: 5,
-                                          strokeCap: StrokeCap.round,
-                                        ),
+                                        child: Lottie.asset(
+                                            'assets/animation/loading.json'),
                                       ),
-                                      const SizedBox(height: 15),
                                       RichText(
                                         text: TextSpan(
                                           text: 'converting_jpg_file'.tr,

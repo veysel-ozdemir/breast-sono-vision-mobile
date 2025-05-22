@@ -4,6 +4,7 @@ import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../presentation/widgets/custom_scrollbar.dart';
@@ -491,7 +492,9 @@ Future<void> showScheduledNotificationDialog({
                   future: notificationService.getPendingNotifications(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
+                      return Center(
+                        child: Lottie.asset('assets/animation/loading.json'),
+                      );
                     }
 
                     if (snapshot.hasError) {
