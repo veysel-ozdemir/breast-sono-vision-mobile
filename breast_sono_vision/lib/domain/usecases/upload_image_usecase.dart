@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:breast_sono_vision/data/models/api_response.dart';
 import 'package:breast_sono_vision/data/repository/api_repository.dart';
 
 class UploadImageUseCase {
@@ -6,7 +7,7 @@ class UploadImageUseCase {
 
   UploadImageUseCase(this.repository);
 
-  Future<File> call(File image) async {
+  Future<ApiResponse> call(File image) async {
     return await repository.uploadImage(image);
   }
 }

@@ -54,19 +54,32 @@ class Messages extends Translations {
               ' files are also accepted but will be converted to PNG to maintain quality for AI analysis.',
           'result_info_card_title': 'Understanding Your Result',
           'result_info_card_text_1':
-              'This image shows the segmented regions detected by our AI system:\n🟥 ',
+              'This image shows the segmented regions detected by our AI system:\n\n🟥 ',
           'red': 'Red',
           'result_info_card_text_2': ' areas may indicate potentially ',
           'malignant': 'malignant',
-          'result_info_card_text_3': ' (cancerous) tissue.\n🟩 ',
+          'result_info_card_text_3': ' (cancerous) tissue.\n\n🟩 ',
           'green': 'Green',
           'result_info_card_text_4': ' areas may suggest ',
           'benign': 'benign',
-          'result_info_card_text_5': ' (non-cancerous) findings.\n✅ If ',
+          'result_info_card_text_5': ' (non-cancerous) findings.\n\n✅ If ',
           'result_info_card_text_6': 'no colored regions',
           'result_info_card_text_7':
               ' appear, no notable tissue was detected — which is often a ',
           'result_info_card_text_8': 'good sign',
+          'pixel_analysis_info_card_title': 'Pixel-Based Analysis',
+          'pixel_analysis_info_card_text_1': '🟢 Benign: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Malignant: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Normal: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Total pixels: ',
+          'pixel_analysis_info_card_text_5': '\n\nNote: ',
+          'pixel_analysis_info_card_text_6':
+              'To compute the real-world tumor size, multiply the provided pixel count by the pixel area.\n\nHere is the calculation:',
+          'pixel_analysis_info_card_text_7':
+              '\nPixel Area = Pixel Spacing X × Pixel Spacing Y\nSegmented Area (mm²) = Pixel Count × Pixel Area',
+          'pixel_analysis_info_card_text_8':
+              '\n\nPlease refer to your imaging device or physician for exact pixel spacing.',
+          'pixels': ' pixels ',
           'result_page_description':
               'Curious to compare? View your original next to the result — or go home to try another scan.',
           'compare': 'Compare',
@@ -180,20 +193,33 @@ class Messages extends Translations {
               '-Dateien werden ebenfalls akzeptiert, werden aber in PNG konvertiert, um die Qualität für die KI-Analyse zu erhalten.',
           'result_info_card_title': 'Ihr Ergebnis verstehen',
           'result_info_card_text_1':
-              'Dieses Bild zeigt die von unserem KI-System erkannten segmentierten Regionen:\n🟥 ',
+              'Dieses Bild zeigt die von unserem KI-System erkannten segmentierten Regionen:\n\n🟥 ',
           'red': 'Rote',
           'result_info_card_text_2': ' Bereiche können auf potenziell ',
           'malignant': 'bösartiges',
-          'result_info_card_text_3': ' (krebsartiges) Gewebe hinweisen.\n🟩 ',
+          'result_info_card_text_3': ' (krebsartiges) Gewebe hinweisen.\n\n🟩 ',
           'green': 'Grüne',
           'result_info_card_text_4': ' Bereiche könnten auf ',
           'benign': 'gutartige',
           'result_info_card_text_5':
-              ' (nicht krebsartige) Befunde hindeuten.\n✅ Wenn ',
+              ' (nicht krebsartige) Befunde hindeuten.\n\n✅ Wenn ',
           'result_info_card_text_6': 'keine farbigen Regionen',
           'result_info_card_text_7':
               ' erscheinen, wurde kein bemerkenswertes Gewebe erkannt — was oft ein ',
           'result_info_card_text_8': 'gutes Zeichen ist',
+          'pixel_analysis_info_card_title': 'Pixelbasierte Analyse',
+          'pixel_analysis_info_card_text_1': '🟢 Gutartig: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Bösartig: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Normal: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Gesamtpixel: ',
+          'pixel_analysis_info_card_text_5': '\n\nHinweis: ',
+          'pixel_analysis_info_card_text_6':
+              'Um die reale Tumorgröße zu berechnen, multiplizieren Sie die angegebene Pixelanzahl mit der Pixelfläche.\n\nHier ist die Berechnung:',
+          'pixel_analysis_info_card_text_7':
+              '\nPixelfläche = Pixelabstand X × Pixelabstand Y\nSegmentierte Fläche (mm²) = Pixelanzahl × Pixelfläche',
+          'pixel_analysis_info_card_text_8':
+              '\n\nBitte wenden Sie sich an Ihr Bildgebungsgerät oder Ihren Arzt für genaue Pixelabstände.',
+          'pixels': ' Pixel ',
           'result_page_description':
               'Neugierig auf einen Vergleich? Sehen Sie Ihr Original neben dem Ergebnis — oder gehen Sie zurück, um einen anderen Scan zu versuchen.',
           'compare': 'Vergleichen',
@@ -309,20 +335,33 @@ class Messages extends Translations {
               ' dosyaları da kabul edilir ancak yapay zeka analizi için kaliteyi korumak amacıyla PNG\'ye dönüştürülecektir.',
           'result_info_card_title': 'Sonucunuzu Anlamak',
           'result_info_card_text_1':
-              'Bu görüntü, yapay zeka sistemimiz tarafından tespit edilen segmentli bölgeleri gösterir:\n🟥 ',
+              'Bu görüntü, yapay zeka sistemimiz tarafından tespit edilen segmentli bölgeleri gösterir:\n\n🟥 ',
           'red': 'Kırmızı',
           'result_info_card_text_2': ' alanlar potansiyel olarak ',
           'malignant': 'kötü huylu',
-          'result_info_card_text_3': ' (kanserli) doku belirtebilir.\n🟩 ',
+          'result_info_card_text_3': ' (kanserli) doku belirtebilir.\n\n🟩 ',
           'green': 'Yeşil',
           'result_info_card_text_4': ' alanlar ',
           'benign': 'iyi huylu',
           'result_info_card_text_5':
-              ' (kanserli olmayan) bulgulara işaret edebilir.\n✅ Eğer ',
+              ' (kanserli olmayan) bulgulara işaret edebilir.\n\n✅ Eğer ',
           'result_info_card_text_6': 'renkli bölgeler',
           'result_info_card_text_7':
               ' görünmüyorsa, dikkate değer bir doku tespit edilmemiştir — bu genellikle ',
           'result_info_card_text_8': 'iyi bir işarettir',
+          'pixel_analysis_info_card_title': 'Piksel Tabanlı Analiz',
+          'pixel_analysis_info_card_text_1': '🟢 İyi huylu: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Kötü huylu: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Normal: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Toplam piksel: ',
+          'pixel_analysis_info_card_text_5': '\n\nNot: ',
+          'pixel_analysis_info_card_text_6':
+              'Gerçek dünyada tümör boyutunu hesaplamak için, verilen piksel sayısını piksel alanı ile çarpın.\n\nHesaplama şu şekildedir:',
+          'pixel_analysis_info_card_text_7':
+              '\nPiksel Alanı = Piksel Aralığı X × Piksel Aralığı Y\nSegmentli Alan (mm²) = Piksel Sayısı × Piksel Alanı',
+          'pixel_analysis_info_card_text_8':
+              '\n\nKesin piksel aralığı için lütfen görüntüleme cihazınıza veya doktorunuza başvurun.',
+          'pixels': ' piksel ',
           'result_page_description':
               'Karşılaştırmak ister misiniz? Orijinal görüntünüzü sonucun yanında görün — veya başka bir tarama denemek için ana sayfaya dönün.',
           'compare': 'Karşılaştır',
@@ -437,21 +476,34 @@ class Messages extends Translations {
               ' sont également acceptés mais seront convertis en PNG pour maintenir la qualité pour l\'analyse par IA.',
           'result_info_card_title': 'Comprendre Votre Résultat',
           'result_info_card_text_1':
-              'Cette image montre les régions segmentées détectées par notre système d\'IA:\n🟥 ',
+              'Cette image montre les régions segmentées détectées par notre système d\'IA:\n\n🟥 ',
           'red': 'Rouges',
           'result_info_card_text_2':
               ' les zones peuvent indiquer un tissu potentiellement ',
           'malignant': 'malin',
-          'result_info_card_text_3': ' (cancéreux).\n🟩 ',
+          'result_info_card_text_3': ' (cancéreux).\n\n🟩 ',
           'green': 'Vertes',
           'result_info_card_text_4':
               ' les zones peuvent suggérer des résultats ',
           'benign': 'bénins',
-          'result_info_card_text_5': ' (non cancéreux).\n✅ Si ',
+          'result_info_card_text_5': ' (non cancéreux).\n\n✅ Si ',
           'result_info_card_text_6': 'aucune région colorée',
           'result_info_card_text_7':
               ' n\'apparaît, aucun tissu notable n\'a été détecté — ce qui est souvent un ',
           'result_info_card_text_8': 'bon signe',
+          'pixel_analysis_info_card_title': 'Analyse Basée sur les Pixels',
+          'pixel_analysis_info_card_text_1': '🟢 Bénin: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Malin: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Normal: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Total pixels: ',
+          'pixel_analysis_info_card_text_5': '\n\nNote: ',
+          'pixel_analysis_info_card_text_6':
+              'Pour calculer la taille réelle de la tumeur, multipliez le nombre de pixels fourni par la zone de pixel.\n\nVoici le calcul:',
+          'pixel_analysis_info_card_text_7':
+              '\nZone de Pixel = Espacement de Pixel X × Espacement de Pixel Y\nZone Segmentée (mm²) = Nombre de Pixels × Zone de Pixel',
+          'pixel_analysis_info_card_text_8':
+              '\n\nVeuillez vous référer à votre appareil d\'imagerie ou médecin pour l\'espacement exact des pixels.',
+          'pixels': ' pixels ',
           'result_page_description':
               'Curieux de comparer ? Visualisez votre original à côté du résultat — ou retournez à l\'accueil pour essayer un autre scan.',
           'compare': 'Comparer',
@@ -568,20 +620,33 @@ class Messages extends Translations {
               ' también se aceptan archivos pero se convertirán a PNG para mantener la calidad para el análisis de IA.',
           'result_info_card_title': 'Entendiendo Tu Resultado',
           'result_info_card_text_1':
-              'Esta imagen muestra las regiones segmentadas detectadas por nuestro sistema de IA:\n🟥 ',
+              'Esta imagen muestra las regiones segmentadas detectadas por nuestro sistema de IA:\n\n🟥 ',
           'red': 'Rojas',
           'result_info_card_text_2':
               ' las áreas pueden indicar tejido potencialmente ',
           'malignant': 'maligno',
-          'result_info_card_text_3': ' (canceroso).\n🟩 ',
+          'result_info_card_text_3': ' (canceroso).\n\n🟩 ',
           'green': 'Verdes',
           'result_info_card_text_4': ' las áreas pueden sugerir hallazgos ',
           'benign': 'benignos',
-          'result_info_card_text_5': ' (no cancerosos).\n✅ Si ',
+          'result_info_card_text_5': ' (no cancerosos).\n\n✅ Si ',
           'result_info_card_text_6': 'no aparecen regiones coloreadas',
           'result_info_card_text_7':
               ', no se detectó tejido notable — lo que a menudo es una ',
           'result_info_card_text_8': 'buena señal',
+          'pixel_analysis_info_card_title': 'Análisis Basado en Píxeles',
+          'pixel_analysis_info_card_text_1': '🟢 Benigno: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Maligno: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Normal: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Total píxeles: ',
+          'pixel_analysis_info_card_text_5': '\n\nNota: ',
+          'pixel_analysis_info_card_text_6':
+              'Para calcular el tamaño real del tumor, multiplica el recuento de píxeles proporcionado por el área del píxel.\n\nAquí está el cálculo:',
+          'pixel_analysis_info_card_text_7':
+              '\nÁrea del Píxel = Espaciado de Píxel X × Espaciado de Píxel Y\nÁrea Segmentada (mm²) = Recuento de Píxeles × Área del Píxel',
+          'pixel_analysis_info_card_text_8':
+              '\n\nPor favor, consulta tu dispositivo de imagen o médico para el espaciado exacto de píxeles.',
+          'pixels': ' píxeles ',
           'result_page_description':
               '¿Curioso por comparar? Ve tu original junto al resultado — o vuelve al inicio para probar otro escaneo.',
           'compare': 'Comparar',
@@ -697,20 +762,33 @@ class Messages extends Translations {
               ' sono accettati anche file ma verranno convertiti in PNG per mantenere la qualità per l\'analisi IA.',
           'result_info_card_title': 'Comprensione del Risultato',
           'result_info_card_text_1':
-              'Questa immagine mostra le regioni segmentate rilevate dal nostro sistema IA:\n🟥 ',
+              'Questa immagine mostra le regioni segmentate rilevate dal nostro sistema IA:\n\n🟥 ',
           'red': 'Rosse',
           'result_info_card_text_2':
               ' le aree potrebbero indicare tessuto potenzialmente ',
           'malignant': 'maligno',
-          'result_info_card_text_3': ' (canceroso).\n🟩 ',
+          'result_info_card_text_3': ' (canceroso).\n\n🟩 ',
           'green': 'Verdi',
           'result_info_card_text_4': ' le aree potrebbero suggerire risultati ',
           'benign': 'benigni',
-          'result_info_card_text_5': ' (non cancerosi).\n✅ Se ',
+          'result_info_card_text_5': ' (non cancerosi).\n\n✅ Se ',
           'result_info_card_text_6': 'non appaiono regioni colorate',
           'result_info_card_text_7':
               ', non è stato rilevato alcun tessuto notevole — il che spesso è un ',
           'result_info_card_text_8': 'buon segno',
+          'pixel_analysis_info_card_title': 'Analisi Basata sui Pixel',
+          'pixel_analysis_info_card_text_1': '🟢 Benigno: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Maligno: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Normale: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Pixel totali: ',
+          'pixel_analysis_info_card_text_5': '\n\nNota: ',
+          'pixel_analysis_info_card_text_6':
+              'Per calcolare la dimensione reale del tumore, moltiplica il conteggio dei pixel fornito per l\'area del pixel.\n\nEcco il calcolo:',
+          'pixel_analysis_info_card_text_7':
+              '\nArea del Pixel = Spaziatura Pixel X × Spaziatura Pixel Y\nArea Segmentata (mm²) = Conteggio Pixel × Area del Pixel',
+          'pixel_analysis_info_card_text_8':
+              '\n\nSi prega di fare riferimento al dispositivo di imaging o al medico per la spaziatura esatta dei pixel.',
+          'pixels': ' pixel ',
           'result_page_description':
               'Curioso di confrontare? Visualizza l\'originale accanto al risultato — o torna alla home per provare un\'altra scansione.',
           'compare': 'Confronta',
@@ -827,20 +905,33 @@ class Messages extends Translations {
               ' arquivos também são aceitos, mas serão convertidos para PNG para manter a qualidade para análise de IA.',
           'result_info_card_title': 'Entendendo Seu Resultado',
           'result_info_card_text_1':
-              'Esta imagem mostra as regiões segmentadas detectadas pelo nosso sistema de IA:\n🟥 ',
+              'Esta imagem mostra as regiões segmentadas detectadas pelo nosso sistema de IA:\n\n🟥 ',
           'red': 'Vermelhas',
           'result_info_card_text_2':
               ' as áreas podem indicar tecido potencialmente ',
           'malignant': 'maligno',
-          'result_info_card_text_3': ' (canceroso).\n🟩 ',
+          'result_info_card_text_3': ' (canceroso).\n\n🟩 ',
           'green': 'Verdes',
           'result_info_card_text_4': ' as áreas podem sugerir achados ',
           'benign': 'benignos',
-          'result_info_card_text_5': ' (não cancerosos).\n✅ Se ',
+          'result_info_card_text_5': ' (não cancerosos).\n\n✅ Se ',
           'result_info_card_text_6': 'nenhuma região colorida',
           'result_info_card_text_7':
               ' aparecer, nenhum tecido notável foi detectado — o que frequentemente é um ',
           'result_info_card_text_8': 'bom sinal',
+          'pixel_analysis_info_card_title': 'Análise Baseada em Pixels',
+          'pixel_analysis_info_card_text_1': '🟢 Benigno: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Maligno: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Normal: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Total de pixels: ',
+          'pixel_analysis_info_card_text_5': '\n\nNota: ',
+          'pixel_analysis_info_card_text_6':
+              'Para calcular o tamanho real do tumor, multiplique a contagem de pixels fornecida pela área do pixel.\n\nAqui está o cálculo:',
+          'pixel_analysis_info_card_text_7':
+              '\nÁrea do Pixel = Espaçamento de Pixel X × Espaçamento de Pixel Y\nÁrea Segmentada (mm²) = Contagem de Pixels × Área do Pixel',
+          'pixel_analysis_info_card_text_8':
+              '\n\nPor favor, consulte seu dispositivo de imagem ou médico para o espaçamento exato de pixels.',
+          'pixels': ' pixels ',
           'result_page_description':
               'Curioso para comparar? Veja seu original ao lado do resultado — ou volte para casa para tentar outra varredura.',
           'compare': 'Comparar',
@@ -956,20 +1047,33 @@ class Messages extends Translations {
               ' файлы также принимаются, но будут конвертированы в PNG для сохранения качества при анализе ИИ.',
           'result_info_card_title': 'Понимание вашего результата',
           'result_info_card_text_1':
-              'Это изображение показывает сегментированные области, обнаруженные нашей системой ИИ:\n🟥 ',
+              'Это изображение показывает сегментированные области, обнаруженные нашей системой ИИ:\n\n🟥 ',
           'red': 'Красные',
           'result_info_card_text_2':
               ' области могут указывать на потенциально ',
           'malignant': 'злокачественную',
-          'result_info_card_text_3': ' (раковую) ткань.\n🟩 ',
+          'result_info_card_text_3': ' (раковую) ткань.\n\n🟩 ',
           'green': 'Зеленые',
           'result_info_card_text_4': ' области могут предполагать ',
           'benign': 'доброкачественные',
-          'result_info_card_text_5': ' (не раковые) образования.\n✅ Если ',
+          'result_info_card_text_5': ' (не раковые) образования.\n\n✅ Если ',
           'result_info_card_text_6': 'цветные области не',
           'result_info_card_text_7':
               ' появляются, значимой ткани не обнаружено — что часто является ',
           'result_info_card_text_8': 'хорошим знаком',
+          'pixel_analysis_info_card_title': 'Пиксельный анализ',
+          'pixel_analysis_info_card_text_1': '🟢 Доброкачественное: ',
+          'pixel_analysis_info_card_text_2': '\n\n🔴 Злокачественное: ',
+          'pixel_analysis_info_card_text_3': '\n\n⚫️ Нормальное: ',
+          'pixel_analysis_info_card_text_4': '\n\n📏 Всего пикселей: ',
+          'pixel_analysis_info_card_text_5': '\n\nПримечание: ',
+          'pixel_analysis_info_card_text_6':
+              'Чтобы вычислить реальный размер опухоли, умножьте предоставленное количество пикселей на площадь пикселя.\n\nВот расчет:',
+          'pixel_analysis_info_card_text_7':
+              '\nПлощадь пикселя = Интервал пикселя X × Интервал пикселя Y\nСегментированная площадь (мм²) = Количество пикселей × Площадь пикселя',
+          'pixel_analysis_info_card_text_8':
+              '\n\nПожалуйста, обратитесь к вашему устройству визуализации или врачу для точного интервала пикселей.',
+          'pixels': ' пикселей ',
           'result_page_description':
               'Интересно сравнить? Посмотрите оригинал рядом с результатом — или вернитесь домой, чтобы попробовать другое сканирование.',
           'compare': 'Сравнить',

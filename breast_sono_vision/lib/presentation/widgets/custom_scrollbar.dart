@@ -13,13 +13,16 @@ class CustomScrollbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RawScrollbar(
-      controller: controller,
-      thumbColor: ColorPalette.secondary,
-      radius: const Radius.circular(10),
-      thickness: 5,
-      interactive: true,
-      child: child,
+    return SizedBox(
+      width: double.infinity,
+      child: RawScrollbar(
+        controller: controller,
+        thumbColor: ColorPalette.secondary,
+        radius: const Radius.circular(10),
+        thickness: 5,
+        interactive: true,
+        child: child,
+      ),
     );
   }
 }

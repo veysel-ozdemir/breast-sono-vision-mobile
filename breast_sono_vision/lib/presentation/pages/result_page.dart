@@ -5,11 +5,12 @@ import 'package:breast_sono_vision/presentation/controllers/permission_controlle
 import 'package:breast_sono_vision/presentation/pages/comparison_page.dart';
 import 'package:breast_sono_vision/presentation/pages/home_page.dart';
 import 'package:breast_sono_vision/core/util/dialogs.dart';
-import 'package:breast_sono_vision/presentation/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/theme/app_theme.dart';
 import '../widgets/custom_scrollbar.dart';
+import '../widgets/scrollable_info_card.dart';
 
 class ResultPage extends StatefulWidget {
   const ResultPage({super.key});
@@ -45,6 +46,43 @@ class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'Breast',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTheme.manropeFontFamily,
+                ),
+              ),
+              TextSpan(
+                text: 'Sono',
+                style: TextStyle(
+                  color: ColorPalette.secondary,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTheme.manropeFontFamily,
+                ),
+              ),
+              TextSpan(
+                text: 'Vision',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTheme.manropeFontFamily,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: AnimatedOpacity(
           opacity: _pageVisible ? 1.0 : 0.0,
@@ -67,50 +105,6 @@ class _ResultPageState extends State<ResultPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              // Information Card
-                              InfoCard(
-                                icon: '🔎',
-                                title: 'result_info_card_title'.tr,
-                                description: [
-                                  TextSpan(text: 'result_info_card_text_1'.tr),
-                                  TextSpan(
-                                    text: 'red'.tr,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(text: 'result_info_card_text_2'.tr),
-                                  TextSpan(
-                                    text: 'malignant'.tr,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(text: 'result_info_card_text_3'.tr),
-                                  TextSpan(
-                                    text: 'green'.tr,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(text: 'result_info_card_text_4'.tr),
-                                  TextSpan(
-                                    text: 'benign'.tr,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(text: 'result_info_card_text_5'.tr),
-                                  TextSpan(
-                                    text: 'result_info_card_text_6'.tr,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(text: 'result_info_card_text_7'.tr),
-                                  TextSpan(
-                                    text: 'result_info_card_text_8'.tr,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const TextSpan(text: '.'),
-                                ],
-                              ),
                               const Spacer(flex: 1),
                               // Image View
                               ConstrainedBox(
@@ -139,6 +133,164 @@ class _ResultPageState extends State<ResultPage> {
                                       ),
                                     ),
                                   ),
+                                ),
+                              ),
+                              const Spacer(flex: 1),
+                              // Information Cards - Horizontal ListView
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: Get.width * 0.85,
+                                      child: ScrollableInfoCard(
+                                        icon: '🔎',
+                                        title: 'result_info_card_title'.tr,
+                                        height: Get.height * 0.2,
+                                        description: [
+                                          TextSpan(
+                                              text:
+                                                  'result_info_card_text_1'.tr),
+                                          TextSpan(
+                                            text: 'red'.tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                              text:
+                                                  'result_info_card_text_2'.tr),
+                                          TextSpan(
+                                            text: 'malignant'.tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                              text:
+                                                  'result_info_card_text_3'.tr),
+                                          TextSpan(
+                                            text: 'green'.tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                              text:
+                                                  'result_info_card_text_4'.tr),
+                                          TextSpan(
+                                            text: 'benign'.tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                              text:
+                                                  'result_info_card_text_5'.tr),
+                                          TextSpan(
+                                            text: 'result_info_card_text_6'.tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                              text:
+                                                  'result_info_card_text_7'.tr),
+                                          TextSpan(
+                                            text: 'result_info_card_text_8'.tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          const TextSpan(text: '.'),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    SizedBox(
+                                      width: Get.width * 0.85,
+                                      child: ScrollableInfoCard(
+                                        icon: '📊',
+                                        title:
+                                            'pixel_analysis_info_card_title'.tr,
+                                        height: Get.height * 0.2,
+                                        description: [
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_1'
+                                                    .tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${apiController.benignPixels}${'pixels'.tr}(${apiController.benignPercentage.toStringAsFixed(1)}%)',
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.green),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_2'
+                                                    .tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${apiController.malignantPixels}${'pixels'.tr}(${apiController.malignantPercentage.toStringAsFixed(1)}%)',
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.red),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_3'
+                                                    .tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${apiController.normalPercentage.toStringAsFixed(1)}%',
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_4'
+                                                    .tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${apiController.totalPixels}',
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_5'
+                                                    .tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_6'
+                                                    .tr,
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_7'
+                                                    .tr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'pixel_analysis_info_card_text_8'
+                                                    .tr,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               const Spacer(flex: 1),

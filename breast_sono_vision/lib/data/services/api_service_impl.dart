@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:breast_sono_vision/core/network/api_client.dart';
+import 'package:breast_sono_vision/data/models/api_response.dart';
 import 'api_service.dart';
 
 class ApiServiceImpl implements ApiService {
@@ -8,8 +9,8 @@ class ApiServiceImpl implements ApiService {
   ApiServiceImpl(this._client);
 
   @override
-  Future<File> uploadImage(File image) async {
-    final responseFile = await _client.uploadImage(image);
-    return responseFile;
+  Future<ApiResponse> uploadImage(File image) async {
+    final response = await _client.uploadImage(image);
+    return response;
   }
 }
