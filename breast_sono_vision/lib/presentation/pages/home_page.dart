@@ -396,7 +396,7 @@ class _HomePageState extends State<HomePage> {
       ),
       shape: const RoundedRectangleBorder(
         side: BorderSide(
-          color: ColorPalette.border,
+          color: ColorPalette.secondary,
           width: 3,
         ),
         borderRadius: BorderRadius.only(

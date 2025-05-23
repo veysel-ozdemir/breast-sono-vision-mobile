@@ -44,9 +44,9 @@ Future<void> showDisclaimerDialog({
                 alignment: Alignment.centerRight,
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: ColorPalette.secondary,
+                    foregroundColor: ColorPalette.onBackground,
                     side: const BorderSide(
-                      color: ColorPalette.secondary,
+                      color: ColorPalette.onBackground,
                       width: 2,
                     ),
                   ),
@@ -120,9 +120,9 @@ Future<void> showPermissionDialog({
                 alignment: Alignment.centerRight,
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: ColorPalette.secondary,
+                    foregroundColor: ColorPalette.onBackground,
                     side: const BorderSide(
-                      color: ColorPalette.secondary,
+                      color: ColorPalette.onBackground,
                       width: 2,
                     ),
                   ),
@@ -197,7 +197,7 @@ Future<void> showSnackbar({
       style: const TextStyle(color: ColorPalette.onBackground, fontSize: 16),
     ),
     backgroundColor: ColorPalette.background.withOpacity(0.75),
-    borderColor: ColorPalette.border.withOpacity(0.75),
+    borderColor: ColorPalette.onBackground.withOpacity(0.75),
     borderRadius: 15,
     borderWidth: 3,
     icon: Padding(
@@ -517,7 +517,7 @@ Future<void> showScheduledNotificationDialog({
                           'no_scheduled_notifications'.tr,
                           style: const TextStyle(
                             fontSize: 16,
-                            color: ColorPalette.border,
+                            color: ColorPalette.onBackground,
                           ),
                         ),
                       );

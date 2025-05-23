@@ -231,7 +231,7 @@ class _ResultPageState extends State<ResultPage> {
       ),
       shape: const RoundedRectangleBorder(
         side: BorderSide(
-          color: ColorPalette.border,
+          color: ColorPalette.secondary,
           width: 3,
         ),
         borderRadius: BorderRadius.only(
