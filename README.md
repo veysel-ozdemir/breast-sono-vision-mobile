@@ -113,7 +113,7 @@ The app includes important medical disclaimers and usage guidelines for healthca
 - **Language**: Dart
 - **State Management**: GetX
 - **Local Storage**: SharedPreferences
-- **Image Processing**: [nnU-net](https://github.com/veysel-ozdemir/nnUNet)
+- **Image Processing**: [nnU-Net](https://github.com/veysel-ozdemir/nnUNet)
 - **Animations**: Lottie
 - **Notifications**: Flutter Local Notifications
 - **File Handling**: File Picker, Image Picker
