@@ -31,45 +31,45 @@ BreastSonoVision is an innovative mobile application that leverages AI-powered i
 
 ### Landing & Onboarding
 <div align="center">
-  <img src="images/landing.png" width="250" alt="Landing Screen"/>
-  <img src="images/onboarding_1.png" width="250" alt="Onboarding 1"/>
-  <img src="images/onboarding_2.png" width="250" alt="Onboarding 2"/>
-  <img src="images/onboarding_3.png" width="250" alt="Onboarding 3"/>
+  <img src="images/landing.png" width="200" alt="Landing Screen"/>
+  <img src="images/onboarding_1.png" width="200" alt="Onboarding 1"/>
+  <img src="images/onboarding_2.png" width="200" alt="Onboarding 2"/>
+  <img src="images/onboarding_3.png" width="200" alt="Onboarding 3"/>
 </div>
 
 The app features a welcoming landing screen and comprehensive onboarding process to guide users through the application's capabilities.
 
 ### Home & Navigation
 <div align="center">
-  <img src="images/home_1.png" width="250" alt="Home Screen 1"/>
-  <img src="images/home_2.png" width="250" alt="Home Screen 2"/>
-  <img src="images/drawer.png" width="250" alt="Navigation Drawer"/>
+  <img src="images/home_1.png" width="200" alt="Home Screen 1"/>
+  <img src="images/home_2.png" width="200" alt="Home Screen 2"/>
+  <img src="images/drawer.png" width="200" alt="Navigation Drawer"/>
 </div>
 
 Clean and intuitive home interface with easy navigation through the side drawer menu.
 
 ### Analysis & Results
 <div align="center">
-  <img src="images/result_1.png" width="250" alt="Analysis Results 1"/>
-  <img src="images/result_2.png" width="250" alt="Analysis Results 2"/>
-  <img src="images/compare.png" width="250" alt="Comparison View"/>
+  <img src="images/result_1.png" width="200" alt="Analysis Results 1"/>
+  <img src="images/result_2.png" width="200" alt="Analysis Results 2"/>
+  <img src="images/compare.png" width="200" alt="Comparison View"/>
 </div>
 
 Detailed analysis results with segmentation overlays and comparison tools for thorough examination.
 
 ### Additional Features
 <div align="center">
-  <img src="images/languages.png" width="250" alt="Language Selection"/>
-  <img src="images/noti.png" width="250" alt="Notifications"/>
-  <img src="images/scheduled_noti.png" width="250" alt="Scheduled Notifications"/>
-  <img src="images/share.png" width="250" alt="Share Options"/>
+  <img src="images/languages.png" width="200" alt="Language Selection"/>
+  <img src="images/noti.png" width="200" alt="Notifications"/>
+  <img src="images/scheduled_noti.png" width="200" alt="Scheduled Notifications"/>
+  <img src="images/share.png" width="200" alt="Share Options"/>
 </div>
 
 Multi-language support, notification management, and sharing capabilities.
 
 ### Important Information
 <div align="center">
-  <img src="images/disclaimer.png" width="250" alt="Medical Disclaimer"/>
+  <img src="images/disclaimer.png" width="200" alt="Medical Disclaimer"/>
 </div>
 
 The app includes important medical disclaimers and usage guidelines for healthcare professionals.
